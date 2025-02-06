@@ -1,0 +1,108 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --primary-blue: #1a365d;
+  --secondary-blue: #2b4c7e;
+  --light-blue: #4a90e2;
+  --dark-blue: #102a43;
+  --accent-blue: #7fb3fa;
+  --text-blue: #2d3748;
+  --bg-blue-gradient: linear-gradient(to right, rgba(26, 54, 93, 0.9), rgba(43, 76, 126, 0.8));
+  
+  /* Font families */
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Open Sans', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--text-blue);
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--primary-blue);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p, li, span, label, input, textarea {
+  font-family: var(--body-font);
+  font-weight: 400;
+}
+
+.btn {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+.btn-success {
+  background-color: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+}
+
+.btn-success:hover {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}

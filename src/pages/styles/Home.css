@@ -1,0 +1,495 @@
+/* Root variables for scaling */
+:root {
+  --scale-factor: 1;
+}
+
+/* Base styles */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header-image {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjusted height */
+  overflow: hidden;
+}
+
+.header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire div */
+}
+
+.header-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--light-blue);
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* You can change the font family to any other font */
+  font-size: 2.5rem; /* Adjust the font size as needed */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card {
+  margin: 15px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(26, 54, 93, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(26, 54, 93, 0.2);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.2rem; /* Adjusted font size */
+  color: var(--primary-blue);
+}
+
+.card-text {
+  margin: 10px 0 0;
+  font-size: 0.9rem; /* Adjusted font size */
+  color: var(--text-blue);
+}
+
+/* Adjust the gallery and images */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 200px; /* Adjusted max width */
+  height: auto;
+  border-radius: 10px;
+}
+
+.slider {
+  display: flex;
+  gap: 15px; /* Added gap between slider items */
+}
+
+.slider-item {
+  padding: 0 7.5px; /* Half of the gap value to ensure equal spacing */
+}
+
+.slider img {
+  width: 100%;
+  max-width: 300px; /* Adjusted max width */
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 120px 5% 150px; /* Added bottom padding for services */
+  color: white;
+  overflow: hidden;
+}
+
+/* Background image container with improved scaling */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background: url('/public/1755344.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Gradient overlay */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-blue-gradient);
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  z-index: 10;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Text styles with fixed sizes */
+.hero-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: block;
+  color: var(--accent-blue);
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: white;
+  white-space: pre-line;
+}
+
+.hero-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.book-now-btn {
+  background-color: var(--accent-blue);
+  color: var(--dark-blue);
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: var(--light-blue);
+  transform: translateY(-2px);
+}
+
+/* Features section styling */
+.features-container {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  margin-top: -100px;
+  padding: 0 15px;
+}
+
+.features-row {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(26, 54, 93, 0.15);
+  padding: 30px;
+  margin: 0 auto;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.feature-item {
+  flex: 1;
+  min-width: 250px;
+  max-width: 280px;
+  text-align: center;
+  padding: 25px 20px;
+  transition: transform 0.3s ease;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+  color: var(--light-blue);
+}
+
+.feature-emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-emoji {
+  transform: scale(1.2);
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) scale(1.2);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0px) scale(1.2);
+  }
+}
+
+/* Update feature item styles */
+.feature-item h3 {
+  color: var(--primary-blue);
+  margin: 15px 0;
+  font-size: 1.5rem;
+  font-weight: var(--font-semibold);
+}
+
+.feature-item p {
+  color: var(--text-blue);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Media queries */
+@media (min-width: 1921px) {
+  .hero-section {
+    padding-bottom: calc(150px * 1.2);
+  }
+  
+  .hero-content {
+    transform: scale(1.2);
+    margin-top: 60px;
+  }
+  
+  .features-container {
+    margin-top: -120px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .hero-section {
+    padding-bottom: calc(150px * 1.5);
+  }
+  
+  .hero-content {
+    transform: scale(1.5);
+    margin-top: 80px;
+  }
+  
+  .features-container {
+    margin-top: -150px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .features-row {
+    max-width: 900px;
+  }
+  
+  .feature-item {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 15px 100px;
+  }
+  
+  .hero-content {
+    transform: scale(0.7);
+    transform-origin: center top;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .features-container {
+    margin-top: -60px;
+  }
+  
+  .features-row {
+    padding: 20px;
+  }
+  
+  .feature-item {
+    min-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 60px 15px 80px;
+  }
+  
+  .hero-content {
+    transform: scale(0.6);
+  }
+  
+  .features-container {
+    margin-top: -40px;
+  }
+  
+  .feature-item {
+    min-width: 100%;
+  }
+}
+
+/* Smooth transitions */
+.hero-section,
+.hero-content,
+.features-container {
+  transition: all 0.3s ease-out;
+}
+
+h1, h2 {
+  color: var(--primary-blue);
+}
+
+p {
+  color: var(--text-blue);
+}
+
+.yacht-listings {
+  padding: 80px 0;
+  background-color: #f8fafc;
+}
+
+.section-header {
+  margin-bottom: 50px;
+}
+
+.section-header .subtitle {
+  color: var(--primary-blue);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.section-header .title {
+  font-size: 36px;
+  color: var(--dark-blue);
+  margin: 0;
+}
+
+.yacht-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.yacht-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.yacht-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.yacht-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.yacht-card:hover .yacht-image img {
+  transform: scale(1.05);
+}
+
+.yacht-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  padding: 20px;
+  text-align: center;
+}
+
+.yacht-name {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 0 20px;
+  color: var(--dark-blue);
+}
+
+.yacht-details {
+  padding: 0 20px 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 2px;
+}
+
+.detail-row.blue {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.detail-row.yellow {
+  background-color: var(--accent-blue);
+}
+
+.detail-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-item .label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.detail-item .value {
+  font-size: 14px;
+}
+
+.detail-item.special {
+  text-align: center;
+  flex: 2;
+}
+
+@media (max-width: 768px) {
+  .yacht-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header .title {
+    font-size: 28px;
+  }
+}
