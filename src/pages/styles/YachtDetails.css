@@ -1,0 +1,379 @@
+.yacht-details-page {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.yacht-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.yacht-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.price-tag {
+  background: #4169e1;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.yacht-gallery {
+  margin-bottom: 50px;
+}
+
+.main-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.thumbnail {
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.details-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.details-section h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.overview-item {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.overview-item i {
+  font-size: 24px;
+  color: #4169e1;
+  margin-bottom: 10px;
+}
+
+.overview-item h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #2c3e50;
+}
+
+.overview-item p {
+  color: #666;
+  margin: 0;
+}
+
+.services-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.service-item i {
+  color: #4169e1;
+  font-size: 20px;
+}
+
+.booking-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-now-btn {
+  background: #4169e1;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.description-preview {
+  position: relative;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #4169e1;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.description-popup {
+  position: fixed;
+  top: 10%; 
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  background: white;
+  border-radius: 8px;
+  z-index: 1001;
+
+  overflow-y: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.popup-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.close-popup {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+}
+
+.popup-content {
+  padding: 20px;
+}
+
+.popup-content h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.main-description {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.highlights p {
+  margin: 10px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.location-info p {
+  margin: 10px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.emoji {
+  font-size: 1.2rem;
+  min-width: 24px;
+}
+
+.extra-info {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.extra-services {
+  margin-top: 20px;
+}
+
+.extra-services h4 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.extra-services p {
+  margin: 10px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+@media (max-width: 1024px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thumbnail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .yacht-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .description-popup {
+    width: 80%;
+    margin: 10px;
+  }
+  
+  .popup-content {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .description-popup {
+    width: 85%;
+  }
+}
+
+@media (min-width: 1201px) {
+  .description-popup {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) and (max-resolution: 150dpi) {
+  .description-popup {
+    max-height: 85vh;
+  }
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .popup-overlay {
+    align-items: flex-start;
+    padding-top: 5vh;
+  }
+
+  .description-popup {
+    max-height: 90vh;
+    margin: 0 auto;
+  }
+
+  .popup-content {
+    overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 480px), screen and (min-resolution: 192dpi) {
+  .popup-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .popup-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .main-description {
+    font-size: 1rem;
+  }
+
+  .emoji {
+    font-size: 1rem;
+  }
+}

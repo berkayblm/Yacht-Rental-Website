@@ -1,86 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import './styles/YachtListings.css';
 
-const YachtListings = () => {
-  const yachts = [
-    {
-      id: 1,
-      name: "Cleopatra Luxury",
-      price: "950,00 €",
-      image: "/la-perla-5.jpeg",
-      details: {
-        startTime: "10:00 - 15:00",
-        totalCapacity: "20 Person",
-        totalBreaks: "4 Times",
-        totalCabins: "4 Cabins",
-        catering: "Included",
-        alcoholDrink: "Yes Possible",
-        special: "Not Available"
-      }
-    },
-    {
-      id: 2,
-      name: "White Angel Yacht",
-      price: "499,00 €",
-      image: "/la-perla-5.jpeg",
-      details: {
-        startTime: "10:00 - 15:00",
-        totalCapacity: "12 Person",
-        totalBreaks: "3 Times",
-        totalCabins: "2 Cabins",
-        catering: "Included",
-        alcoholDrink: "Yes Possible",
-        special: "BBQ Party"
-      }
-    },
-    {
-      id: 3,
-      name: "No More Stress Boat",
-      price: "599,00 €",
-      image: "/la-perla-5.jpeg",
-      details: {
-        startTime: "Night",
-        totalCapacity: "20 Person",
-        totalBreaks: "Not Available",
-        totalCabins: "2 (Twin)",
-        catering: "Included",
-        alcoholDrink: "Yes Possible",
-        special: "Not Available"
-      }
-    },
-    {
-      id: 4,
-      name: "No More Stress Boat",
-      price: "599,00 €",
-      image: "/la-perla-5.jpeg",
-      details: {
-        startTime: "Night",
-        totalCapacity: "20 Person",
-        totalBreaks: "Not Available",
-        totalCabins: "2 (Twin)",
-        catering: "Included",
-        alcoholDrink: "Yes Possible",
-        special: "Not Available"
-      }
-    },
-    {
-      id: 5,
-      name: "No More Stress Boat",
-      price: "599,00 €",
-      image: "/la-perla-5.jpeg",
-      details: {
-        startTime: "Night",
-        totalCapacity: "20 Person",
-        totalBreaks: "Not Available",
-        totalCabins: "2 (Twin)",
-        catering: "Included",
-        alcoholDrink: "Yes Possible",
-        special: "Not Available"
-      }
-    }
-  ];
+const YachtListings = ({ yachts }) => {
 
+  const navigate = useNavigate();
+
+  const handleYachtClick = (yachtId) => {
+    navigate(`/yachts/${yachtId}`);
+  };
+  
   return (
     <motion.section 
       className="yacht-listings"
@@ -117,6 +47,7 @@ const YachtListings = () => {
                 y: -10,
                 transition: { duration: 0.2 }
               }}
+              onClick={() => handleYachtClick(yacht.id)}
             >
               <div className="yacht-image">
                 <motion.img 
@@ -137,10 +68,7 @@ const YachtListings = () => {
               
               <div className="yacht-details">
                 <div className="detail-row blue">
-                  <div className="detail-item">
-                    <span className="label">Start time</span>
-                    <span className="value">{yacht.details.startTime}</span>
-                  </div>
+                  
                   <div className="detail-item">
                     <span className="label">Total Capacity</span>
                     <span className="value">{yacht.details.totalCapacity}</span>
@@ -148,10 +76,7 @@ const YachtListings = () => {
                 </div>
                 
                 <div className="detail-row yellow">
-                  <div className="detail-item">
-                    <span className="label">Total Breaks</span>
-                    <span className="value">{yacht.details.totalBreaks}</span>
-                  </div>
+                  
                   <div className="detail-item">
                     <span className="label">Total Cabins</span>
                     <span className="value">{yacht.details.totalCabins}</span>
@@ -159,10 +84,7 @@ const YachtListings = () => {
                 </div>
                 
                 <div className="detail-row yellow">
-                  <div className="detail-item">
-                    <span className="label">Catering</span>
-                    <span className="value">{yacht.details.catering}</span>
-                  </div>
+                  
                   <div className="detail-item">
                     <span className="label">Alcohol Drink</span>
                     <span className="value">{yacht.details.alcoholDrink}</span>

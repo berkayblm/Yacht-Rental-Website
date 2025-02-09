@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles/Home.css';
-import Testimonials from '../components/Testimonals';
 import Maps from '../components/Maps';
 import InfoSection from '../components/InfoSection';
 import Hero from '../components/Hero';
@@ -216,41 +215,15 @@ const Home = () => {
           </motion.div>
         </Slider>
         
-        <motion.h2
-          className="mt-5"
-          initial={{ opacity: 0, y: 50 }}
-          animate={controls}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          ref={ref}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 }
-          }}
-        >
-          Testimonials
-        </motion.h2>
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          ref={ref}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 }
-          }}
-        >
-          <Testimonials />
-        </motion.div>
+        
       </div>
 
-      {/* Yacht Listings Section */}
       
-
       {/* Info Section */}
       <InfoSection />
         
         {/* Yacht Listings Section */}
-        <YachtListings />
+        <YachtListings yachts={yachts} />
         <TourRoadmap />
       <motion.section 
         className="location-section"
