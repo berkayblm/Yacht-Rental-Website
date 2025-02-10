@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import './styles/Yachts.css';
@@ -13,6 +13,8 @@ const Yachts = ({ yachts }) => {
     duration: '',
     location: '',
   });
+
+  const [activeFilters, setActiveFilters] = useState([]);
 
   // Get unique values for filter options
   const allLocations = [...new Set(yachts.map(yacht => yacht.location))];
@@ -29,7 +31,62 @@ const Yachts = ({ yachts }) => {
     }));
   };
 
-  
+  const clearFilters = () => {
+    setFilters({
+      priceRange: { min: '', max: '' },
+      capacity: '',
+      duration: '',
+      location: '',
+    });
+    setActiveFilters([]);
+  };
+
+  const removeFilter = (filterType) => {
+    if (filterType === 'priceRange') {
+      setFilters(prev => ({
+        ...prev,
+        priceRange: { min: '', max: '' }
+      }));
+    } else {
+      setFilters(prev => ({
+        ...prev,
+        [filterType]: ''
+      }));
+    }
+  };
+
+  // Update active filters
+  useEffect(() => {
+    const newActiveFilters = [];
+    
+    if (filters.priceRange.min || filters.priceRange.max) {
+      newActiveFilters.push({
+        type: 'priceRange',
+        label: `Price: ${filters.priceRange.min || '0'}€ - ${filters.priceRange.max || '∞'}€`
+      });
+    }
+    if (filters.capacity) {
+      newActiveFilters.push({
+        type: 'capacity',
+        label: `Min Capacity: ${filters.capacity}`
+      });
+    }
+    if (filters.duration) {
+      newActiveFilters.push({
+        type: 'duration',
+        label: `Duration: ${filters.duration}`
+      });
+    }
+    if (filters.location) {
+      newActiveFilters.push({
+        type: 'location',
+        label: `Location: ${filters.location}`
+      });
+    }
+
+    setActiveFilters(newActiveFilters);
+  }, [filters]);
+
   // Apply filters
   useEffect(() => {
     let result = yachts;
@@ -63,7 +120,7 @@ const Yachts = ({ yachts }) => {
     // Location Filter
     if (filters.location) {
       result = result.filter(yacht => 
-        yacht.location.toLowerCase().includes(filters.location.toLowerCase())
+        yacht.location.toLowerCase() === filters.location.toLowerCase()
       );
     }
 
@@ -75,16 +132,14 @@ const Yachts = ({ yachts }) => {
       <Navbar />
       <div className="yachts-page">
         <div className="container">
-          {/* Filters Section */}
           <motion.div 
             className="filters-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>Filters</h2>
+            <h2>Find Your Perfect Yacht</h2>
             <div className="filters-grid">
-              {/* Price Range Filter */}
               <div className="filter-group">
                 <h3>Price Range (€)</h3>
                 <div className="price-inputs">
@@ -109,7 +164,6 @@ const Yachts = ({ yachts }) => {
                 </div>
               </div>
 
-              {/* Capacity Filter */}
               <div className="filter-group">
                 <h3>Minimum Capacity</h3>
                 <input
@@ -120,20 +174,18 @@ const Yachts = ({ yachts }) => {
                 />
               </div>
 
-              {/* Duration Filter */}
               <div className="filter-group">
                 <h3>Duration</h3>
                 <select
                   value={filters.duration}
                   onChange={(e) => handleFilterChange('duration', e.target.value)}
                 >
-                  <option value="">All</option>
+                  <option value="">All Durations</option>
                   <option value="day">Day Trip</option>
                   <option value="night">Night Trip</option>
                 </select>
               </div>
 
-              {/* Location Filter */}
               <div className="filter-group">
                 <h3>Location</h3>
                 <select
@@ -146,9 +198,32 @@ const Yachts = ({ yachts }) => {
                   ))}
                 </select>
               </div>
-
-            
             </div>
+
+            {activeFilters.length > 0 && (
+              <>
+                <div className="active-filters">
+                  <AnimatePresence>
+                    {activeFilters.map((filter, index) => (
+                      <motion.span
+                        key={filter.type}
+                        className="filter-tag"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {filter.label}
+                        <button onClick={() => removeFilter(filter.type)}>×</button>
+                      </motion.span>
+                    ))}
+                  </AnimatePresence>
+                </div>
+                <button className="clear-filters" onClick={clearFilters}>
+                  Clear All Filters
+                </button>
+              </>
+            )}
           </motion.div>
 
           {/* Results Section */}

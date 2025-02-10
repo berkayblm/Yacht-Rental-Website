@@ -170,181 +170,293 @@ const YachtDetails = ({ yachts }) => {
             )}
           </AnimatePresence>
 
+          {/* Features Section */}
+          <motion.section 
+            className="details-section features-section"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <h2>The Features of {yacht.name}</h2>
+            <div className="features-grid">
+              <div className="features-column">
+                <div className="feature-item">
+                  <span className="feature-label">Yacht Name:</span>
+                  <span className="feature-value">{yacht.features.yachtName}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Yacht Type:</span>
+                  <span className="feature-value">{yacht.features.yachtType}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Brand:</span>
+                  <span className="feature-value">{yacht.features.brand}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Capacity:</span>
+                  <span className="feature-value">{yacht.features.capacity}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Crew:</span>
+                  <span className="feature-value">{yacht.features.crew}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Cabin:</span>
+                  <span className="feature-value">{yacht.features.cabin}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Shower/WC:</span>
+                  <span className="feature-value">{yacht.features.showerWC}</span>
+                </div>
+              </div>
+              <div className="features-column">
+                <div className="feature-item">
+                  <span className="feature-label">Length:</span>
+                  <span className="feature-value">{yacht.features.length}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Width:</span>
+                  <span className="feature-value">{yacht.features.width}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Speed:</span>
+                  <span className="feature-value">{yacht.features.speed}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Manufacturing:</span>
+                  <span className="feature-value">{yacht.features.manufacturing}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Refit Date:</span>
+                  <span className="feature-value">{yacht.features.refitDate}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Location:</span>
+                  <span className="feature-value">{yacht.features.location}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-label">Distance:</span>
+                  <span className="feature-value">{yacht.features.distance}</span>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Equipment Section */}
+          <motion.section 
+            className="details-section equipment-section"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <h2>The Equipment of {yacht.name}</h2>
+            <div className="equipment-grid">
+              <div className="equipment-column">
+                {yacht.equipment.comfort.map((item, index) => (
+                  <div key={index} className="equipment-item">
+                    <i className="fas fa-check"></i>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="equipment-column">
+                {yacht.equipment.activities.map((item, index) => (
+                  <div key={index} className="equipment-item">
+                    <i className="fas fa-check"></i>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
           {/* Details Grid */}
           <div className="details-grid">
-            {/* Overview Section */}
+            {/* Services Section - Left Column */}
             <motion.section 
-              className="details-section"
+              className="details-section services-section"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="services-container">
+                {/* Included Services */}
+                <div className="services-column included">
+                  <h2>Included in Price</h2>
+                  <div className="services-grid">
+                    {Object.entries(yacht.services.included).map(([key, service]) => (
+                      <div key={key} className="service-card">
+                        {key === 'fixedMenu' ? (
+                          <>
+                            <h3>{service.title}</h3>
+                            <div className="menu-items">
+                              {service.items.map((item, index) => (
+                                <span key={index} className="menu-tag">{item}</span>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <h3>{service.title}</h3>
+                            <p>{service.description}</p>
+                          </>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Extra Services */}
+                <div className="services-column extras">
+                  <h2>Available Extras</h2>
+                  <div className="services-grid">
+                    {Object.entries(yacht.services.extras).map(([key, service]) => (
+                      <div key={key} className="service-card">
+                        <h3>{service.title}</h3>
+                        <p>{service.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+              </div>
+            </motion.section>
+
+            {/* Overview Container - Right Column */}
+            <motion.section 
+              className="details-section overview-container"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <h2>Overview</h2>
-              <div className="overview-grid">
-                <div className="overview-item">
-                  <i className="fas fa-clock"></i>
-                  <h3>Duration</h3>
-                  <p>{yacht.details.startTime}</p>
-                </div>
-                <div className="overview-item">
-                  <i className="fas fa-users"></i>
-                  <h3>Capacity</h3>
-                  <p>{yacht.details.totalCapacity}</p>
-                </div>
-                <div className="overview-item">
-                  <i className="fas fa-door-closed"></i>
-                  <h3>Cabins</h3>
-                  <p>{yacht.details.totalCabins}</p>
-                </div>
-                <div className="overview-item">
-                  <i className="fas fa-anchor"></i>
-                  <h3>Breaks</h3>
-                  <p>{yacht.details.totalBreaks}</p>
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Services Section */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <h2>Included Services</h2>
-              <div className="services-grid">
-                <div className="service-item">
-                  <i className="fas fa-utensils"></i>
-                  <span>Catering: {yacht.details.catering}</span>
-                </div>
-                <div className="service-item">
-                  <i className="fas fa-glass-martini-alt"></i>
-                  <span>Drinks: {yacht.details.alcoholDrink}</span>
-                </div>
-                <div className="service-item">
-                  <i className="fas fa-star"></i>
-                  <span>Special: {yacht.details.special}</span>
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Booking Section */}
-            <motion.section 
-              className="booking-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <h2>Book This Yacht</h2>
-              <p>Experience luxury at sea with our premium yacht service</p>
-              <motion.button 
-                className="book-now-btn"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Book Now
-              </motion.button>
-            </motion.section>
-
-            {/* Technical Specifications */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <h2>Technical Specifications</h2>
-              <div className="specs-grid">
-                <div className="spec-item">
-                  <i className="fas fa-ruler-combined"></i>
-                  <h3>Length</h3>
-                  <p>{yacht.details.length}</p>
-                </div>
-                <div className="spec-item">
-                  <i className="fas fa-ship"></i>
-                  <h3>Builder</h3>
-                  <p>{yacht.builder}</p>
-                </div>
-                {/* Add more spec items */}
-              </div>
-            </motion.section>
-
-            {/* Accommodation */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-            >
-              <h2>Accommodation</h2>
-              <div className="cabin-layout">
-                <div className="cabin-info">
-                  <h3>Cabin Configuration</h3>
-                  <ul>
-                    <li>{yacht.details.cabins.master} Master Cabin</li>
-                    <li>{yacht.details.cabins.double} Double Cabins</li>
-                    <li>{yacht.details.cabins.twin} Twin Cabin</li>
-                  </ul>
-                </div>
-                <div className="capacity-info">
-                  <h3>Capacity</h3>
-                  <p>Day: {yacht.details.guestCapacity.day} guests</p>
-                  <p>Overnight: {yacht.details.guestCapacity.overnight} guests</p>
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Equipment & Toys */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <h2>Equipment & Water Toys</h2>
-              <div className="equipment-grid">
-                {yacht.details.waterToys.map((toy, index) => (
-                  <div key={index} className="equipment-item">
-                    <i className="fas fa-check"></i>
-                    <span>{toy}</span>
+              <div className="overview-content">
+                {/* Quick Overview */}
+                <div className="overview-section">
+                  <h3>Quick Details</h3>
+                  <div className="overview-grid">
+                    <div className="overview-item">
+                      <i className="fas fa-clock"></i>
+                      <h4>Duration</h4>
+                      <p>{yacht.details.startTime}</p>
+                    </div>
+                    <div className="overview-item">
+                      <i className="fas fa-users"></i>
+                      <h4>Capacity</h4>
+                      <p>{yacht.details.totalCapacity}</p>
+                    </div>
+                    <div className="overview-item">
+                      <i className="fas fa-door-closed"></i>
+                      <h4>Cabins</h4>
+                      <p>{yacht.details.totalCabins}</p>
+                    </div>
+                    <div className="overview-item">
+                      <i className="fas fa-anchor"></i>
+                      <h4>Breaks</h4>
+                      <p>{yacht.details.totalBreaks}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </motion.section>
+                </div>
 
-            {/* Optional Services */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-            >
-              <h2>Optional Services</h2>
-              <div className="services-list">
-                {yacht.details.optionalServices.map((service, index) => (
-                  <div key={index} className="optional-service">
-                    <span className="service-name">{service.name}</span>
-                    <span className="service-price">{service.price}</span>
+                
+
+                {/* Technical Specifications */}
+                <div className="overview-section">
+                  <h3>Technical Specifications</h3>
+                  <div className="specs-grid">
+                    <div className="spec-item">
+                      <i className="fas fa-ruler-combined"></i>
+                      <h4>Length</h4>
+                      <p>{yacht.details.length}</p>
+                    </div>
+                    <div className="spec-item">
+                      <i className="fas fa-ship"></i>
+                      <h4>Builder</h4>
+                      <p>{yacht.builder}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </motion.section>
+                </div>
 
-            {/* Cancellation Policy */}
-            <motion.section 
-              className="details-section"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
-            >
-              <h2>Cancellation Policy</h2>
-              <div className="cancellation-info">
-                <p><strong>Full Refund:</strong> {yacht.details.cancellation.fullRefund}</p>
-                <p><strong>Partial Refund:</strong> {yacht.details.cancellation.partialRefund}</p>
-                <p><strong>No Refund:</strong> {yacht.details.cancellation.noRefund}</p>
+                {/* Accommodation */}
+                <div className="overview-section">
+                  <h3>Accommodation</h3>
+                  <div className="cabin-info">
+                    <ul>
+                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.master} Master Cabin</li>
+                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.double} Double Cabins</li>
+                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.twin} Twin Cabin</li>
+                    </ul>
+                    <div className="capacity-details">
+                      <p><i className="fas fa-sun"></i> Day: {yacht.details.guestCapacity.day} guests</p>
+                      <p><i className="fas fa-moon"></i> Overnight: {yacht.details.guestCapacity.overnight} guests</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Equipment */}
+                <div className="overview-section">
+                  <h3>Equipment</h3>
+                  <div className="equipment-grid">
+                    {yacht.equipment.comfort.map((item, index) => (
+                      <div key={index} className="equipment-item">
+                        <i className="fas fa-check"></i>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Optional Services */}
+                <div className="overview-section">
+                  <h3>Optional Services</h3>
+                  <div className="optional-services-list">
+                    {yacht.details.optionalServices.map((service, index) => (
+                      <div key={index} className="optional-service-item">
+                        <span>{service.name}</span>
+                        <span className="price">{service.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Cancellation Policy */}
+                <div className="overview-section">
+                  <h3>Cancellation Policy</h3>
+                  <div className="cancellation-details">
+                    <p><strong>Full Refund:</strong> {yacht.details.cancellation.fullRefund}</p>
+                    <p><strong>Partial Refund:</strong> {yacht.details.cancellation.partialRefund}</p>
+                    <p><strong>No Refund:</strong> {yacht.details.cancellation.noRefund}</p>
+                  </div>
+                </div>
               </div>
             </motion.section>
           </div>
+
+          {/* Booking Section - Bottom of the page */}
+          <motion.section 
+            className="booking-section-bottom"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <div className="booking-content">
+              <h2>Book This Yacht</h2>
+              <p>Experience luxury at sea with our premium yacht service</p>
+              <div className="booking-info">
+                <div className="price-info">
+                  <span className="price">{yacht.price}</span>
+                  <span className="price-unit">{yacht.priceUnit}</span>
+                </div>
+                <motion.button 
+                  className="book-now-btn"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book Now
+                </motion.button>
+              </div>
+            </div>
+          </motion.section>
         </div>
       </div>
     </>

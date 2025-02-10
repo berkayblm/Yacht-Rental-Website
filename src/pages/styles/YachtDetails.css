@@ -1,6 +1,30 @@
 .yacht-details-page {
-  padding: 80px 0;
-  background-color: #f8f9fa;
+  position: relative;
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, 
+    rgba(248, 249, 250, 0.97) 0%,
+    rgba(233, 236, 239, 0.97) 100%
+  );
+  
+}
+
+.yacht-details-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(65, 105, 225, 0.05) 0%,
+    rgba(30, 60, 114, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
 }
 
 .yacht-header {
@@ -64,7 +88,7 @@
 
 .details-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
 
@@ -291,7 +315,233 @@
   gap: 10px;
 }
 
+/* Features Section */
+.features-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.feature-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.feature-label {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.feature-value {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Equipment Section */
+.equipment-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.equipment-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.equipment-item i {
+  color: #4169e1;
+  font-size: 0.9rem;
+}
+
+.equipment-item span {
+  color: #2d3748;
+}
+
+/* Modern Services Section Styles */
+.services-section {
+  padding: 40px 0;
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.services-column h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.services-column.included h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #48bb78, transparent);
+  border-radius: 2px;
+}
+
+.services-column.extras h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #4169e1, transparent);
+  border-radius: 2px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4169e1, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card h3 {
+  color: #2d3748;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.service-card p {
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.menu-tag {
+  background: #f7fafc;
+  color: #4a5568;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.menu-tag:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 30px 0;
+  }
+
+  .services-container {
+    gap: 40px;
+  }
+
+  .services-column h2 {
+    font-size: 1.8rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .service-card {
+    background: #1a202c;
+  }
+
+  .service-card h3 {
+    color: #e2e8f0;
+  }
+
+  .service-card p {
+    color: #a0aec0;
+  }
+
+  .menu-tag {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+
+  .menu-tag:hover {
+    background: #4a5568;
+  }
+}
+
 @media (max-width: 1024px) {
+  .yacht-details-page {
+    padding: 100px 0 60px;
+  }
   .details-grid {
     grid-template-columns: 1fr;
   }
@@ -302,6 +552,15 @@
 }
 
 @media (max-width: 768px) {
+  .yacht-details-page {
+    padding: 80px 0 40px;
+    clip-path: polygon(
+      0 0,
+      100% 2%,
+      100% 98%,
+      0 100%
+    );
+  }
   .thumbnail-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -323,6 +582,17 @@
   
   .popup-content {
     padding: 15px;
+  }
+
+  .features-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .features-section,
+  .equipment-section {
+    padding: 20px;
   }
 }
 
@@ -375,5 +645,294 @@
 
   .emoji {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .yacht-details-page {
+    padding: 60px 0 30px;
+    clip-path: polygon(
+      0 0,
+      100% 1%,
+      100% 99%,
+      0 100%
+    );
+  }
+}
+
+/* Services Section */
+.services-section {
+  height: fit-content;
+}
+
+/* Overview Container */
+.overview-container {
+  height: fit-content;
+}
+
+.overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.overview-section {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.overview-section:hover {
+  background: #edf2ff;
+}
+
+.overview-section h3 {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Quick Overview Grid */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.overview-item {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Booking Section */
+.booking-section {
+  text-align: center;
+}
+
+.book-now-btn {
+  background: #4169e1;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Equipment Grid */
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.equipment-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+/* Optional Services */
+.optional-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.optional-service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: white;
+  border-radius: 6px;
+}
+
+/* Cancellation Policy */
+.cancellation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .overview-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-section {
+    padding: 15px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .overview-section {
+    background: #1a202c;
+  }
+  
+  .overview-section:hover {
+    background: #2d3748;
+  }
+  
+  .overview-item,
+  .optional-service-item {
+    background: #2d3748;
+  }
+  
+  .overview-section h3 {
+    color: #e2e8f0;
+  }
+}
+
+/* Compact Booking Section Styles */
+.booking-section-bottom {
+  margin-top: 40px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #ffffff, #dde9f4);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  bottom: 15px;
+  z-index: 10;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 5%;
+  transform: translateX(0);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.booking-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.booking-content h2 {
+  display: none;
+}
+
+.booking-content p {
+  display: none;
+}
+
+.booking-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.price-info {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-info .price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.price-info .price-unit {
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.book-now-btn {
+  background: linear-gradient(135deg, #4169e1, #3154b3);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.book-now-btn:hover {
+  background: linear-gradient(135deg, #3154b3, #264299);
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .booking-section-bottom {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    border: 1px solid rgba(45, 55, 72, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .price-info .price {
+    color: #e2e8f0;
+  }
+
+  .price-info .price-unit {
+    color: #a0aec0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .booking-section-bottom {
+    padding: 12px 20px;
+    bottom: 10px;
+    margin: 20px 15px;
+    border-radius: 8px;
+  }
+
+  .booking-info {
+    gap: 15px;
+  }
+
+  .price-info .price {
+    font-size: 1.2rem;
+  }
+
+  .price-info .price-unit {
+    font-size: 0.8rem;
+  }
+
+  .book-now-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .booking-section-bottom {
+    bottom: 8px;
+    margin: 15px 10px;
+  }
+
+  .booking-info {
+    flex-direction: row;
+    gap: 10px;
   }
 }

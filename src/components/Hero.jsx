@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import './styles/Hero.css';
 
 const Hero = () => {
+
+
+
+  
   return (
     <motion.div
       className="hero-section"
@@ -11,23 +15,21 @@ const Hero = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="hero-content">
-        <span className="hero-label">LUXURY YACHT TOURS</span>
+        <span className="hero-label">EXCLUSIVE YACHT EXPERIENCES</span>
         <h1 className="hero-title">
-          Book Your Side Tours With<br />
-          Confidence Now ! Pay When<br />
-          You Arrive !
+          Embark on a Journey of<br />
+          Elegance and Adventure<br />
+          with Our Yachts
         </h1>
         <p className="hero-description">
-          Side boat (yacht) tour is the best and the most popular way to discover Side's beautiful 
-          coastline. Our boat leaves from Side's harbor near the red tower and shipyard. The sea 
-          caves, Cleopatra beach, Ulash beach are the places to see.
+          Discover the breathtaking beauty of the coastline with our luxury yacht tours. Departing from Side's historic harbor, explore hidden sea caves, pristine beaches, and iconic landmarks like Cleopatra Beach.
         </p>
         <motion.button 
           className="book-now-btn"
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.95 }}  
         >
-          BOOK NOW →
+          RESERVE YOUR YACHT →
         </motion.button>
       </div>
     </motion.div>

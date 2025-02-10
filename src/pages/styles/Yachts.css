@@ -1,10 +1,36 @@
 .yachts-page {
-  padding: 80px 0;
-  background-color: #f8f9fa;
+  position: relative;
+  padding: 120px 0 80px;
   min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba(248, 249, 250, 0.97) 0%,
+    rgba(233, 236, 239, 0.97) 100%
+  );
+  clip-path: polygon(
+    0 0,
+    100% 3%,
+    100% 97%,
+    0 100%
+  );
+}
+
+.yachts-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(65, 105, 225, 0.05) 0%,
+    rgba(30, 60, 114, 0.05) 100%
+  );
+  z-index: 1;
 }
 
 .container {
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -16,7 +42,12 @@
   padding: 30px;
   border-radius: 15px;
   margin-bottom: 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.filters-section:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .filters-grid {
@@ -34,8 +65,9 @@
 
 .filter-group h3 {
   font-size: 1rem;
-  color: #333;
-  margin-bottom: 5px;
+  color: #2d3748;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .price-inputs {
@@ -48,10 +80,23 @@
 }
 
 input, select {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 0.9rem;
+  color: #4a5568;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #4169e1;
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.1);
+}
+
+input::placeholder {
+  color: #a0aec0;
 }
 
 .services-grid {
@@ -89,7 +134,13 @@ input, select {
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.yacht-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Ensure last row is aligned properly when incomplete */
@@ -115,15 +166,17 @@ input, select {
 }
 
 .yacht-info h3 {
-  margin: 0;
-  color: #333;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: #2d3748;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .price {
+  font-size: 1.2rem;
   color: #4169e1;
-  font-weight: 600;
-  margin: 10px 0;
+  font-weight: 700;
+  margin: 12px 0;
 }
 
 .yacht-details {
@@ -139,6 +192,95 @@ input, select {
   gap: 5px;
 }
 
+/* Active Filters Styles */
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.filter-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #edf2ff;
+  color: #4169e1;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filter-tag button {
+  background: none;
+  border: none;
+  color: #4169e1;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+}
+
+.filter-tag button:hover {
+  color: #1e40af;
+  transform: scale(1.1);
+}
+
+/* Clear Filters Button */
+.clear-filters {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.clear-filters:hover {
+  background: #edf2f7;
+  color: #2d3748;
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 40px;
+  color: #4a5568;
+}
+
+/* No Results State */
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #4a5568;
+  background: #f8fafc;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .yacht-card {
@@ -150,7 +292,48 @@ input, select {
   }
 }
 
+@media (max-width: 1024px) {
+  .yachts-page {
+    padding: 100px 0 60px;
+  }
+  .yacht-card {
+    flex: 0 1 calc(50% - 15px); /* Two cards per row */
+  }
+  
+  .yacht-grid::after {
+    flex: 0 1 calc(50% - 15px);
+  }
+}
+
 @media (max-width: 768px) {
+  .yachts-page {
+    padding: 80px 0 40px;
+    clip-path: polygon(
+      0 0,
+      100% 2%,
+      100% 98%,
+      0 100%
+    );
+  }
+  .yacht-card {
+    flex: 0 1 100%; /* One card per row */
+  }
+  
+  .yacht-grid::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .yachts-page {
+    padding: 60px 0 30px;
+    clip-path: polygon(
+      0 0,
+      100% 1%,
+      100% 99%,
+      0 100%
+    );
+  }
   .yacht-card {
     flex: 0 1 100%; /* One card per row */
   }
@@ -163,5 +346,54 @@ input, select {
 @media (min-width: 769px) and (max-width: 1024px) {
   .yacht-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Scrollbar Styles */
+.yacht-grid::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.yacht-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.yacht-grid::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 4px;
+}
+
+.yacht-grid::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Focus States for Accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #4169e1;
+  outline-offset: 2px;
+}
+
+/* Error State Styles */
+.error-state {
+  text-align: center;
+  padding: 40px;
+  color: #e53e3e;
+  background: #fff5f5;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* Print Styles */
+@media print {
+  .filters-section {
+    display: none;
+  }
+
+  .yacht-card {
+    break-inside: avoid;
   }
 }

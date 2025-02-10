@@ -173,18 +173,155 @@ function App() {
             lowSeason: "October-May"
           }
         }
+      },
+      features: {
+        yachtName: "Cleopatra Luxury",
+        yachtType: "Motor Yacht",
+        brand: "Custom built",
+        capacity: "20 person",
+        crew: "2 person",
+        cabin: "4",
+        showerWC: "4",
+        length: "24 meter",
+        width: "6.5 meter",
+        speed: "22 Knots",
+        manufacturing: "2007",
+        refitDate: "2022",
+        location: "Side Marina",
+        distance: "15 km"
+      },
+      equipment: {
+        comfort: [
+          "Wi-Fi",
+          "Binoculars",
+          "Outside speakers",
+          "GPS",
+          "Fridge",
+          "Deep freeze",
+          "Indoor speakers",
+          "Towel"
+        ],
+        activities: [
+          "Swim ladder",
+          "Grill",
+          "Modern dinnerware set",
+          "Bluetooth connection",
+          "Amateur fishing gear",
+          "Snorkel and Fins",
+          "Sun Pads"
+        ]
+      },
+      services: {
+        included: {
+          foodAndBeverage: {
+            title: "Food and beverage",
+            description: "On the yacht, the menu listed below is provided free of charge to all our guests. Non-alcoholic beverages are available unlimitedly and at no cost."
+          },
+          decoration: {
+            title: "Decoration",
+            description: "Tailor your yacht's decor for birthdays, anniversaries, and special occasions."
+          },
+          fuel: {
+            title: "Fuel",
+            description: "Fuel costs are included in the total price, ensuring that no additional charges for fuel will be requested."
+          },
+          waiterAndCrew: {
+            title: "Waiter and crew",
+            description: "The yacht is available for charter with crew included, and there are no additional charges for waiter services."
+          },
+          fixedMenu: {
+            title: "Fixed menu content",
+            items: [
+              "Grilled Fish",
+              "Grilled Chicken",
+              "Spaghetti",
+              "Mediterranean Salad",
+              "Fruit Platter",
+              "Soft Drinks",
+              "Turkish Coffee",
+              "Herbal Teas"
+            ]
+          }
+        },
+        extras: {
+          birthdayCake: {
+            title: "Birthday cake",
+            description: "You can choose the contents and the message to be written on your birthday cake."
+          },
+          bringingAlcohol: {
+            title: "Bringing alcohol",
+            description: "Bringing your own alcoholic drinks incurs a 25 € service charge."
+          },
+          purchasingAlcohol: {
+            title: "Purchasing Alcohol on a Yacht",
+            description: "Alcoholic beverages are available for purchase on the yacht; you are welcome to buy them if you wish."
+          },
+          modifyingMenu: {
+            title: "Modifying the Standard Menu",
+            description: "Alterations to your meal choices may incur additional costs. For precise information, please share the details of your preferred menu with us."
+          },
+          tourRouteChange: {
+            title: "Yacht Tour Route Change",
+            description: "Please remember that extended routes will require longer rental periods."
+          },
+          waterActivities: {
+            title: "Water Activities",
+            description: "Experience the thrill of water sports like jet skiing, ringo, banana boating, and parasailing for an additional fee."
+          },
+          photographyServices: {
+            title: "Photography Services",
+            description: "Professional photography and drone filming services are available for your special celebrations and events."
+          },
+          transfer: {
+            title: "Transfer",
+            description: "The round-trip transfer cost varies depending on the number of people and distance."
+          }
+        }
       }
     },
     {
       id: 2,
-      name: "White Angel Yacht",
-      price: "499,00 €",
+      name: "Side VIP",
+      price: "850,00 €",
       priceUnit: "per day",
-      image: "/la-perla-5.jpeg",
-      year: 2010,
-      length: "18m",
-      builder: "Tuzla",
-      location: "Side Harbor, Turkey",
+      image: "/side-1.jpg",
+      features: {
+        yachtName: "Side VIP",
+        yachtType: "Motor Yacht",
+        brand: "Custom built",
+        capacity: "12 person",
+        crew: "2 person",
+        cabin: "1",
+        showerWC: "1",
+        length: "12.5 meter",
+        width: "4.3 meter",
+        speed: "16 Knots",
+        manufacturing: "2008",
+        refitDate: "2023",
+        location: "Side Marina",
+        distance: "15 km"
+      },
+      equipment: {
+        comfort: [
+          "Wi-Fi",
+          "Binoculars",
+          "Outside speakers",
+          "GPS",
+          "Fridge",
+          "Deep freeze",
+          "Indoor speakers",
+          "Towel"
+        ],
+        activities: [
+          "Swim ladder",
+          "Grill",
+          "Modern dinnerware set",
+          "Bluetooth connection",
+          "Amateur fishing gear",
+          "Snorkel and Fins",
+          "Sun Pads"
+        ]
+      },
       description: {
         main: "Are you ready for an unforgettable day with our Antalya-Side private yacht?",
         highlights: [
@@ -313,18 +450,120 @@ function App() {
             lowSeason: "October-May"
           }
         }
+      },
+      services: {
+        included: {
+          foodAndBeverage: {
+            title: "Food and beverage",
+            description: "On the yacht, the menu listed below is provided free of charge to all our guests. Non-alcoholic beverages are available unlimitedly and at no cost."
+          },
+          decoration: {
+            title: "Decoration",
+            description: "Tailor your yacht's decor for birthdays, anniversaries, and special occasions."
+          },
+          fuel: {
+            title: "Fuel",
+            description: "Fuel costs are included in the total price, ensuring that no additional charges for fuel will be requested."
+          },
+          waiterAndCrew: {
+            title: "Waiter and crew",
+            description: "The yacht is available for charter with crew included, and there are no additional charges for waiter services."
+          },
+          fixedMenu: {
+            title: "Fixed menu content",
+            items: [
+              "Grilled Fish",
+              "Grilled Chicken",
+              "Spaghetti",
+              "Mediterranean Salad",
+              "Fruit Platter",
+              "Soft Drinks",
+              "Turkish Coffee",
+              "Herbal Teas"
+            ]
+          }
+        },
+        extras: {
+          birthdayCake: {
+            title: "Birthday cake",
+            description: "You can choose the contents and the message to be written on your birthday cake."
+          },
+          bringingAlcohol: {
+            title: "Bringing alcohol",
+            description: "Bringing your own alcoholic drinks incurs a 25 € service charge."
+          },
+          purchasingAlcohol: {
+            title: "Purchasing Alcohol on a Yacht",
+            description: "Alcoholic beverages are available for purchase on the yacht; you are welcome to buy them if you wish."
+          },
+          modifyingMenu: {
+            title: "Modifying the Standard Menu",
+            description: "Alterations to your meal choices may incur additional costs. For precise information, please share the details of your preferred menu with us."
+          },
+          tourRouteChange: {
+            title: "Yacht Tour Route Change",
+            description: "Please remember that extended routes will require longer rental periods."
+          },
+          waterActivities: {
+            title: "Water Activities",
+            description: "Experience the thrill of water sports like jet skiing, ringo, banana boating, and parasailing for an additional fee."
+          },
+          photographyServices: {
+            title: "Photography Services",
+            description: "Professional photography and drone filming services are available for your special celebrations and events."
+          },
+          transfer: {
+            title: "Transfer",
+            description: "The round-trip transfer cost varies depending on the number of people and distance."
+          }
+        }
       }
     },
     {
       id: 3,
-      name: "No More Stress Boat",
-      price: "599,00 €",
+      name: "Sunset Dream",
+      price: "1,200,00 €",
       priceUnit: "per day",
-      image: "/la-perla-5.jpeg",
-      year: 2015,
-      length: "20m",
-      builder: "Tuzla",
-      location: "Side Harbor, Turkey",
+      image: "/yacht-sunset.jpg",
+      features: {
+        yachtName: "Sunset Dream",
+        yachtType: "Motor Yacht",
+        brand: "Azimut",
+        capacity: "16 person",
+        crew: "3 person",
+        cabin: "3",
+        showerWC: "2",
+        length: "18.5 meter",
+        width: "5.2 meter",
+        speed: "24 Knots",
+        manufacturing: "2015",
+        refitDate: "2022",
+        location: "Side Marina",
+        distance: "15 km"
+      },
+      equipment: {
+        comfort: [
+          "Wi-Fi",
+          "Satellite TV",
+          "Surround sound system",
+          "GPS Navigation",
+          "Large fridge",
+          "Wine cooler",
+          "Premium sound system",
+          "Luxury towels",
+          "Air conditioning"
+        ],
+        activities: [
+          "Hydraulic swim platform",
+          "Professional BBQ station",
+          "Premium dinnerware set",
+          "Smart entertainment system",
+          "Professional fishing gear",
+          "Diving equipment",
+          "Premium sun loungers",
+          "Water toys"
+        ]
+      },
       description: {
         main: "Are you ready for an unforgettable day with our Antalya-Side private yacht?",
         highlights: [
@@ -452,9 +691,321 @@ function App() {
             lowSeason: "October-May"
           }
         }
+      },
+      services: {
+        included: {
+          foodAndBeverage: {
+            title: "Food and beverage",
+            description: "On the yacht, the menu listed below is provided free of charge to all our guests. Non-alcoholic beverages are available unlimitedly and at no cost."
+          },
+          decoration: {
+            title: "Decoration",
+            description: "Tailor your yacht's decor for birthdays, anniversaries, and special occasions."
+          },
+          fuel: {
+            title: "Fuel",
+            description: "Fuel costs are included in the total price, ensuring that no additional charges for fuel will be requested."
+          },
+          waiterAndCrew: {
+            title: "Waiter and crew",
+            description: "The yacht is available for charter with crew included, and there are no additional charges for waiter services."
+          },
+          fixedMenu: {
+            title: "Fixed menu content",
+            items: [
+              "Grilled Fish",
+              "Grilled Chicken",
+              "Spaghetti",
+              "Mediterranean Salad",
+              "Fruit Platter",
+              "Soft Drinks",
+              "Turkish Coffee",
+              "Herbal Teas"
+            ]
+          }
+        },
+        extras: {
+          birthdayCake: {
+            title: "Birthday cake",
+            description: "You can choose the contents and the message to be written on your birthday cake."
+          },
+          bringingAlcohol: {
+            title: "Bringing alcohol",
+            description: "Bringing your own alcoholic drinks incurs a 25 € service charge."
+          },
+          purchasingAlcohol: {
+            title: "Purchasing Alcohol on a Yacht",
+            description: "Alcoholic beverages are available for purchase on the yacht; you are welcome to buy them if you wish."
+          },
+          modifyingMenu: {
+            title: "Modifying the Standard Menu",
+            description: "Alterations to your meal choices may incur additional costs. For precise information, please share the details of your preferred menu with us."
+          },
+          tourRouteChange: {
+            title: "Yacht Tour Route Change",
+            description: "Please remember that extended routes will require longer rental periods."
+          },
+          waterActivities: {
+            title: "Water Activities",
+            description: "Experience the thrill of water sports like jet skiing, ringo, banana boating, and parasailing for an additional fee."
+          },
+          photographyServices: {
+            title: "Photography Services",
+            description: "Professional photography and drone filming services are available for your special celebrations and events."
+          },
+          transfer: {
+            title: "Transfer",
+            description: "The round-trip transfer cost varies depending on the number of people and distance."
+          }
+        }
+      }
+    },
+    {
+      id: 4,
+      name: "Royal Interior",
+      price: "1,500,00 €",
+      priceUnit: "per day",
+      image: "/yacht-interior.jpg",
+      features: {
+        yachtName: "Royal Interior",
+        yachtType: "Luxury Motor Yacht",
+        brand: "Sunseeker",
+        capacity: "22 person",
+        crew: "4 person",
+        cabin: "5",
+        showerWC: "4",
+        length: "26.5 meter",
+        width: "6.8 meter",
+        speed: "28 Knots",
+        manufacturing: "2018",
+        refitDate: "2023",
+        location: "Side Marina",
+        distance: "15 km"
+      },
+      equipment: {
+        comfort: [
+          "High-speed Wi-Fi",
+          "4K Smart TVs",
+          "Bose sound system",
+          "Advanced navigation system",
+          "Full-size refrigerator",
+          "Wine cellar",
+          "Climate control",
+          "Egyptian cotton towels",
+          "Satellite phone"
+        ],
+        activities: [
+          "Extended swim platform",
+          "Outdoor kitchen",
+          "Designer dinnerware",
+          "Entertainment center",
+          "Game fishing equipment",
+          "Scuba diving gear",
+          "Luxury sun beds",
+          "Jet ski platform",
+          "Kayaks"
+        ]
+      },
+      description: {
+        main: "Are you ready for an unforgettable day with our Antalya-Side private yacht?",
+        highlights: [
+          "Our yacht in the world-famous Alanya is waiting for you to visit the most special places of Antalya (beautiful places in the Side sea) and to provide special service.",
+          "Our captain, chef and staff are on duty.",
+          "Check-in time is 09.30 every day, check-out time is 15.00 every day."
+        ],
+        location: {
+          departure: "Antalya Side-Manavgat Marina",
+          route: "Beautiful bays of Side"
+        },
+        includedMenu: {
+          mainDishes: [
+            "Shrimp",
+            "Crayfish",
+            "Fish",
+            "Chicken",
+            "Meatballs",
+            "Spaghetti"
+          ],
+          sides: [
+            "Salad",
+            "Cold Appetizers"
+          ],
+          beverages: [
+            "Coke",
+            "Fanta",
+            "Sprite",
+            "Fruit Juice",
+            "Water"
+          ]
+        },
+        extraServices: {
+          note: "The meal and route we mentioned above are the offer we offer and price specifically for you. When you have extra requests, they are added to the price when you specify them and priced accordingly.",
+          options: [
+            "The bays and islands of Antalya are wonderful. What matters is the maximum budget our guests want.",
+            "What kind of trip do you want for your Antalya holiday, what are your extra requests, these are discussed with you and prices are decided.",
+            "When you have extra drink requests, extra food-fish requests and when your requests and demands are added as a communication, prices are sent to you."
+          ]
+        },
+        additionalInfo: "We can meet all your requests with fast communication, our special yachts that will make you happy are waiting for you during your holiday."
+      },
+      details: {
+        startTime: "10:00 - 15:00",
+        totalCapacity: "22 Person",
+        totalBreaks: "Not Available",
+        totalCabins: "5 Cabins",
+        catering: "Included",
+        alcoholDrink: "Yes Possible",
+        special: "Not Available",
+        length: "26.5 meters",
+        beam: "6.8 meters",
+        draft: "3.2 meters",
+        enginePower: "2 x 500 HP",
+        fuelType: "Diesel",
+        maxSpeed: "28 knots",
+        cruisingSpeed: "24 knots",
+        fuelConsumption: "100L/h",
+        guestCapacity: {
+          day: 22,
+          overnight: 8
+        },
+        cabins: {
+          total: 5,
+          master: 1,
+          double: 3,
+          twin: 1
+        },
+        bathrooms: 4,
+        navigation: [
+          "GPS",
+          "Radar",
+          "VHF Radio",
+          "Autopilot"
+        ],
+        entertainment: [
+          "TV",
+          "Sound system",
+          "WiFi"
+        ],
+        comfort: [
+          "Air conditioning",
+          "Heating",
+          "Generator",
+          "Hot water"
+        ],
+        waterToys: [
+          "Tender",
+          "Snorkeling equipment",
+          "Fishing equipment",
+          "Water skis",
+          "Wakeboard"
+        ],
+        includedServices: [
+          "Professional captain",
+          "Crew",
+          "Fuel",
+          "Water",
+          "Soft drinks",
+          "Snacks",
+          "Towels",
+          "Insurance"
+        ],
+        optionalServices: [
+          {
+            name: "Full catering",
+            price: "35€ per person"
+          },
+          {
+            name: "Airport transfer",
+            price: "50€ per way"
+          },
+          {
+            name: "Premium bar package",
+            price: "200€ per day"
+          }
+        ],
+        cancellation: {
+          fullRefund: "7 days before",
+          partialRefund: "3-7 days (50%)",
+          noRefund: "less than 3 days"
+        },
+        availability: {
+          checkIn: "10:00",
+          checkOut: "18:00",
+          minDuration: "1 day",
+          seasonality: {
+            highSeason: "June-September",
+            lowSeason: "October-May"
+          }
+        }
+      },
+      services: {
+        included: {
+          foodAndBeverage: {
+            title: "Food and beverage",
+            description: "On the yacht, the menu listed below is provided free of charge to all our guests. Non-alcoholic beverages are available unlimitedly and at no cost."
+          },
+          decoration: {
+            title: "Decoration",
+            description: "Tailor your yacht's decor for birthdays, anniversaries, and special occasions."
+          },
+          fuel: {
+            title: "Fuel",
+            description: "Fuel costs are included in the total price, ensuring that no additional charges for fuel will be requested."
+          },
+          waiterAndCrew: {
+            title: "Waiter and crew",
+            description: "The yacht is available for charter with crew included, and there are no additional charges for waiter services."
+          },
+          fixedMenu: {
+            title: "Fixed menu content",
+            items: [
+              "Grilled Fish",
+              "Grilled Chicken",
+              "Spaghetti",
+              "Mediterranean Salad",
+              "Fruit Platter",
+              "Soft Drinks",
+              "Turkish Coffee",
+              "Herbal Teas"
+            ]
+          }
+        },
+        extras: {
+          birthdayCake: {
+            title: "Birthday cake",
+            description: "You can choose the contents and the message to be written on your birthday cake."
+          },
+          bringingAlcohol: {
+            title: "Bringing alcohol",
+            description: "Bringing your own alcoholic drinks incurs a 25 € service charge."
+          },
+          purchasingAlcohol: {
+            title: "Purchasing Alcohol on a Yacht",
+            description: "Alcoholic beverages are available for purchase on the yacht; you are welcome to buy them if you wish."
+          },
+          modifyingMenu: {
+            title: "Modifying the Standard Menu",
+            description: "Alterations to your meal choices may incur additional costs. For precise information, please share the details of your preferred menu with us."
+          },
+          tourRouteChange: {
+            title: "Yacht Tour Route Change",
+            description: "Please remember that extended routes will require longer rental periods."
+          },
+          waterActivities: {
+            title: "Water Activities",
+            description: "Experience the thrill of water sports like jet skiing, ringo, banana boating, and parasailing for an additional fee."
+          },
+          photographyServices: {
+            title: "Photography Services",
+            description: "Professional photography and drone filming services are available for your special celebrations and events."
+          },
+          transfer: {
+            title: "Transfer",
+            description: "The round-trip transfer cost varies depending on the number of people and distance."
+          }
+        }
       }
     }
-    
   ];
 
   return (

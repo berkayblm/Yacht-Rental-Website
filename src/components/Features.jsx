@@ -6,18 +6,18 @@ const Features = () => {
   const features = [
     {
       emoji: "⛵",
-      title: "Charter Yacht",
-      description: "Experience luxury sailing with our premium yacht charter services"
+      title: "Luxury Yacht Charters",
+      description: "Sail in style with our fleet of premium yachts, offering unparalleled comfort and elegance."
     },
     {
       emoji: "⭐",
-      title: "Quality Service",
-      description: "Exceptional service with attention to every detail"
+      title: "Exceptional Service",
+      description: "Our dedicated crew ensures a seamless and memorable experience, catering to your every need."
     },
     {
       emoji: "👑",
-      title: "Premium Yacht",
-      description: "Top-tier yachts maintained to the highest standards"
+      title: "Top-Tier Fleet",
+      description: "Our yachts are meticulously maintained to the highest standards, ensuring a safe and luxurious journey."
     }
   ];
 

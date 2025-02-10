@@ -39,14 +39,8 @@ const YachtListings = ({ yachts }) => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.2 
-              }}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.2 }
-              }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 }}}
               onClick={() => handleYachtClick(yacht.id)}
             >
               <div className="yacht-image">
@@ -57,44 +51,38 @@ const YachtListings = ({ yachts }) => {
                   transition={{ duration: 0.3 }}
                 />
               </div>
-              <motion.div 
-                className="yacht-price"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                {yacht.price}
+              <motion.div className="yacht-price">
+                {yacht.price} 
               </motion.div>
               <h3 className="yacht-name">{yacht.name}</h3>
               
               <div className="yacht-details">
-                <div className="detail-row blue">
-                  
+                
+            
+                <div className="detail-row yellow">
                   <div className="detail-item">
-                    <span className="label">Total Capacity</span>
+                    <span className="label">Capacity</span>
                     <span className="value">{yacht.details.totalCapacity}</span>
                   </div>
-                </div>
-                
-                <div className="detail-row yellow">
                   
-                  <div className="detail-item">
-                    <span className="label">Total Cabins</span>
+                </div>
+                <div className="detail-row yellow">
+                <div className="detail-item">
+                    <span className="label">Cabins</span>
                     <span className="value">{yacht.details.totalCabins}</span>
                   </div>
                 </div>
-                
                 <div className="detail-row yellow">
-                  
                   <div className="detail-item">
-                    <span className="label">Alcohol Drink</span>
-                    <span className="value">{yacht.details.alcoholDrink}</span>
+                    <span className="label">Location</span>
+                    <span className="value">{yacht.location}</span>
                   </div>
                 </div>
                 
                 <div className="detail-row yellow">
-                  <div className="detail-item special">
-                    <span className="label">Special</span>
-                    <span className="value">{yacht.details.special}</span>
+                  <div className="detail-item">
+                    <span className="label">Start Time</span>
+                    <span className="value">{yacht.details.startTime}</span>
                   </div>
                 </div>
               </div>
