@@ -2,23 +2,19 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
+import TimeOptions from '../components/TimeOptions';
+import PaymentContact from '../components/PaymentContact';
 import './styles/YachtDetails.css';
 
 const YachtDetails = ({ yachts }) => {
   const { yachtId } = useParams();
   const yacht = yachts.find(y => y.id === parseInt(yachtId));
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   if (!yacht) {
     return <div>Yacht not found</div>;
   }
-
-  const images = [
-    '/la-perla-5.jpeg',
-    '/side-1.jpg',
-    '/yacht-sunset.jpg',
-    '/yacht-interior.jpg',
-  ];
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -30,7 +26,7 @@ const YachtDetails = ({ yachts }) => {
       <div className="yacht-details-page">
         <div className="container">
           {/* Header Section */}
-          <motion.div 
+          <motion.div
             className="yacht-header"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,30 +37,49 @@ const YachtDetails = ({ yachts }) => {
           </motion.div>
 
           {/* Image Gallery */}
-          <motion.div 
+          <motion.div
             className="yacht-gallery"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="main-image">
-              <img src={yacht.image} alt={yacht.name} />
+              {yacht.image && (
+                <img
+                  src={yacht.image}
+                  alt={yacht.name}
+                  onError={(e) => {
+                    console.log('Error loading image:', e.target.src);
+                    e.target.onerror = null;
+                    e.target.src = '/fallback-image.jpg';
+                  }}
+                />
+              )}
             </div>
             <div className="thumbnail-grid">
-              {images.map((img, index) => (
-                <motion.div 
+              {console.log('yacht images:', yacht.images)}
+              {Array.isArray(yacht.images) && yacht.images.length > 0 && yacht.images.map((img, index) => (
+                <motion.div
                   key={index}
                   className="thumbnail"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <img src={img} alt={`${yacht.name} view ${index + 1}`} />
+                  <img
+                    src={img}
+                    alt={`${yacht.name} view ${index + 1}`}
+                    onError={(e) => {
+                      console.log('Error loading thumbnail:', e.target.src);
+                      e.target.onerror = null;
+                      e.target.src = '/fallback-image.jpg';
+                    }}
+                  />
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* Description Section with Preview */}
-          <motion.section 
+          <motion.section
             className="details-section description-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +89,7 @@ const YachtDetails = ({ yachts }) => {
             <div className="description-preview">
               <h3>OUR SPECIAL OFFER INCLUDED IN THE PRICE</h3>
               <p className="main-description">{yacht.description.main}</p>
-              
+
               {/* Preview of highlights */}
               <div className="highlights">
                 {yacht.description.highlights.slice(0, 2).map((highlight, index) => (
@@ -84,7 +99,7 @@ const YachtDetails = ({ yachts }) => {
                 ))}
               </div>
 
-              <button 
+              <button
                 className="read-more-btn"
                 onClick={toggleDescription}
               >
@@ -93,18 +108,20 @@ const YachtDetails = ({ yachts }) => {
             </div>
           </motion.section>
 
+          {/* Add TimeOptions section before or after the description section */}
+          <TimeOptions timeSlots={yacht.timeSlots} />
           {/* Full Description Popup */}
           <AnimatePresence>
             {showFullDescription && (
               <>
-                <motion.div 
+                <motion.div
                   className="popup-overlay"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={toggleDescription}
                 />
-                <motion.div 
+                <motion.div
                   className="description-popup"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -112,18 +129,18 @@ const YachtDetails = ({ yachts }) => {
                 >
                   <div className="popup-header">
                     <h2>Description</h2>
-                    <button 
+                    <button
                       className="close-popup"
                       onClick={toggleDescription}
                     >
                       ✕
                     </button>
                   </div>
-                  
+
                   <div className="popup-content">
                     <h3>OUR SPECIAL OFFER INCLUDED IN THE PRICE</h3>
                     <p className="main-description">{yacht.description.main}</p>
-                    
+
                     <div className="highlights">
                       <p>
                         <span className="emoji">🚢</span> {yacht.description.highlights[0]}
@@ -171,7 +188,7 @@ const YachtDetails = ({ yachts }) => {
           </AnimatePresence>
 
           {/* Features Section */}
-          <motion.section 
+          <motion.section
             className="details-section features-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -243,7 +260,7 @@ const YachtDetails = ({ yachts }) => {
           </motion.section>
 
           {/* Equipment Section */}
-          <motion.section 
+          <motion.section
             className="details-section equipment-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -273,7 +290,7 @@ const YachtDetails = ({ yachts }) => {
           {/* Details Grid */}
           <div className="details-grid">
             {/* Services Section - Left Column */}
-            <motion.section 
+            <motion.section
               className="details-section services-section"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -318,12 +335,12 @@ const YachtDetails = ({ yachts }) => {
                     ))}
                   </div>
                 </div>
-                
+
               </div>
             </motion.section>
 
             {/* Overview Container - Right Column */}
-            <motion.section 
+            <motion.section
               className="details-section overview-container"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -357,8 +374,6 @@ const YachtDetails = ({ yachts }) => {
                     </div>
                   </div>
                 </div>
-
-                
 
                 {/* Technical Specifications */}
                 <div className="overview-section">
@@ -433,7 +448,7 @@ const YachtDetails = ({ yachts }) => {
           </div>
 
           {/* Booking Section - Bottom of the page */}
-          <motion.section 
+          <motion.section
             className="booking-section-bottom"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -447,10 +462,11 @@ const YachtDetails = ({ yachts }) => {
                   <span className="price">{yacht.price}</span>
                   <span className="price-unit">{yacht.priceUnit}</span>
                 </div>
-                <motion.button 
+                <motion.button
                   className="book-now-btn"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowPaymentModal(true)}
                 >
                   Book Now
                 </motion.button>
@@ -458,6 +474,14 @@ const YachtDetails = ({ yachts }) => {
             </div>
           </motion.section>
         </div>
+
+        {/* Add PaymentContact component */}
+        <PaymentContact 
+          isOpen={showPaymentModal}
+          onClose={() => setShowPaymentModal(false)}
+          yachtName={yacht.name}
+          price={yacht.price}
+        />
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './styles/Navbar.css';
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -13,7 +14,10 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Yacht Rental</Link>
+        <Link className="navbar-brand" to="/">
+          <img src="images/side-vip-logo.jpg" alt="Side VIP Logo" className="navbar-logo" />
+          Yacht Rental
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

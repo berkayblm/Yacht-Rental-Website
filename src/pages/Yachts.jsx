@@ -120,7 +120,7 @@ const Yachts = ({ yachts }) => {
     // Location Filter
     if (filters.location) {
       result = result.filter(yacht => 
-        yacht.location.toLowerCase() === filters.location.toLowerCase()
+        yacht.location && yacht.location.toLowerCase() === filters.location.toLowerCase()
       );
     }
 
