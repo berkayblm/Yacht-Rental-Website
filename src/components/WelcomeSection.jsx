@@ -1,34 +1,139 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import './styles/WelcomeSection.css';
 
 const WelcomeSection = () => {
   return (
-    <div className="container mt-4">
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Discover Your Perfect Yacht Adventure
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        Select from our exquisite collection of yachts for an unforgettable journey!
-      </motion.p>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <p>
-          At Yacht Rental, we provide a diverse range of luxury yachts tailored to your desires. Whether you're planning a serene family retreat, a romantic escapade, or a sophisticated corporate gathering, we have the ideal yacht for you. Our vessels are equipped with cutting-edge amenities and are meticulously maintained to ensure your utmost comfort and safety. Explore our gallery to view some of the finest yachts available for your next adventure.
-        </p>
-      </motion.div>
+    <div className="welcome-container">
+      <div className="welcome-header">
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="main-title"
+        >
+          Discover Your Perfect Yacht Adventure
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="subtitle"
+        >
+          Experience luxury and freedom on the Turkish Riviera
+        </motion.p>
+      </div>
+
+      <div className="welcome-content">
+        <motion.div
+          className="intro-text"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <p className="highlight-text">
+            Welcome to the ultimate yacht charter experience in Side, Turkey. 
+            Where luxury meets adventure on the crystal-clear waters of the Mediterranean.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="testimonial-section"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
+          <h2>What Our Guests Say</h2>
+          <div className="testimonial-grid">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="testimonial-card">
+                <div className="quote">"</div>
+                <p>{testimonial.text}</p>
+                <div className="testimonial-author">
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.location}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };
+
+const features = [
+  {
+    icon: "fas fa-anchor",
+    title: "Premium Fleet",
+    description: "Choose from our carefully selected luxury yachts, each maintained to the highest standards."
+  },
+  {
+    icon: "fas fa-map-marked-alt",
+    title: "Expert Navigation",
+    description: "Our experienced crew knows every hidden gem along the Turkish coast."
+  },
+  {
+    icon: "fas fa-concierge-bell",
+    title: "Luxury Service",
+    description: "Enjoy personalized attention and premium amenities throughout your journey."
+  },
+  {
+    icon: "fas fa-glass-cheers",
+    title: "Special Events",
+    description: "Perfect for celebrations, corporate events, and unforgettable gatherings."
+  }
+];
+
+const experiences = [
+  {
+    title: "Luxury Comfort",
+    description: "Experience unparalleled comfort with our premium amenities:",
+    points: [
+      "Spacious cabins with en-suite facilities",
+      "Climate-controlled interiors",
+      "Premium entertainment systems",
+      "Gourmet kitchen facilities"
+    ]
+  },
+  {
+    title: "Adventure & Activities",
+    description: "Create memories with exciting activities:",
+    points: [
+      "Snorkeling in crystal-clear waters",
+      "Water sports equipment",
+      "Beach excursions",
+      "Sunset cruises"
+    ]
+  },
+  {
+    title: "Professional Service",
+    description: "Rely on our experienced team:",
+    points: [
+      "Professional captain and crew",
+      "Personalized itineraries",
+      "24/7 support",
+      "Local expertise"
+    ]
+  }
+];
+
+const testimonials = [
+  {
+    text: "An absolutely incredible experience! The yacht was immaculate, and the crew went above and beyond.",
+    name: "Sarah M.",
+    location: "United Kingdom"
+  },
+  {
+    text: "Perfect family vacation. The attention to detail and service was outstanding.",
+    name: "Michael R.",
+    location: "Germany"
+  },
+  {
+    text: "The most luxurious way to explore the Turkish coast. Will definitely return!",
+    name: "Elena K.",
+    location: "Russia"
+  }
+];
 
 export default WelcomeSection; 

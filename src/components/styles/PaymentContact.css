@@ -1,5 +1,8 @@
 .payment-overlay {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
@@ -16,19 +19,23 @@
   right: 10%;
   bottom: 10%;
   background: white;
+  padding: 2rem;
   border-radius: 20px;
   z-index: 1001;
-  width: 90%;
-  max-width: 600px;
+  width: auto;
+  max-width: 800px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .close-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0;
+  right: 0;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -127,12 +134,107 @@
   margin: 0;
 }
 
+
+
 @media (max-width: 768px) {
-  .contact-buttons {
-    grid-template-columns: 1fr;
+  .payment-modal {
+    width: 80%;
+    max-width: 450px;
+    padding: 1.5rem;
+    max-height: 80vh;
   }
 
-  .payment-modal {
-    padding: 1.5rem;
+  .contact-buttons {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
+
+  .payment-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-modal {
+    width: 80%;
+    max-width: 350px;
+    padding: 1.2rem;
+    max-height: 75vh;
+    
+  }
+
+  .payment-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .yacht-info {
+    font-size: 1rem;
+  }
+
+  .payment-steps {
+    padding: 1rem;
+  }
+
+  .payment-steps h3,
+  .contact-methods h3 {
+    font-size: 1.1rem;
+  }
+
+  .contact-button {
+    padding: 0.8rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .payment-modal {
+    width: 80%;
+    padding: 1rem;
+    max-height: 70vh;
+  }
+
+  .payment-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-button {
+    padding: 0.7rem;
+  }
+}
+
+/* For different screen heights */
+@media (max-height: 700px) {
+  .payment-modal {
+    max-height: 85vh;
+    width: 60%;
+  }
+}
+
+@media (max-height: 600px) {
+  .payment-modal {
+    max-height: 90vh;
+    width: 70%;
+  }
+
+  .payment-content h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .payment-steps {
+    margin-bottom: 1rem;
+  }
+}
+
+/* For high-density screens */
+@media screen and (min-resolution: 192dpi) {
+  .payment-modal {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+
+
+/* Prevent background scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
 } 

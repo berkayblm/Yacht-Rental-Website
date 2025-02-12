@@ -25,12 +25,12 @@ const About = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="about-hero-content">
-          <motion.h1 {...fadeIn}>About YachtLuxe</motion.h1>
+          <motion.h1 {...fadeIn}>About Side Vip Yacht Rental</motion.h1>
           <motion.p 
             {...fadeIn}
             transition={{ delay: 0.2 }}
           >
-            Crafting Unforgettable Maritime Experiences Since 2010
+            Crafting Unforgettable Maritime Experiences Since 2020
           </motion.p>
         </div>
       </motion.div>
@@ -50,7 +50,7 @@ const About = () => {
               transition={{ delay: 0.3 }}
             >
               <h2>Our Story</h2>
-              <p>Founded in 2010, YachtLuxe emerged from a passion for luxury maritime experiences and a vision to make yacht chartering accessible to those seeking extraordinary adventures at sea.</p>
+              <p>Founded in 2020, Side Vip Yacht Rental emerged from a passion for luxury maritime experiences and a vision to make yacht chartering accessible to those seeking extraordinary adventures at sea.</p>
               <p>Over the years, we've built a reputation for excellence, curating a fleet of the finest yachts and delivering personalized service that exceeds expectations. Our journey has been marked by countless satisfied clients and memorable voyages along the stunning Turkish coastline.</p>
             </motion.div>
             <motion.div 
@@ -150,7 +150,7 @@ const About = () => {
               <div className="contact-info">
                 <p><strong>Address:</strong> Marina Street No:123, Side, Antalya, Turkey</p>
                 <p><strong>Phone:</strong> +90 123 456 7890</p>
-                <p><strong>Email:</strong> info@yachtluxe.com</p>
+                <p><strong>Email:</strong> info@example.com</p>
               </div>
             </motion.div>
             <motion.div 

@@ -64,7 +64,7 @@ const TimeOptions = () => {
             </div>
           </div>
         </div>
-        <p className="price-note">* The prices shown on the website are valid for these time periods</p>
+       
         <p className="contact-note">Contact us for costs of different rental durations</p>
       </div>
     </motion.div>

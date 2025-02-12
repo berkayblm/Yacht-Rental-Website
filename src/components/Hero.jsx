@@ -4,9 +4,6 @@ import './styles/Hero.css';
 
 const Hero = () => {
 
-
-
-  
   return (
     <motion.div
       className="hero-section"

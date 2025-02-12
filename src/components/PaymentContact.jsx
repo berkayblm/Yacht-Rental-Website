@@ -43,9 +43,11 @@ const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
           >
-            <button className="close-button" onClick={onClose}>
-              <FaTimes />
-            </button>
+            <div className="modal-header">
+              <button className="close-button" onClick={onClose}>
+                <FaTimes />
+              </button>
+            </div>
             
             <div className="payment-content">
               <h2>Book Your Yacht</h2>

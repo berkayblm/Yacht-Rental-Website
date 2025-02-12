@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src="images/side-vip-logo.jpg" alt="Side VIP Logo" className="navbar-logo" />
+          <img src="/images/side-vip-logo.jpg" alt="Side VIP Logo" className="navbar-logo" />
           Yacht Rental
         </Link>
         <button

@@ -6,12 +6,7 @@
     rgba(248, 249, 250, 0.97) 0%,
     rgba(233, 236, 239, 0.97) 100%
   );
-  clip-path: polygon(
-    0 0,
-    100% 3%,
-    100% 97%,
-    0 100%
-  );
+  
 }
 
 .yachts-page::before {
@@ -308,12 +303,7 @@ input::placeholder {
 @media (max-width: 768px) {
   .yachts-page {
     padding: 80px 0 40px;
-    clip-path: polygon(
-      0 0,
-      100% 2%,
-      100% 98%,
-      0 100%
-    );
+    
   }
   .yacht-card {
     flex: 0 1 100%; /* One card per row */
