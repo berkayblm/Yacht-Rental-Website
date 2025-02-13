@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
@@ -11,6 +11,32 @@ const YachtDetails = ({ yachts }) => {
   const yacht = yachts.find(y => y.id === parseInt(yachtId));
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  useEffect(() => {
+    // More aggressive scroll to top approach
+    const scrollToTop = () => {
+      try {
+        // Try multiple scroll methods
+        window.scroll(0, 0);
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTo(0, 0);
+        document.body.scrollTo(0, 0);
+        
+        // Force scroll with timeout as fallback
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto'
+          });
+        }, 100);
+      } catch (error) {
+        console.error('Error scrolling:', error);
+      }
+    };
+
+    scrollToTop();
+  }, [yachtId]); // Add dependency to ensure it runs when yacht changes
 
   if (!yacht) {
     return <div>Yacht not found</div>;

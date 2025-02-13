@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
-import Destinations from './pages/Destinations';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import YachtDetails from './pages/YachtDetails';
 import Yachts from './pages/Yachts';
+import Contact from './pages/Contact';
+
 
 function App() {
   useEffect(() => {
@@ -1052,17 +1053,19 @@ function App() {
 
   return (
     <Router>
+      
       <div className="d-flex flex-column min-vh-100">
         <div className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home yachts={yachts} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/destinations" element={<Destinations />} />
+            
             <Route path="/yachts" element={<Yachts yachts={yachts} />} />
             <Route 
               path="/yachts/:yachtId" 
               element={<YachtDetails yachts={yachts} />} 
             />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
         <Footer />

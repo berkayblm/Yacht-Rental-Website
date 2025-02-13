@@ -8,12 +8,83 @@
   var(--accent-blue) 0%,
     rgba(233, 236, 239, 0.97) 100%
   );
-  clip-path: polygon(
-    0 0,
-    100% 9%,
-    100% 91%,
-    0 100%
-  );
+}
+
+.wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-top svg {
+  position: relative;
+  display: block;
+  width: calc(200% + 1.3px);
+  height: 70px;
+  left: -50%;
+}
+
+/* Create multiple wave layers */
+.wave-top .wave-fill {
+  fill: #FFFFFF;
+  opacity: 0.8;
+  animation: wave1 18s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+.wave-top svg:nth-child(2) {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  opacity: 0.7;
+  animation: wave2 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+.wave-top svg:nth-child(3) {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  opacity: 0.53;
+  animation: wave3 8s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+@keyframes wave1 {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-35%) scaleY(1.1);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+@keyframes wave3 {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-45%) scaleY(0.8);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
 }
 
 .features-row {
@@ -119,12 +190,7 @@
   .features-container {
     margin: -80px 0 40px;
     padding: 100px 15px 60px;
-    clip-path: polygon(
-      0 0,
-      100% 2%,
-      100% 98%,
-      0 100%
-    );
+    
   }
   
   .features-row {
@@ -158,4 +224,54 @@
 /* Add smooth scrolling to the page */
 html {
   scroll-behavior: smooth;
+}
+
+/* Updated ship styles */
+.ship {
+  position: absolute;
+  top: 0px;
+  left: 5%;
+  z-index: 10;
+  animation: sailShip 30s linear infinite;
+}
+
+.ship i, .ship svg {
+  font-size: 3.5rem;
+  color: #1a2634;
+  transform-origin: center;
+  animation: rockShip 3s ease-in-out infinite;
+  display: block;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes sailShip {
+  0% {
+    left: -10%;
+    transform: scaleX(-1) rotate(180deg);
+  }
+  49% {
+    left: 110%;
+    transform: scaleX(-1) rotate(180deg);
+  }
+  50% {
+    left: 110%;
+    transform: scaleX(1) rotate(180deg);
+  }
+  99% {
+    left: -10%;
+    transform: scaleX(1) rotate(180deg);
+  }
+  100% {
+    left: -10%;
+    transform: scaleX(-1) rotate(180deg);
+  }
+}
+
+@keyframes rockShip {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
 }

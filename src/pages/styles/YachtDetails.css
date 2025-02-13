@@ -517,24 +517,54 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .service-card {
-    background: #1a202c;
+    background: #f8f9fa;
   }
 
   .service-card h3 {
-    color: #e2e8f0;
+    color: #2d3748;
   }
 
   .service-card p {
-    color: #a0aec0;
+    color: #4a5568;
   }
 
   .menu-tag {
-    background: #2d3748;
-    color: #e2e8f0;
+    background: #edf2f7;
+    color: #2d3748;
   }
 
   .menu-tag:hover {
-    background: #4a5568;
+    background: #e2e8f0;
+  }
+
+  .overview-section {
+    background: #f8f9fa;
+  }
+  
+  .overview-section:hover {
+    background: #edf2f7;
+  }
+  
+  .overview-item,
+  .optional-service-item {
+    background: #ffffff;
+  }
+  
+  .overview-section h3 {
+    color: #2d3748;
+  }
+
+  .price-info .price {
+    color: #2d3748;
+  }
+
+  .price-info .price-unit {
+    color: #4a5568;
+  }
+
+  .booking-section-bottom {
+    background: linear-gradient(135deg, #ffffff, #dde9f4);
+    border: 1px solid rgba(226, 232, 240, 0.8);
   }
 }
 
@@ -774,26 +804,6 @@
   }
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .overview-section {
-    background: #1a202c;
-  }
-  
-  .overview-section:hover {
-    background: #2d3748;
-  }
-  
-  .overview-item,
-  .optional-service-item {
-    background: #2d3748;
-  }
-  
-  .overview-section h3 {
-    color: #e2e8f0;
-  }
-}
-
 /* Compact Booking Section Styles */
 .booking-section-bottom {
   margin-top: 40px;
@@ -873,17 +883,16 @@
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   .booking-section-bottom {
-    background: linear-gradient(135deg, #1a202c, #2d3748);
-    border: 1px solid rgba(45, 55, 72, 0.8);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffffff, #dde9f4);
+    border: 1px solid rgba(226, 232, 240, 0.8);
   }
 
   .price-info .price {
-    color: #e2e8f0;
+    color: #2d3748;
   }
 
   .price-info .price-unit {
-    color: #a0aec0;
+    color: #4a5568;
   }
 }
 

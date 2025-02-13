@@ -15,7 +15,11 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src="/images/side-vip-logo.jpg" alt="Side VIP Logo" className="navbar-logo" />
+          <img 
+            src="/images/side-vip-logo.jpg"
+            alt="Side VIP Logo"
+            className="navbar-logo"
+          />
           Yacht Rental
         </Link>
         <button
@@ -55,13 +59,14 @@ const Navbar = () => {
                 About
               </Link>
             </li>
+            
             <li className="nav-item">
               <Link
-                className={`nav-link ${location.pathname === '/destinations' ? 'active' : ''}`}
-                to="/destinations"
+                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+                to="/contact"
                 onClick={toggleMenu}
               >
-                Destinations
+                Contact
               </Link>
             </li>
           </ul>

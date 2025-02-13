@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaAnchor, FaShip, FaUserTie, FaRegHandshake } from 'react-icons/fa';
 import { MdSecurity, MdLocationOn } from 'react-icons/md';
@@ -7,6 +7,31 @@ import Maps from '../components/Maps';
 import './styles/About.css';
 
 const About = () => {
+  useEffect(() => {
+    const scrollToTop = () => {
+      try {
+        // Try multiple scroll methods
+        window.scroll(0, 0);
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTo(0, 0);
+        document.body.scrollTo(0, 0);
+        
+        // Force scroll with timeout as fallback
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto'
+          });
+        }, 100);
+      } catch (error) {
+        console.error('Error scrolling:', error);
+      }
+    };
+
+    scrollToTop();
+  }, []); // Empty dependency array for about page
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
