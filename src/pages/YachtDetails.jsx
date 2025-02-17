@@ -5,6 +5,9 @@ import Navbar from '../components/Navbar';
 import TimeOptions from '../components/TimeOptions';
 import PaymentContact from '../components/PaymentContact';
 import './styles/YachtDetails.css';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const YachtDetails = ({ yachts }) => {
   const { yachtId } = useParams();
@@ -82,26 +85,59 @@ const YachtDetails = ({ yachts }) => {
                 />
               )}
             </div>
-            <div className="thumbnail-grid">
-              {console.log('yacht images:', yacht.images)}
-              {Array.isArray(yacht.images) && yacht.images.length > 0 && yacht.images.map((img, index) => (
-                <motion.div
-                  key={index}
-                  className="thumbnail"
-                  whileHover={{ scale: 1.05 }}
+            
+            {Array.isArray(yacht.images) && yacht.images.length > 0 && (
+              <div className="thumbnail-slider-container">
+                <Slider
+                  dots={false}
+                  infinite={true}
+                  speed={500}
+                  slidesToShow={3}
+                  slidesToScroll={1}
+                  responsive={[
+                    {
+                      breakpoint: 1024,
+                      settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                      }
+                    },
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                      }
+                    },
+                    {
+                      breakpoint: 480,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+                  ]}
                 >
-                  <img
-                    src={img}
-                    alt={`${yacht.name} view ${index + 1}`}
-                    onError={(e) => {
-                      console.log('Error loading thumbnail:', e.target.src);
-                      e.target.onerror = null;
-                      e.target.src = '/fallback-image.jpg';
-                    }}
-                  />
-                </motion.div>
-              ))}
-            </div>
+                  {yacht.images.map((img, index) => (
+                    <motion.div
+                      key={index}
+                      className="thumbnail"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img
+                        src={img}
+                        alt={`${yacht.name} view ${index + 1}`}
+                        onError={(e) => {
+                          console.log('Error loading thumbnail:', e.target.src);
+                          e.target.onerror = null;
+                          e.target.src = '/fallback-image.jpg';
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </Slider>
+              </div>
+            )}
           </motion.div>
 
           {/* Description Section with Preview */}

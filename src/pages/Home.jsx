@@ -59,7 +59,7 @@ const Home = ({ yachts }) => {
       <Features />
       
       <WelcomeSection />
-      <GallerySection />
+     
 
       
       {/* Info Section */}

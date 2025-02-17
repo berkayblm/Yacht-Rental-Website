@@ -545,9 +545,9 @@ function App() {
       },
       images: [
         '/images/side-vip-img-1.jpg',
-        '/images/side-vip-img-2.jpg',
-        '/images/side-vip-img-3.jpg',
-        '/images/side-vip-img-4.jpg'
+        '/images/side-vip-img-1.jpg',
+        '/images/side-vip-img-1.jpg',
+        '/images/side-vip-img-1.jpg'
       ]
     },
     {

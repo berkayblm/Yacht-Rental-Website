@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Slider from 'react-slick';
 import './styles/WelcomeSection.css';
-
+import GallerySection from './GallerySection';
 const WelcomeSection = () => {
+  
+
   return (
     <div className="welcome-container">
       <div className="welcome-header">
@@ -24,40 +27,16 @@ const WelcomeSection = () => {
         </motion.p>
       </div>
 
-      <div className="welcome-content">
-        <motion.div
-          className="intro-text"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="highlight-text">
-            Welcome to the ultimate yacht charter experience in Side, Turkey. 
-            Where luxury meets adventure on the crystal-clear waters of the Mediterranean.
-          </p>
-        </motion.div>
+      <motion.div
+        className="gallery-section"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <GallerySection />
+      </motion.div>
 
-        <motion.div
-          className="testimonial-section"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-        >
-          <h2>What Our Guests Say</h2>
-          <div className="testimonial-grid">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
-                <div className="quote">"</div>
-                <p>{testimonial.text}</p>
-                <div className="testimonial-author">
-                  <strong>{testimonial.name}</strong>
-                  <span>{testimonial.location}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      
     </div>
   );
 };

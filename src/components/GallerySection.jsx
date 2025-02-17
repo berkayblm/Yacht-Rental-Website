@@ -57,7 +57,7 @@ const GallerySection = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
@@ -92,99 +92,33 @@ const GallerySection = () => {
         variants={titleVariants}
         className="text-center mb-5"
       >
-        Our Exclusive Yacht Collection
+        Our Exclusive Yacht Gallery
       </motion.h2>
       
       <Slider {...sliderSettings} className="slider">
-        <motion.div
-          className="slider-item px-3"
-          variants={cardVariants}
-          whileHover={{ 
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-        >
-          <div className="card shadow-lg">
-            <div className="card-image-wrapper">
-              <motion.img
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                className="card-img-top"
-                src="/1755344.jpg"
-                alt="Luxury Yacht 1"
-              />
+        {[1, 2, 3].map((index) => (
+          <motion.div
+            key={index}
+            className="slider-item px-2"
+            variants={cardVariants}
+            whileHover={{ 
+              scale: 1.02,
+              transition: { duration: 0.3 }
+            }}
+          >
+            <div className="card">
+              <div className="card-image-wrapper">
+                <motion.img
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  className="card-img-top"
+                  src="/1755344.jpg"
+                  alt={`Yacht ${index}`}
+                />
+              </div>
             </div>
-            <motion.div 
-              className="card-body"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="card-title">Luxury Yacht 1</h3>
-              <p className="card-text">Indulge in unparalleled luxury with our flagship yacht, featuring expansive interiors and top-tier amenities.</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="slider-item px-3"
-          variants={cardVariants}
-          whileHover={{ 
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-        >
-          <div className="card shadow-lg">
-            <div className="card-image-wrapper">
-              <motion.img
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                className="card-img-top"
-                src="/1755344.jpg"
-                alt="Family Yacht"
-              />
-            </div>
-            <motion.div 
-              className="card-body"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="card-title">Family Yacht</h3>
-              <p className="card-text">Perfect for family adventures, this yacht offers a safe and comfortable environment for unforgettable sea journeys.</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="slider-item px-3"
-          variants={cardVariants}
-          whileHover={{ 
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-        >
-          <div className="card shadow-lg">
-            <div className="card-image-wrapper">
-              <motion.img
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                className="card-img-top"
-                src="/1755344.jpg"
-                alt="Corporate Yacht"
-              />
-            </div>
-            <motion.div 
-              className="card-body"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="card-title">Corporate Yacht</h3>
-              <p className="card-text">Ideal for corporate events, this yacht provides a sophisticated setting with all the facilities needed for professional gatherings.</p>
-            </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+        ))}
       </Slider>
     </motion.div>
   );

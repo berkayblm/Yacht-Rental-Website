@@ -1,34 +1,86 @@
 .welcome-container {
-  padding: 60px 20px;
+  padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Modern background with gradient overlay */
+.welcome-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(65, 105, 225, 0.05) 0%, rgba(28, 46, 96, 0.08) 100%);
+  z-index: -1;
 }
 
 .welcome-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  position: relative;
 }
 
 .main-title {
-  font-size: 3rem;
-  color: #2c3e50;
+  font-size: 48px;
+  background: linear-gradient(135deg, #2c3e50 0%, #4169e1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4169e1, #1e3c72);
+  border-radius: 2px;
 }
 
 .subtitle {
   font-size: 1.5rem;
   color: #666;
   margin-bottom: 40px;
+  font-weight: 500;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
 .highlight-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.8;
-  color: #4169e1;
+  background: linear-gradient(135deg, #4169e1 0%, #1e3c72 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   max-width: 800px;
   margin: 0 auto 60px;
+  padding: 20px;
+  position: relative;
+  font-weight: 600;
+}
+
+.highlight-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(65, 105, 225, 0.05) 0%, rgba(30, 60, 114, 0.05) 100%);
+  border-radius: 15px;
+  z-index: -1;
 }
 
 .features-grid {
@@ -124,20 +176,34 @@
 }
 
 .testimonial-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.05),
+    0 20px 40px rgba(65, 105, 225, 0.05);
   position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    0 25px 50px rgba(65, 105, 225, 0.08);
 }
 
 .quote {
-  font-size: 4rem;
-  color: #4169e1;
-  opacity: 0.2;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #4169e1 0%, #1e3c72 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
   position: absolute;
-  top: 10px;
-  left: 20px;
+  top: 8px;
+  left: 15px;
 }
 
 .testimonial-author {
@@ -148,36 +214,79 @@
   display: block;
   color: #2c3e50;
   margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .testimonial-author span {
   color: #666;
   font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
   .main-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   .subtitle {
     font-size: 1.2rem;
   }
 
-  .experience-grid,
-  .testimonial-grid {
-    grid-template-columns: 1fr;
+  .highlight-text {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+
+  .testimonial-card {
+    padding: 25px;
   }
 }
 
 @media (max-width: 480px) {
   .main-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
-  .feature-box,
-  .experience-item,
+  .highlight-text {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
   .testimonial-card {
     padding: 20px;
   }
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+
+.card-image-wrapper {
+  overflow: hidden;
+  height: 250px; /* Fixed height */
+  width: 100%;
+  border-radius: 15px;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.slider-item {
+  padding: 10px;
+  height: 100%;
 } 
