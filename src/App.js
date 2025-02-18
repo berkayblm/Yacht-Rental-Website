@@ -292,7 +292,7 @@ function App() {
       name: "Side VIP",
       price: "850 €",
       priceUnit: "per day",
-      image: "/images/side-vip-img-5.jpg",
+      image: "/images/20240520_111108.jpg",
       year: 2008,
       length: "12.5m",
       builder: "Custom Built",
@@ -544,10 +544,14 @@ function App() {
         
       },
       images: [
-        '/images/side-vip-img-1.jpg',
-        '/images/side-vip-img-1.jpg',
-        '/images/side-vip-img-1.jpg',
-        '/images/side-vip-img-1.jpg'
+        '/images/20240523_132216.jpg',
+        '/images/20240528_122608.jpg',
+        '/images/20240609_194627.jpg',
+        '/images/DJI_0720+ kopya.jpg',
+        '/images/IMG_20220603_140435_581.jpg',
+        '/images/IMG_20220711_225349_830.jpg',
+        '/images/IMG-20230525-WA0014.jpg',
+        '/images/IMG-20230501-WA0005.jpg'
       ]
     },
     {

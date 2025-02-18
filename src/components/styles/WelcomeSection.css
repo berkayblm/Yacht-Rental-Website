@@ -271,7 +271,7 @@
 
 .card-image-wrapper {
   overflow: hidden;
-  height: 250px; /* Fixed height */
+  height: auto; /* Fixed height */
   width: 100%;
   border-radius: 15px;
   position: relative;

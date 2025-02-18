@@ -9,11 +9,14 @@
   transition: all 0.3s ease;
   background: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 16/9;
 }
 
 .card-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
-  height: auto;
   border-radius: 15px;
 }
 
@@ -21,6 +24,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
   transition: transform 0.3s ease;
 }
 
@@ -40,6 +46,10 @@
 }
 
 /* Slider Customization */
+.slick-slide {
+  padding: 10px;
+}
+
 .slick-dots li button:before {
   font-size: 10px;
   color: #4169e1;
@@ -60,9 +70,8 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .card-image-wrapper {
-    width: 100%;
-    height: 100%;
+  .card {
+    aspect-ratio: 4/3;
   }
   
   .slider {
@@ -71,18 +80,17 @@
 }
 
 @media (max-width: 480px) {
-  .card-image-wrapper {
-    width: 100%;
-    height: 100%;
+  .card {
+    aspect-ratio: 1/1;
   }
 }
 
-/* Reduced scale values for more subtle hover effects */
+/* Hover effects */
 .slider-item:hover .card {
-  transform: scale(1.02); /* Reduced from 1.05 */
+  transform: scale(1.02);
 }
 
 .slider-item:hover .card-img-top {
-  transform: scale(1.05); /* Reduced from 1.1 */
+  transform: scale(1.05);
 }
 

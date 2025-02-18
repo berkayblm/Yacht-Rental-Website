@@ -90,7 +90,7 @@ html, body {
 
 .slider img {
   width: 100%;
-  max-width: 300px; /* Adjusted max width */
+  max-width: auto; /* Adjusted max width */
   height: auto;
   margin: 0 auto;
   border-radius: 10px;

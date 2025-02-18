@@ -55,10 +55,16 @@
 
 .main-image {
   width: 100%;
-  height: 400px;
+  height: 600px;
   margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.main-image:hover {
+  transform: scale(1.02);
 }
 
 .main-image img {
@@ -79,9 +85,10 @@
 
 .thumbnail img {
   width: 100%;
-  height: 120px;
+  height: 180px;
   object-fit: cover;
   border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
 /* Slider custom styles */
@@ -107,23 +114,33 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .main-image {
+    height: 500px;
+  }
+  
+  .thumbnail img {
+    height: 150px;
+  }
+}
+
 @media (max-width: 768px) {
+  .main-image {
+    height: 400px;
+  }
+  
+  .thumbnail img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
   .main-image {
     height: 300px;
   }
   
   .thumbnail img {
     height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-image {
-    height: 250px;
-  }
-  
-  .thumbnail img {
-    height: 80px;
   }
 }
 
@@ -974,5 +991,209 @@
   .booking-info {
     flex-direction: row;
     gap: 10px;
+  }
+}
+
+/* Updated image viewer styles */
+.image-viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-viewer-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  height: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.image-viewer-container img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close-viewer {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1002;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-viewer:hover {
+  transform: scale(1.1);
+  color: #e2e2e2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .image-viewer-container {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-viewer-container {
+    width: 98%;
+    height: 98%;
+  }
+
+  .close-viewer {
+    top: 0px;
+    font-size: 24px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 768px) {
+  .image-viewer-container {
+    height: 85vh;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .image-viewer-overlay {
+    padding: 10px;
+  }
+
+  .close-viewer {
+    top: 0px;
+    font-size: 20px;
+  }
+}
+
+/* For devices in landscape mode */
+@media (orientation: landscape) {
+  .image-viewer-container {
+    width: auto;
+    height: 90vh;
+  }
+
+  .image-viewer-container img {
+    max-height: 85vh;
+  }
+}
+
+/* For ultra-wide screens */
+@media (min-width: 1600px) {
+  .image-viewer-container {
+    max-width: 1400px;
+  }
+}
+
+/* Navigation buttons */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 48px;
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1002;
+  border-radius: 4px;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-button.prev {
+  left: 20px;
+}
+
+.nav-button.next {
+  right: 20px;
+}
+
+/* Image counter */
+.image-counter {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+/* Responsive adjustments for navigation */
+@media (max-width: 768px) {
+  .nav-button {
+    font-size: 36px;
+    width: 40px;
+    height: 60px;
+  }
+
+  .nav-button.prev {
+    left: 10px;
+  }
+
+  .nav-button.next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-button {
+    font-size: 24px;
+    width: 30px;
+    height: 50px;
+  }
+
+  .image-counter {
+    font-size: 12px;
+    bottom: -25px;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+  .nav-button {
+    background: rgba(255, 255, 255, 0.15);
   }
 }

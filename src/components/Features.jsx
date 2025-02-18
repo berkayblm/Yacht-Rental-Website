@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RiShip2Fill } from "react-icons/ri";
 import './styles/Features.css';
 
 const Features = () => {
@@ -55,7 +54,7 @@ const Features = () => {
     >
       <div className="wave-top">
         <div className="ship">
-          <RiShip2Fill  />
+          <img src="/boat.png" alt="Yacht icon" />
         </div>
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M-200,40 C0,20 200,80 400,60 C600,40 800,80 1000,40 C1200,20 1400,60 1600,40 L1600,0 L-200,0 Z" className="wave-fill"></path>

@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Slider from 'react-slick';
 import { useEffect } from 'react';
+import './styles/GallerySection.css';
 
 const GallerySection = () => {
   const controls = useAnimation();
@@ -10,6 +11,27 @@ const GallerySection = () => {
     threshold: 0.2,
     triggerOnce: true
   });
+
+  const galleryData = {
+    "galleryImages": [
+      {
+        "id": 1,
+        "image": "/images/20240520_111108.jpg",
+        "alt": "Luxury Yacht View 1"
+      },
+      {
+        "id": 2,
+        "image": "/images/DJI_0720+ kopya.jpg",
+        "alt": "Luxury Yacht View 2"
+      },
+      {
+        "id": 3,
+        "image": "/images/IMG-20230501-WA0005.jpg",
+        "alt": "Luxury Yacht View 3"
+      }
+      // Add more images as needed
+    ]
+  }
 
   useEffect(() => {
     if (inView) {
@@ -96,9 +118,9 @@ const GallerySection = () => {
       </motion.h2>
       
       <Slider {...sliderSettings} className="slider">
-        {[1, 2, 3].map((index) => (
+        {galleryData.galleryImages.map((item) => (
           <motion.div
-            key={index}
+            key={item.id}
             className="slider-item px-2"
             variants={cardVariants}
             whileHover={{ 
@@ -112,8 +134,8 @@ const GallerySection = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                   className="card-img-top"
-                  src="/1755344.jpg"
-                  alt={`Yacht ${index}`}
+                  src={item.image}
+                  alt={item.alt}
                 />
               </div>
             </div>

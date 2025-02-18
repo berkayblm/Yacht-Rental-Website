@@ -15,25 +15,25 @@ const TourRoadmap = () => {
     {
       id: 2,
       time: "11:30",
-      location: "Sea Caves",
-      description: "Visit the ancient sea caves with swimming break",
+      location: "Swimming Break",
+      description: "First swimming and snorkeling stop",
       icon: "🏊‍♂️",
       type: "break"
     },
     {
       id: 3,
       time: "12:30",
-      location: "Cleopatra Beach",
-      description: "Lunch and swimming at the historic Cleopatra Beach",
-      icon: "🏖️",
+      location: "Lunch Break",
+      description: "Enjoy your lunch with Mediterranean cuisine",
+      icon: "🍽️",
       type: "activity"
     },
     {
       id: 4,
       time: "14:00",
-      location: "Ulash Beach",
-      description: "Snorkeling and relaxation time",
-      icon: "🤿",
+      location: "Swimming Break",
+      description: "Second swimming and relaxation time",
+      icon: "🏖️",
       type: "break"
     },
     {

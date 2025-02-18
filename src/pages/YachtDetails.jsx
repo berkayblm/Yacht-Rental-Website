@@ -14,18 +14,50 @@ const YachtDetails = ({ yachts }) => {
   const yacht = yachts.find(y => y.id === parseInt(yachtId));
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Combine main image and other images for navigation
+  const allImages = yacht ? [yacht.image, ...(yacht.images || [])] : [];
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const handleImageClick = (imageSrc) => {
+    const index = allImages.indexOf(imageSrc);
+    setCurrentImageIndex(index);
+    setSelectedImage(imageSrc);
+  };
+
+  const handleCloseImageViewer = () => {
+    setSelectedImage(null);
+    setCurrentImageIndex(0);
+  };
+
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+    setCurrentImageIndex(newIndex);
+    setSelectedImage(allImages[newIndex]);
+  };
+
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex + 1) % allImages.length;
+    setCurrentImageIndex(newIndex);
+    setSelectedImage(allImages[newIndex]);
+  };
+
+  // Scroll to top effect
   useEffect(() => {
-    // More aggressive scroll to top approach
     const scrollToTop = () => {
       try {
-        // Try multiple scroll methods
         window.scroll(0, 0);
         window.scrollTo(0, 0);
         document.documentElement.scrollTo(0, 0);
         document.body.scrollTo(0, 0);
         
-        // Force scroll with timeout as fallback
         setTimeout(() => {
           window.scrollTo({
             top: 0,
@@ -39,15 +71,35 @@ const YachtDetails = ({ yachts }) => {
     };
 
     scrollToTop();
-  }, [yachtId]); // Add dependency to ensure it runs when yacht changes
+  }, [yachtId]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (!selectedImage) return;
+      
+      switch (e.key) {
+        case 'ArrowLeft':
+          handlePrevImage(e);
+          break;
+        case 'ArrowRight':
+          handleNextImage(e);
+          break;
+        case 'Escape':
+          handleCloseImageViewer();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [selectedImage, currentImageIndex, allImages]); // Added allImages to dependencies
 
   if (!yacht) {
     return <div>Yacht not found</div>;
   }
-
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
 
   return (
     <>
@@ -72,7 +124,7 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="main-image">
+            <div className="main-image" onClick={() => handleImageClick(yacht.image)}>
               {yacht.image && (
                 <img
                   src={yacht.image}
@@ -123,6 +175,7 @@ const YachtDetails = ({ yachts }) => {
                       key={index}
                       className="thumbnail"
                       whileHover={{ scale: 1.05 }}
+                      onClick={() => handleImageClick(img)}
                     >
                       <img
                         src={img}
@@ -544,6 +597,49 @@ const YachtDetails = ({ yachts }) => {
           yachtName={yacht.name}
           price={yacht.price}
         />
+
+        {/* Image Viewer Modal */}
+        <AnimatePresence>
+          {selectedImage && (
+            <>
+              <motion.div
+                className="image-viewer-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={handleCloseImageViewer}
+              />
+              <motion.div
+                className="image-viewer-container"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+              >
+                <button className="close-viewer" onClick={handleCloseImageViewer}>
+                  ✕
+                </button>
+                <button 
+                  className="nav-button prev"
+                  onClick={handlePrevImage}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <img src={selectedImage} alt="Full size view" />
+                <button 
+                  className="nav-button next"
+                  onClick={handleNextImage}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+                <div className="image-counter">
+                  {currentImageIndex + 1} / {allImages.length}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

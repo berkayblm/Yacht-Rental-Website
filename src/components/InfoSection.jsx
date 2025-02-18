@@ -42,7 +42,7 @@ const InfoSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <img src="/la-perla-5.jpeg" alt="Luxury yacht at sunset" />
+              <img src="/images/DJI_0720+ kopya.jpg" alt="Luxury yacht at sunset" />
             </motion.div>
             <motion.div 
               className="overlay-image"

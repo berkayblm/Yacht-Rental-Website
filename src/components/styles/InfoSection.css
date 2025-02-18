@@ -165,7 +165,7 @@
   width: 100%;
   height: 500px;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url('/public/1755344.jpg') center/cover no-repeat;
+              url('/public/images/IMG_20220711_225349_830.jpg') center/cover no-repeat;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 80px;
@@ -295,7 +295,7 @@
 }
 
 /* Update the nested images styles with border spaces */
-.nested-image-feature {
+.info-section .nested-image-feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
@@ -303,108 +303,129 @@
   align-items: center;
 }
 
-.nested-images {
+.info-section .nested-images {
   position: relative;
   width: 100%;
   padding-right: 100px;
   padding-bottom: 60px;
 }
 
-.main-image {
+.info-section .nested-image-feature .main-image {
   position: relative;
   width: 100%;
+  height: 350px !important;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
-  background: white;
+  background-color: #f8f9fa;
 }
 
-
-.main-image img {
+.info-section .nested-image-feature .main-image img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
   border-radius: 8px;
 }
 
-.overlay-image {
+.info-section .nested-image-feature .overlay-image {
   position: absolute;
   width: 60%;
+  height: 250px !important;
   right: 0;
   bottom: 0;
   border-radius: 20px;
   overflow: hidden;
-  border: 10px solid #F8F9FA;;
-  background: #F8F9FA;;
+  border: 10px solid #F8F9FA;
+  background: #F8F9FA;
 }
 
-.overlay-image img {
+.info-section .nested-image-feature .overlay-image img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
   border-radius: 8px;
 }
 
-.main-image:hover img,
-.overlay-image:hover img {
+.info-section .nested-image-feature .main-image:hover img,
+.info-section .nested-image-feature .overlay-image:hover img {
   transform: scale(1.05);
 }
 
 /* Enhanced hover effects with shadow */
-.nested-images:hover .main-image {
+.info-section .nested-image-feature .nested-images:hover .main-image {
   transform: translate(-10px, -10px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.nested-images:hover .overlay-image {
+.info-section .nested-image-feature .nested-images:hover .overlay-image {
   transform: translate(10px, 10px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.main-image,
-.overlay-image {
+.info-section .nested-image-feature .main-image,
+.info-section .nested-image-feature .overlay-image {
   transition: all 0.3s ease;
 }
 
 /* Keep existing media queries */
 @media (max-width: 1024px) {
-  .nested-image-feature {
+  .info-section .nested-image-feature {
     grid-template-columns: 1fr;
   }
 
-  .nested-images {
+  .info-section .nested-images {
     padding-right: 80px;
     padding-bottom: 50px;
   }
 
-  .main-image,
-  .overlay-image {
+  .info-section .nested-image-feature .main-image,
+  .info-section .nested-image-feature .overlay-image {
     border-width: 12px;
+  }
+
+  .info-section .nested-image-feature .main-image {
+    height: 300px !important;
+  }
+
+  .info-section .nested-image-feature .overlay-image {
+    height: 200px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .nested-images {
+  .info-section .nested-images {
     padding-right: 60px;
     padding-bottom: 40px;
   }
 
-  .overlay-image {
+  .info-section .nested-image-feature .main-image {
+    height: 250px !important;
+  }
+
+  .info-section .nested-image-feature .overlay-image {
+    height: 180px !important;
     width: 70%;
   }
 
-  .main-image,
-  .overlay-image {
+  .info-section .nested-image-feature .main-image,
+  .info-section .nested-image-feature .overlay-image {
     border-width: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .nested-images {
+  .info-section .nested-images {
     padding-right: 40px;
     padding-bottom: 30px;
+  }
+
+  .info-section .nested-image-feature .main-image {
+    height: 300px !important;
+  }
+
+  .info-section .nested-image-feature .overlay-image {
+    height: 150px !important;
   }
 }
