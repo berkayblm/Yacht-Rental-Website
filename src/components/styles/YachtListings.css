@@ -127,3 +127,29 @@
     font-size: 28px;
   }
 }
+
+/* Add these styles at the end of the file */
+.view-all-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all-button {
+  background-color: #4169e1;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.view-all-button:hover {
+  background-color: #3151b5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
+}

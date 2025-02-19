@@ -10,6 +10,10 @@ const YachtListings = ({ yachts }) => {
   const handleYachtClick = (yachtId) => {
     navigate(`/yachts/${yachtId}`);
   };
+
+  const handleViewAllClick = () => {
+    navigate('/yachts');
+  };
   
   return (
     <motion.section 
@@ -79,16 +83,28 @@ const YachtListings = ({ yachts }) => {
                   </div>
                 </div>
                 
-                <div className="detail-row yellow">
-                  <div className="detail-item">
-                    <span className="label">Start Time</span>
-                    <span className="value">{yacht.details.startTime}</span>
-                  </div>
-                </div>
+                
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          className="view-all-container"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <motion.button
+            className="view-all-button"
+            onClick={handleViewAllClick}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View All Yachts
+          </motion.button>
+        </motion.div>
       </div>
     </motion.section>
   );

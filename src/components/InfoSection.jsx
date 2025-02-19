@@ -13,6 +13,12 @@ const InfoSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/IMG_20220711_225349_830.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
         >
           <div className="banner-content">
             <h1>Let's discover amazing<br />and luxurious yacht today!</h1>
@@ -42,7 +48,13 @@ const InfoSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <img src="/images/DJI_0720+ kopya.jpg" alt="Luxury yacht at sunset" />
+              <img 
+                src="/images/DJI_0720+ kopya.jpg" 
+                alt="Luxury yacht at sunset" 
+                loading="lazy"
+                onLoad={(e) => e.target.classList.add('loaded')}
+              />
+              <div className="image-placeholder"></div>
             </motion.div>
             <motion.div 
               className="overlay-image"
@@ -51,7 +63,13 @@ const InfoSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <img src="/la-perla-5.jpeg" alt="Captain steering the yacht" />
+              <img 
+                src="/la-perla-5.jpeg" 
+                alt="Captain steering the yacht" 
+                loading="lazy"
+                onLoad={(e) => e.target.classList.add('loaded')}
+              />
+              <div className="image-placeholder"></div>
             </motion.div>
           </div>
           
@@ -142,7 +160,13 @@ const InfoSection = () => {
             </motion.button>
           </div>
           <div className="promo-image">
-            <img src="/side-1.jpg" alt="Luxury yacht experience" />
+            <img 
+              src="/side-1.jpg" 
+              alt="Luxury yacht experience" 
+              loading="lazy"
+              onLoad={(e) => e.target.classList.add('loaded')}
+            />
+            <div className="image-placeholder"></div>
           </div>
         </motion.div>
       </div>

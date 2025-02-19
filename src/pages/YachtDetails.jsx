@@ -467,11 +467,7 @@ const YachtDetails = ({ yachts }) => {
                 <div className="overview-section">
                   <h3>Quick Details</h3>
                   <div className="overview-grid">
-                    <div className="overview-item">
-                      <i className="fas fa-clock"></i>
-                      <h4>Duration</h4>
-                      <p>{yacht.details.startTime}</p>
-                    </div>
+                    
                     <div className="overview-item">
                       <i className="fas fa-users"></i>
                       <h4>Capacity</h4>
@@ -507,21 +503,7 @@ const YachtDetails = ({ yachts }) => {
                   </div>
                 </div>
 
-                {/* Accommodation */}
-                <div className="overview-section">
-                  <h3>Accommodation</h3>
-                  <div className="cabin-info">
-                    <ul>
-                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.master} Master Cabin</li>
-                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.double} Double Cabins</li>
-                      <li><i className="fas fa-bed"></i> {yacht.details.cabins.twin} Twin Cabin</li>
-                    </ul>
-                    <div className="capacity-details">
-                      <p><i className="fas fa-sun"></i> Day: {yacht.details.guestCapacity.day} guests</p>
-                      <p><i className="fas fa-moon"></i> Overnight: {yacht.details.guestCapacity.overnight} guests</p>
-                    </div>
-                  </div>
-                </div>
+                
 
                 {/* Equipment */}
                 <div className="overview-section">

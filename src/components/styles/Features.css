@@ -12,6 +12,7 @@
 
 .wave-top {
   position: absolute;
+  margin-top: 2px;
   top: 0;
   left: 0;
   width: 100%;

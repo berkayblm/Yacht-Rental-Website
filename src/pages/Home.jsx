@@ -18,14 +18,7 @@ import GallerySection from '../components/GallerySection';
 const Home = ({ yachts }) => {
   
 
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
+  
 
   useEffect(() => {
     const scrollToTop = () => {
@@ -60,14 +53,16 @@ const Home = ({ yachts }) => {
       
       <WelcomeSection />
      
-
+      {/* Yacht Listings Section */}
+      <YachtListings yachts={yachts} />
       
       {/* Info Section */}
 
       <InfoSection />
         
-        {/* Yacht Listings Section */}
-        <YachtListings yachts={yachts} />
+        
+
+        <GallerySection />
         <TourRoadmap />
       <motion.section 
         className="location-section"

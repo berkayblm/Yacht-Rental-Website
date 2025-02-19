@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './styles/Hero.css';
-
+import { useNavigate } from 'react-router-dom';
 const Hero = () => {
+
+  const navigate = useNavigate();
   return (
     <motion.div
       className="hero-section"
@@ -38,6 +40,7 @@ const Hero = () => {
           className="reserve-now-btn"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}  
+          onClick={() => navigate('/yachts')}
         >
           RESERVE YOUR YACHT →
         </motion.button>

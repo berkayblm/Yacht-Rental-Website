@@ -55,7 +55,7 @@ const GallerySection = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.2,
         ease: "easeOut"
       }
     }
@@ -67,7 +67,7 @@ const GallerySection = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.2,
         ease: "easeOut"
       }
     }
@@ -76,10 +76,10 @@ const GallerySection = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
@@ -117,7 +117,7 @@ const GallerySection = () => {
         Our Exclusive Yacht Gallery
       </motion.h2>
       
-      <Slider {...sliderSettings} className="slider">
+      <Slider {...sliderSettings} className="slider" lazyLoad="ondemand">
         {galleryData.galleryImages.map((item) => (
           <motion.div
             key={item.id}
@@ -125,17 +125,18 @@ const GallerySection = () => {
             variants={cardVariants}
             whileHover={{ 
               scale: 1.02,
-              transition: { duration: 0.3 }
+              transition: { duration: 0.1 }
             }}
           >
             <div className="card">
               <div className="card-image-wrapper">
                 <motion.img
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.1 }}
                   className="card-img-top"
                   src={item.image}
                   alt={item.alt}
+                  loading="lazy"
                 />
               </div>
             </div>

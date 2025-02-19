@@ -27,92 +27,45 @@ const WelcomeSection = () => {
         </motion.p>
       </div>
 
-      <motion.div
-        className="gallery-section"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="highlight-text"
       >
-        <GallerySection />
-      </motion.div>
+        Embark on an unforgettable journey along Turkey's stunning coastline, where crystal-clear waters meet ancient history and modern luxury.
+      </motion.p>
 
-      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="features-grid"
+      >
+        <div className="feature-box">
+          <i className="fas fa-anchor"></i>
+          <h3>Premium Yachts</h3>
+          <p>Choose from our fleet of meticulously maintained luxury vessels</p>
+        </div>
+        <div className="feature-box">
+          <i className="fas fa-map-marked-alt"></i>
+          <h3>Custom Routes</h3>
+          <p>Personalized itineraries tailored to your preferences</p>
+        </div>
+        <div className="feature-box">
+          <i className="fas fa-concierge-bell"></i>
+          <h3>Expert Crew</h3>
+          <p>Professional and experienced crew at your service</p>
+        </div>
+        <div className="feature-box">
+          <i className="fas fa-glass-cheers"></i>
+          <h3>Luxury Experience</h3>
+          <p>First-class amenities and gourmet dining options</p>
+        </div>
+      </motion.div>
     </div>
   );
 };
 
-const features = [
-  {
-    icon: "fas fa-anchor",
-    title: "Premium Fleet",
-    description: "Choose from our carefully selected luxury yachts, each maintained to the highest standards."
-  },
-  {
-    icon: "fas fa-map-marked-alt",
-    title: "Expert Navigation",
-    description: "Our experienced crew knows every hidden gem along the Turkish coast."
-  },
-  {
-    icon: "fas fa-concierge-bell",
-    title: "Luxury Service",
-    description: "Enjoy personalized attention and premium amenities throughout your journey."
-  },
-  {
-    icon: "fas fa-glass-cheers",
-    title: "Special Events",
-    description: "Perfect for celebrations, corporate events, and unforgettable gatherings."
-  }
-];
-
-const experiences = [
-  {
-    title: "Luxury Comfort",
-    description: "Experience unparalleled comfort with our premium amenities:",
-    points: [
-      "Spacious cabins with en-suite facilities",
-      "Climate-controlled interiors",
-      "Premium entertainment systems",
-      "Gourmet kitchen facilities"
-    ]
-  },
-  {
-    title: "Adventure & Activities",
-    description: "Create memories with exciting activities:",
-    points: [
-      "Snorkeling in crystal-clear waters",
-      "Water sports equipment",
-      "Beach excursions",
-      "Sunset cruises"
-    ]
-  },
-  {
-    title: "Professional Service",
-    description: "Rely on our experienced team:",
-    points: [
-      "Professional captain and crew",
-      "Personalized itineraries",
-      "24/7 support",
-      "Local expertise"
-    ]
-  }
-];
-
-const testimonials = [
-  {
-    text: "An absolutely incredible experience! The yacht was immaculate, and the crew went above and beyond.",
-    name: "Sarah M.",
-    location: "United Kingdom"
-  },
-  {
-    text: "Perfect family vacation. The attention to detail and service was outstanding.",
-    name: "Michael R.",
-    location: "Germany"
-  },
-  {
-    text: "The most luxurious way to explore the Turkish coast. Will definitely return!",
-    name: "Elena K.",
-    location: "Russia"
-  }
-];
 
 export default WelcomeSection; 
