@@ -8,17 +8,22 @@ import './styles/YachtDetails.css';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { yachtTranslations } from '../translations/yachtData';
+import { pageTranslations } from '../translations/yachtDetailsPageTranslations';
+import { useLanguage } from '../context/LanguageContext';
 
-const YachtDetails = ({ yachts }) => {
+const YachtDetails = ({ language = 'en' }) => {
   const { yachtId } = useParams();
-  const yacht = yachts.find(y => y.id === parseInt(yachtId));
+  const { currentLanguage } = useLanguage();
+  const yachtData = yachtTranslations[currentLanguage]?.[parseInt(yachtId)];
+  const translations = pageTranslations[currentLanguage] || pageTranslations['en']; // Fallback to English
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Combine main image and other images for navigation
-  const allImages = yacht ? [yacht.image, ...(yacht.images || [])] : [];
+  const allImages = yachtData ? [yachtData.image, ...(yachtData.images || [])] : [];
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -97,7 +102,7 @@ const YachtDetails = ({ yachts }) => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [selectedImage, currentImageIndex, allImages]); // Added allImages to dependencies
 
-  if (!yacht) {
+  if (!yachtData) {
     return <div>Yacht not found</div>;
   }
 
@@ -113,8 +118,8 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1>{yacht.name}</h1>
-            <div className="price-tag">{yacht.price}</div>
+            <h1>{yachtData.name}</h1>
+            <div className="price-tag">{yachtData.price}</div>
           </motion.div>
 
           {/* Image Gallery */}
@@ -124,11 +129,11 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="main-image" onClick={() => handleImageClick(yacht.image)}>
-              {yacht.image && (
+            <div className="main-image" onClick={() => handleImageClick(yachtData.image)}>
+              {yachtData.image && (
                 <img
-                  src={yacht.image}
-                  alt={yacht.name}
+                  src={yachtData.image}
+                  alt={yachtData.name}
                   onError={(e) => {
                     console.log('Error loading image:', e.target.src);
                     e.target.onerror = null;
@@ -138,7 +143,7 @@ const YachtDetails = ({ yachts }) => {
               )}
             </div>
             
-            {Array.isArray(yacht.images) && yacht.images.length > 0 && (
+            {Array.isArray(yachtData.images) && yachtData.images.length > 0 && (
               <div className="thumbnail-slider-container">
                 <Slider
                   dots={false}
@@ -170,7 +175,7 @@ const YachtDetails = ({ yachts }) => {
                     }
                   ]}
                 >
-                  {yacht.images.map((img, index) => (
+                  {yachtData.images.map((img, index) => (
                     <motion.div
                       key={index}
                       className="thumbnail"
@@ -179,7 +184,7 @@ const YachtDetails = ({ yachts }) => {
                     >
                       <img
                         src={img}
-                        alt={`${yacht.name} view ${index + 1}`}
+                        alt={`${yachtData.name} view ${index + 1}`}
                         onError={(e) => {
                           console.log('Error loading thumbnail:', e.target.src);
                           e.target.onerror = null;
@@ -200,14 +205,14 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h2>Description</h2>
+            <h2>{translations.description}</h2>
             <div className="description-preview">
-              <h3>OUR SPECIAL OFFER INCLUDED IN THE PRICE</h3>
-              <p className="main-description">{yacht.description.main}</p>
+              <h3>{translations.specialOffer}</h3>
+              <p className="main-description">{yachtData.description.main}</p>
 
               {/* Preview of highlights */}
               <div className="highlights">
-                {yacht.description.highlights.slice(0, 2).map((highlight, index) => (
+                {yachtData.description.highlights.slice(0, 2).map((highlight, index) => (
                   <p key={index}>
                     <span className="emoji">🌟</span> {highlight}
                   </p>
@@ -218,13 +223,14 @@ const YachtDetails = ({ yachts }) => {
                 className="read-more-btn"
                 onClick={toggleDescription}
               >
-                Read More...
+                {translations.readMore}
               </button>
             </div>
           </motion.section>
 
-          {/* Add TimeOptions section before or after the description section */}
-          <TimeOptions timeSlots={yacht.timeSlots} />
+          {/* Add TimeOptions section */}
+          <TimeOptions timeSlots={yachtData.details.startTime} />
+
           {/* Full Description Popup */}
           <AnimatePresence>
             {showFullDescription && (
@@ -243,7 +249,7 @@ const YachtDetails = ({ yachts }) => {
                   exit={{ opacity: 0, y: 50 }}
                 >
                   <div className="popup-header">
-                    <h2>Description</h2>
+                    <h2>{translations.description}</h2>
                     <button
                       className="close-popup"
                       onClick={toggleDescription}
@@ -253,44 +259,44 @@ const YachtDetails = ({ yachts }) => {
                   </div>
 
                   <div className="popup-content">
-                    <h3>OUR SPECIAL OFFER INCLUDED IN THE PRICE</h3>
-                    <p className="main-description">{yacht.description.main}</p>
+                    <h3>{translations.specialOffer}</h3>
+                    <p className="main-description">{yachtData.description.main}</p>
 
                     <div className="highlights">
                       <p>
-                        <span className="emoji">🚢</span> {yacht.description.highlights[0]}
+                        <span className="emoji">🚢</span> {yachtData.description.highlights[0]}
                       </p>
                       <p>
-                        <span className="emoji">👨‍✈️</span> {yacht.description.highlights[1]}
+                        <span className="emoji">👨‍✈️</span> {yachtData.description.highlights[1]}
                       </p>
                       <p>
-                        <span className="emoji">⏰</span> {yacht.description.highlights[2]}
+                        <span className="emoji">⏰</span> {yachtData.description.highlights[2]}
                       </p>
                     </div>
 
                     <div className="location-info">
                       <p>
-                        <span className="emoji">📍</span> Departure Marina: {yacht.description.location.departure}
+                        <span className="emoji">📍</span> Departure Marina: {yachtData.description.location.departure}
                       </p>
                       <p>
                         <span className="emoji">📍</span> The beverage and food menu specified here is included in the price.
                       </p>
                       <p>
                         <span className="emoji">📍</span> Menu: {[
-                          ...yacht.description.includedMenu.mainDishes,
-                          ...yacht.description.includedMenu.sides
+                          ...yachtData.description.includedMenu.mainDishes,
+                          ...yachtData.description.includedMenu.sides
                         ].join(', ')},
-                        Fruity Soft Drinks ({yacht.description.includedMenu.beverages.join(', ')})
+                        Fruity Soft Drinks ({yachtData.description.includedMenu.beverages.join(', ')})
                       </p>
                     </div>
 
                     <div className="extra-info">
-                      <p>{yacht.description.extraServices.note}</p>
+                      <p>{yachtData.description.extraServices.note}</p>
                     </div>
 
                     <div className="extra-services">
-                      <h4>FOR EXTRA SERVICES AND REQUESTS NOT INCLUDED IN THE PRICE</h4>
-                      {yacht.description.extraServices.options.map((option, index) => (
+                      <h4>{translations.extraServicesTitle}</h4>
+                      {yachtData.description.extraServices.options.map((option, index) => (
                         <p key={index}>
                           <span className="emoji">✅</span> {option}
                         </p>
@@ -309,66 +315,66 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h2>The Features of {yacht.name}</h2>
+            <h2>{translations.featuresTitle.replace('{yachtName}', yachtData.name)}</h2>
             <div className="features-grid">
               <div className="features-column">
                 <div className="feature-item">
-                  <span className="feature-label">Yacht Name:</span>
-                  <span className="feature-value">{yacht.features.yachtName}</span>
+                  <span className="feature-label">{translations.featureLabels.yachtName}</span>
+                  <span className="feature-value">{yachtData.features.yachtName}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Yacht Type:</span>
-                  <span className="feature-value">{yacht.features.yachtType}</span>
+                  <span className="feature-label">{translations.featureLabels.yachtType}</span>
+                  <span className="feature-value">{yachtData.features.yachtType}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Brand:</span>
-                  <span className="feature-value">{yacht.features.brand}</span>
+                  <span className="feature-label">{translations.featureLabels.brand}</span>
+                  <span className="feature-value">{yachtData.features.brand}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Capacity:</span>
-                  <span className="feature-value">{yacht.features.capacity}</span>
+                  <span className="feature-label">{translations.featureLabels.capacity}</span>
+                  <span className="feature-value">{yachtData.features.capacity}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Crew:</span>
-                  <span className="feature-value">{yacht.features.crew}</span>
+                  <span className="feature-label">{translations.featureLabels.crew}</span>
+                  <span className="feature-value">{yachtData.features.crew}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Cabin:</span>
-                  <span className="feature-value">{yacht.features.cabin}</span>
+                  <span className="feature-label">{translations.featureLabels.cabin}</span>
+                  <span className="feature-value">{yachtData.features.cabin}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Shower/WC:</span>
-                  <span className="feature-value">{yacht.features.showerWC}</span>
+                  <span className="feature-label">{translations.featureLabels.showerWC}</span>
+                  <span className="feature-value">{yachtData.features.showerWC}</span>
                 </div>
               </div>
               <div className="features-column">
                 <div className="feature-item">
-                  <span className="feature-label">Length:</span>
-                  <span className="feature-value">{yacht.features.length}</span>
+                  <span className="feature-label">{translations.featureLabels.length}</span>
+                  <span className="feature-value">{yachtData.features.length}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Width:</span>
-                  <span className="feature-value">{yacht.features.width}</span>
+                  <span className="feature-label">{translations.featureLabels.width}</span>
+                  <span className="feature-value">{yachtData.features.width}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Speed:</span>
-                  <span className="feature-value">{yacht.features.speed}</span>
+                  <span className="feature-label">{translations.featureLabels.speed}</span>
+                  <span className="feature-value">{yachtData.features.speed}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Manufacturing:</span>
-                  <span className="feature-value">{yacht.features.manufacturing}</span>
+                  <span className="feature-label">{translations.featureLabels.manufacturing}</span>
+                  <span className="feature-value">{yachtData.features.manufacturing}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Refit Date:</span>
-                  <span className="feature-value">{yacht.features.refitDate}</span>
+                  <span className="feature-label">{translations.featureLabels.refitDate}</span>
+                  <span className="feature-value">{yachtData.features.refitDate}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Location:</span>
-                  <span className="feature-value">{yacht.features.location}</span>
+                  <span className="feature-label">{translations.featureLabels.location}</span>
+                  <span className="feature-value">{yachtData.features.location}</span>
                 </div>
                 <div className="feature-item">
-                  <span className="feature-label">Distance:</span>
-                  <span className="feature-value">{yacht.features.distance}</span>
+                  <span className="feature-label">{translations.featureLabels.distance}</span>
+                  <span className="feature-value">{yachtData.features.distance}</span>
                 </div>
               </div>
             </div>
@@ -381,10 +387,10 @@ const YachtDetails = ({ yachts }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <h2>The Equipment of {yacht.name}</h2>
+            <h2>{translations.equipmentTitle.replace('{yachtName}', yachtData.name)}</h2>
             <div className="equipment-grid">
               <div className="equipment-column">
-                {yacht.equipment.comfort.map((item, index) => (
+                {yachtData.equipment.comfort.map((item, index) => (
                   <div key={index} className="equipment-item">
                     <i className="fas fa-check"></i>
                     <span>{item}</span>
@@ -392,7 +398,7 @@ const YachtDetails = ({ yachts }) => {
                 ))}
               </div>
               <div className="equipment-column">
-                {yacht.equipment.activities.map((item, index) => (
+                {yachtData.equipment.activities.map((item, index) => (
                   <div key={index} className="equipment-item">
                     <i className="fas fa-check"></i>
                     <span>{item}</span>
@@ -414,9 +420,9 @@ const YachtDetails = ({ yachts }) => {
               <div className="services-container">
                 {/* Included Services */}
                 <div className="services-column included">
-                  <h2>Included in Price</h2>
+                  <h2>{translations.includedInPrice}</h2>
                   <div className="services-grid">
-                    {Object.entries(yacht.services.included).map(([key, service]) => (
+                    {Object.entries(yachtData.services.included).map(([key, service]) => (
                       <div key={key} className="service-card">
                         {key === 'fixedMenu' ? (
                           <>
@@ -440,9 +446,9 @@ const YachtDetails = ({ yachts }) => {
 
                 {/* Extra Services */}
                 <div className="services-column extras">
-                  <h2>Available Extras</h2>
+                  <h2>{translations.availableExtras}</h2>
                   <div className="services-grid">
-                    {Object.entries(yacht.services.extras).map(([key, service]) => (
+                    {Object.entries(yachtData.services.extras).map(([key, service]) => (
                       <div key={key} className="service-card">
                         <h3>{service.title}</h3>
                         <p>{service.description}</p>
@@ -450,7 +456,6 @@ const YachtDetails = ({ yachts }) => {
                     ))}
                   </div>
                 </div>
-
               </div>
             </motion.section>
 
@@ -461,55 +466,52 @@ const YachtDetails = ({ yachts }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h2>Overview</h2>
+              <h2>{translations.overview}</h2>
               <div className="overview-content">
                 {/* Quick Overview */}
                 <div className="overview-section">
-                  <h3>Quick Details</h3>
+                  <h3>{translations.quickDetails}</h3>
                   <div className="overview-grid">
-                    
                     <div className="overview-item">
                       <i className="fas fa-users"></i>
-                      <h4>Capacity</h4>
-                      <p>{yacht.details.totalCapacity}</p>
+                      <h4>{translations.capacity}</h4>
+                      <p>{yachtData.details.totalCapacity}</p>
                     </div>
                     <div className="overview-item">
                       <i className="fas fa-door-closed"></i>
-                      <h4>Cabins</h4>
-                      <p>{yacht.details.totalCabins}</p>
+                      <h4>{translations.cabins}</h4>
+                      <p>{yachtData.details.totalCabins}</p>
                     </div>
                     <div className="overview-item">
                       <i className="fas fa-anchor"></i>
-                      <h4>Breaks</h4>
-                      <p>{yacht.details.totalBreaks}</p>
+                      <h4>{translations.breaks}</h4>
+                      <p>{yachtData.details.totalBreaks}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Technical Specifications */}
                 <div className="overview-section">
-                  <h3>Technical Specifications</h3>
+                  <h3>{translations.technicalSpecifications}</h3>
                   <div className="specs-grid">
                     <div className="spec-item">
                       <i className="fas fa-ruler-combined"></i>
-                      <h4>Length</h4>
-                      <p>{yacht.details.length}</p>
+                      <h4>{translations.length}</h4>
+                      <p>{yachtData.details.length}</p>
                     </div>
                     <div className="spec-item">
                       <i className="fas fa-ship"></i>
-                      <h4>Builder</h4>
-                      <p>{yacht.builder}</p>
+                      <h4>{translations.builder}</h4>
+                      <p>{yachtData.builder}</p>
                     </div>
                   </div>
                 </div>
 
-                
-
                 {/* Equipment */}
                 <div className="overview-section">
-                  <h3>Equipment</h3>
+                  <h3>{translations.equipment}</h3>
                   <div className="equipment-grid">
-                    {yacht.equipment.comfort.map((item, index) => (
+                    {yachtData.equipment.comfort.map((item, index) => (
                       <div key={index} className="equipment-item">
                         <i className="fas fa-check"></i>
                         <span>{item}</span>
@@ -520,9 +522,9 @@ const YachtDetails = ({ yachts }) => {
 
                 {/* Optional Services */}
                 <div className="overview-section">
-                  <h3>Optional Services</h3>
+                  <h3>{translations.optionalServices}</h3>
                   <div className="optional-services-list">
-                    {yacht.details.optionalServices.map((service, index) => (
+                    {yachtData.details.optionalServices.map((service, index) => (
                       <div key={index} className="optional-service-item">
                         <span>{service.name}</span>
                         <span className="price">{service.price}</span>
@@ -533,11 +535,11 @@ const YachtDetails = ({ yachts }) => {
 
                 {/* Cancellation Policy */}
                 <div className="overview-section">
-                  <h3>Cancellation Policy</h3>
+                  <h3>{translations.cancellationPolicy}</h3>
                   <div className="cancellation-details">
-                    <p><strong>Full Refund:</strong> {yacht.details.cancellation.fullRefund}</p>
-                    <p><strong>Partial Refund:</strong> {yacht.details.cancellation.partialRefund}</p>
-                    <p><strong>No Refund:</strong> {yacht.details.cancellation.noRefund}</p>
+                    <p><strong>{translations.fullRefund}</strong> {yachtData.details.cancellation.fullRefund}</p>
+                    <p><strong>{translations.partialRefund}</strong> {yachtData.details.cancellation.partialRefund}</p>
+                    <p><strong>{translations.noRefund}</strong> {yachtData.details.cancellation.noRefund}</p>
                   </div>
                 </div>
               </div>
@@ -552,12 +554,12 @@ const YachtDetails = ({ yachts }) => {
             transition={{ duration: 0.5, delay: 0.7 }}
           >
             <div className="booking-content">
-              <h2>Book This Yacht</h2>
-              <p>Experience luxury at sea with our premium yacht service</p>
+              <h2>{translations.bookThisYacht}</h2>
+              <p>{translations.bookingDescription}</p>
               <div className="booking-info">
                 <div className="price-info">
-                  <span className="price">{yacht.price}</span>
-                  <span className="price-unit">{yacht.priceUnit}</span>
+                  <span className="price">{yachtData.price}</span>
+                  <span className="price-unit">{yachtData.priceUnit}</span>
                 </div>
                 <motion.button
                   className="book-now-btn"
@@ -565,7 +567,7 @@ const YachtDetails = ({ yachts }) => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowPaymentModal(true)}
                 >
-                  Book Now
+                  {translations.bookNow}
                 </motion.button>
               </div>
             </div>
@@ -576,8 +578,8 @@ const YachtDetails = ({ yachts }) => {
         <PaymentContact 
           isOpen={showPaymentModal}
           onClose={() => setShowPaymentModal(false)}
-          yachtName={yacht.name}
-          price={yacht.price}
+          yachtName={yachtData.name}
+          price={yachtData.price}
         />
 
         {/* Image Viewer Modal */}

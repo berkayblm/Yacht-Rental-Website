@@ -2,10 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import './styles/YachtListings.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const YachtListings = ({ yachts }) => {
 
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].yachtListings;
 
   const handleYachtClick = (yachtId) => {
     navigate(`/yachts/${yachtId}`);
@@ -31,8 +35,8 @@ const YachtListings = ({ yachts }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h4 className="subtitle">SPECIAL YACHT TRIPS</h4>
-          <h2 className="title">Our fleet of luxury yachts</h2>
+          <h4 className="subtitle">{t.title}</h4>
+          <h2 className="title">{t.subtitle}</h2>
         </motion.div>
         
         <div className="yacht-cards">
@@ -61,29 +65,18 @@ const YachtListings = ({ yachts }) => {
               <h3 className="yacht-name">{yacht.name}</h3>
               
               <div className="yacht-details">
-                
-            
-                <div className="detail-row yellow">
-                  <div className="detail-item">
-                    <span className="label">Capacity</span>
-                    <span className="value">{yacht.details.totalCapacity}</span>
-                  </div>
-                  
-                </div>
-                <div className="detail-row yellow">
                 <div className="detail-item">
-                    <span className="label">Cabins</span>
-                    <span className="value">{yacht.details.totalCabins}</span>
-                  </div>
+                  <span className="label">{t.details.capacity}</span>
+                  <span className="value">{yacht.details.totalCapacity}</span>
                 </div>
-                <div className="detail-row yellow">
-                  <div className="detail-item">
-                    <span className="label">Location</span>
-                    <span className="value">{yacht.location}</span>
-                  </div>
+                <div className="detail-item">
+                  <span className="label">{t.details.cabins}</span>
+                  <span className="value">{yacht.details.totalCabins}</span>
                 </div>
-                
-                
+                <div className="detail-item">
+                  <span className="label">{t.details.location}</span>
+                  <span className="value">{yacht.location}</span>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -102,7 +95,7 @@ const YachtListings = ({ yachts }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View All Yachts
+            {t.viewAll}
           </motion.button>
         </motion.div>
       </div>

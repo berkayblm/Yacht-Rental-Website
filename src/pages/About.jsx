@@ -1,195 +1,165 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaAnchor, FaShip, FaUserTie, FaRegHandshake } from 'react-icons/fa';
-import { MdSecurity, MdLocationOn } from 'react-icons/md';
+import {  MdLocationOn, MdEmail } from 'react-icons/md';
 import Navbar from '../components/Navbar';
 import Maps from '../components/Maps';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 import './styles/About.css';
+import { BiPhone } from 'react-icons/bi';
 
 const About = () => {
-  useEffect(() => {
-    const scrollToTop = () => {
-      try {
-        // Try multiple scroll methods
-        window.scroll(0, 0);
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTo(0, 0);
-        document.body.scrollTo(0, 0);
-        
-        // Force scroll with timeout as fallback
-        setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'auto'
-          });
-        }, 100);
-      } catch (error) {
-        console.error('Error scrolling:', error);
-      }
-    };
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].about;
 
-    scrollToTop();
-  }, []); // Empty dependency array for about page
-
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+  const values = [
+    { icon: <FaAnchor />, key: 'excellence' },
+    { icon: <FaRegHandshake />, key: 'safety' },
+    { icon: <FaShip />, key: 'luxury' },
+    { icon: <FaUserTie />, key: 'trust' }
+  ];
 
   return (
     <>
       <Navbar />
-      
-      {/* Hero Section */}
-      <motion.div 
+      <motion.section
         className="about-hero"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="about-hero-content">
-          <motion.h1 {...fadeIn}>About Side Vip Yacht Rental</motion.h1>
-          <motion.p 
-            {...fadeIn}
-            transition={{ delay: 0.2 }}
-          >
-            Crafting Unforgettable Maritime Experiences Since 2020
-          </motion.p>
-        </div>
-      </motion.div>
-
-      {/* Our Story Section */}
-      <motion.section 
-        className="our-story-section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
       >
         <div className="container">
-          <motion.div className="story-content">
-            <motion.div 
-              className="story-text"
-              {...fadeIn}
+          <div className="about-hero-content">
+            <motion.h1
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {t.hero.title}
+            </motion.h1>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <h2>Our Story</h2>
-              <p>Founded in 2020, Side Vip Yacht Rental emerged from a passion for luxury maritime experiences and a vision to make yacht chartering accessible to those seeking extraordinary adventures at sea.</p>
-              <p>Over the years, we've built a reputation for excellence, curating a fleet of the finest yachts and delivering personalized service that exceeds expectations. Our journey has been marked by countless satisfied clients and memorable voyages along the stunning Turkish coastline.</p>
+              {t.hero.subtitle}
+            </motion.p>
+          </div>
+        </div>
+      </motion.section>
+
+      <section className="our-story-section">
+        <div className="container">
+          <div className="story-content">
+            <motion.div
+              className="story-text"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2>{t.story.title}</h2>
+              <p>{t.story.description1}</p>
+              <p>{t.story.description2}</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="story-image"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
             >
-              <img src="/images/side-vip-img-1.jpg" alt="Luxury yacht experience" />
+              <img src="/images/IMG_20220711_225349_830.jpg" alt="Our Story" />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Values Section */}
-      <motion.section 
-        className="values-section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
+      <section className="values-section">
         <div className="container">
-          <motion.h2 {...fadeIn}>Our Core Values</motion.h2>
+          <h2>{t.values.title}</h2>
           <div className="values-grid">
-            {[
-              { icon: <FaAnchor />, title: "Excellence", text: "Committed to delivering the highest standards in luxury yacht experiences" },
-              { icon: <FaUserTie />, title: "Professionalism", text: "Expert crew and staff dedicated to your comfort and safety" },
-              { icon: <MdSecurity />, title: "Safety", text: "Rigorous safety protocols and well-maintained vessels" },
-              { icon: <FaRegHandshake />, title: "Trust", text: "Building lasting relationships through transparency and reliability" }
-            ].map((value, index) => (
-              <motion.div 
-                key={index}
+            {values.map(({ icon, key }, index) => (
+              <motion.div
+                key={key}
                 className="value-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="value-icon">{value.icon}</div>
-                <h3>{value.title}</h3>
-                <p>{value.text}</p>
+                <div className="value-icon">{icon}</div>
+                <h3>{t.values.cards[key].title}</h3>
+                <p>{t.values.cards[key].description}</p>
               </motion.div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Stats Section */}
-      <motion.section 
-        className="stats-section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
+      <motion.section className="stats-section">
         <div className="container">
           <div className="stats-grid">
-            {[
-              { number: "5+", text: "Years Experience" },
-              { number: "500+", text: "Happy Clients" },
-             
-              { number: "100%", text: "Satisfaction" }
-            ].map((stat, index) => (
-              <motion.div 
-                key={index}
-                className="stat-card"
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <h3>{stat.number}</h3>
-                <p>{stat.text}</p>
-              </motion.div>
-            ))}
+            <motion.div
+              className="stat-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3>3+</h3>
+              <p>{t.stats.experience}</p>
+            </motion.div>
+            <motion.div
+              className="stat-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3>500+</h3>
+              <p>{t.stats.clients}</p>
+            </motion.div>
+            <motion.div
+              className="stat-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3>100%</h3>
+              <p>{t.stats.satisfaction}</p>
+            </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* Location Section */}
-      <motion.section 
-        className="location-section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
+      <section className="location-section">
         <div className="container">
           <div className="location-content">
-            <motion.div 
+            <motion.div
               className="location-text"
-              {...fadeIn}
-              transition={{ delay: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <MdLocationOn className="location-icon" />
-              <h2>Our Location</h2>
-              <p>Based in the heart of Side, Turkey, our office is conveniently located near the historic marina. We're perfectly positioned to serve your yacht charter needs across the Turkish Riviera.</p>
+              <h2>{t.location.title}</h2>
+              <p>{t.location.description}</p>
               <div className="contact-info">
-                <p><strong>Address:</strong> Marina Street No:123, Side, Antalya, Turkey</p>
-                <p><strong>Phone:</strong> +90 123 456 7890</p>
-                <p><strong>Email:</strong> info@example.com</p>
+                <h3>{t.location.contact.title}</h3>
+                <p>
+                  <MdLocationOn /> {t.location.contact.address}
+                </p>
+                <p>
+                  <BiPhone /> {t.location.contact.phone}
+                </p>
+                <p>
+                  <MdEmail /> {t.location.contact.email}
+                </p>
               </div>
             </motion.div>
-            <motion.div 
-              className="location-map"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="location-map">
               <Maps />
-            </motion.div>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 };

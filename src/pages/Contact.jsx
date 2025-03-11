@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
-import Maps from '../components/Maps';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 import './styles/Contact.css';
 
 const Contact = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].contact;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -86,8 +90,8 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1>Contact Us</h1>
-            <p>Get in touch with us for any questions or inquiries</p>
+            <h1>{t.header.title}</h1>
+            <p>{t.header.subtitle}</p>
           </motion.div>
 
           <div className="contact-content">
@@ -100,23 +104,26 @@ const Contact = () => {
             >
               <div className="info-card">
                 <FaPhone className="info-icon" />
-                <h3>Phone</h3>
-                <p>+90 123 456 7890</p>
-                <p>+90 123 456 7891</p>
+                <h3>{t.info.phone.title}</h3>
+                {t.info.phone.numbers.map((number, index) => (
+                  <p key={index}>{number}</p>
+                ))}
               </div>
 
               <div className="info-card">
                 <FaEnvelope className="info-icon" />
-                <h3>Email</h3>
-                <p>info@sidevipyacht.com</p>
-                <p>support@sidevipyacht.com</p>
+                <h3>{t.info.email.title}</h3>
+                {t.info.email.addresses.map((email, index) => (
+                  <p key={index}>{email}</p>
+                ))}
               </div>
 
               <div className="info-card">
                 <FaMapMarkerAlt className="info-icon" />
-                <h3>Location</h3>
-                <p>Marina Street No:123</p>
-                <p>Side, Antalya, Turkey</p>
+                <h3>{t.info.location.title}</h3>
+                {t.info.location.address.map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
               </div>
             </motion.div>
 
@@ -129,7 +136,7 @@ const Contact = () => {
             >
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name">{t.form.fields.name.label}</label>
                   <input
                     type="text"
                     id="name"
@@ -141,7 +148,7 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">{t.form.fields.email.label}</label>
                   <input
                     type="email"
                     id="email"
@@ -150,25 +157,25 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                   />
-                  <small className="form-info">Add your email address that you want us to contact you</small>
+                  <small className="form-info">{t.form.fields.email.hint}</small>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="phone">Phone</label>
+                  <label htmlFor="phone">{t.form.fields.phone.label}</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+90 XXX XXX XXXX"
+                    placeholder={t.form.fields.phone.placeholder}
                     required
                   />
-                  <small className="form-info">Add your phone number that you want us to contact you</small>
+                  <small className="form-info">{t.form.fields.phone.hint}</small>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
+                  <label htmlFor="subject">{t.form.fields.subject.label}</label>
                   <input
                     type="text"
                     id="subject"
@@ -180,7 +187,7 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">Message</label>
+                  <label htmlFor="message">{t.form.fields.message.label}</label>
                   <textarea
                     id="message"
                     name="message"
@@ -192,24 +199,13 @@ const Contact = () => {
                 </div>
 
                 <button type="submit" className="submit-btn">
-                  Send Message
+                  {t.form.submitButton}
                 </button>
               </form>
             </motion.div>
           </div>
 
-          {/* Map Section */}
-          <motion.div
-            className="map-section"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h2>Find Us</h2>
-            <div className="map-container">
-              <Maps />
-            </div>
-          </motion.div>
+          
         </div>
       </div>
     </>

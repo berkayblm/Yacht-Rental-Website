@@ -1,23 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './styles/Features.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const Features = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].features;
+
   const features = [
     {
       emoji: "⛵",
-      title: "Luxury Yacht Charters",
-      description: "Sail in style with our fleet of premium yachts, offering unparalleled comfort and elegance."
+      title: t.yachtCharters.title,
+      description: t.yachtCharters.description
     },
     {
       emoji: "⭐",
-      title: "Exceptional Service",
-      description: "Our dedicated crew ensures a seamless and memorable experience, catering to your every need."
+      title: t.service.title,
+      description: t.service.description
     },
     {
       emoji: "👑",
-      title: "Top-Tier Fleet",
-      description: "Our yachts are meticulously maintained to the highest standards, ensuring a safe and luxurious journey."
+      title: t.fleet.title,
+      description: t.fleet.description
     }
   ];
 

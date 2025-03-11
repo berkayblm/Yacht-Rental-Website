@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Navbar from '../components/Navbar';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles/Home.css';
@@ -13,13 +11,18 @@ import YachtListings from '../components/YachtListings';
 import TourRoadmap from '../components/TourRoadmap';
 import WelcomeSection from '../components/WelcomeSection';
 import GallerySection from '../components/GallerySection';
+import { useLanguage } from '../context/LanguageContext';
+import { yachtTranslations } from '../translations/yachtData';
+const Home = () => {
+  const { currentLanguage } = useLanguage();
 
-
-const Home = ({ yachts }) => {
-  
-
-  
-
+  // Memoize yachts to prevent recalculation on every render
+  const yachts = useMemo(() => {
+    return Object.keys(yachtTranslations[currentLanguage] || {}).map((yachtId) => ({
+      id: parseInt(yachtId),
+      ...yachtTranslations[currentLanguage][yachtId],
+    }));
+  }, [currentLanguage]); // Only recompute when currentLanguage changes
   useEffect(() => {
     const scrollToTop = () => {
       try {
@@ -64,28 +67,9 @@ const Home = ({ yachts }) => {
 
         <GallerySection />
         <TourRoadmap />
-      <motion.section 
-        className="location-section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container">
-          <motion.div 
-            className="section-header text-center mb-5"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h4 className="subtitle">OUR LOCATION</h4>
-            <h2 className="title">Find Us Here</h2>
-          </motion.div>
+    
           <Maps />
-        </div>
-      </motion.section>
+        
 
       
     </div>

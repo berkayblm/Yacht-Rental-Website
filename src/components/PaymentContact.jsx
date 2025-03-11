@@ -2,25 +2,30 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp, FaTelegram, FaEnvelope, FaTimes } from 'react-icons/fa';
 import './styles/PaymentContact.css';
+import { useLanguage } from '../context/LanguageContext';
+import { paymentContactTranslations } from '../translations/paymentContactComponentTranslations';
 
 const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
+  const { currentLanguage } = useLanguage();
+  const translations = paymentContactTranslations[currentLanguage] || paymentContactTranslations['en']; // Fallback to English
+
   const contactMethods = [
     {
       icon: <FaWhatsapp />,
-      name: 'WhatsApp',
+      name: translations.contactMethods.whatsapp,
       action: () => window.open('https://wa.me/905555555555?text=' + 
         encodeURIComponent(`Hello, I would like to book ${yachtName} for ${price}. Please provide payment details.`)),
       color: '#25D366'
     },
     {
       icon: <FaTelegram />,
-      name: 'Telegram',
+      name: translations.contactMethods.telegram,
       action: () => window.open('https://t.me/yourusername'),
       color: '#0088cc'
     },
     {
       icon: <FaEnvelope />,
-      name: 'Email',
+      name: translations.contactMethods.email,
       action: () => window.location.href = `mailto:info@yachtluxe.com?subject=Booking ${yachtName}&body=Hello, I would like to book ${yachtName} for ${price}. Please provide payment details.`,
       color: '#EA4335'
     }
@@ -50,24 +55,22 @@ const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
             </div>
             
             <div className="payment-content">
-              <h2>Book Your Yacht</h2>
+              <h2>{translations.bookYourYacht}</h2>
               <p className="yacht-info">
                 {yachtName} - {price}
               </p>
               
               <div className="payment-steps">
-                <h3>Booking Steps:</h3>
+                <h3>{translations.bookingSteps}</h3>
                 <ol>
-                  <li>Choose your preferred contact method below</li>
-                  <li>Send us your booking details</li>
-                  <li>Receive payment instructions</li>
-                  <li>Complete your payment securely</li>
-                  <li>Get your booking confirmation</li>
+                  {translations.steps.map((step, index) => (
+                    <li key={index}>{step}</li>
+                  ))}
                 </ol>
               </div>
 
               <div className="contact-methods">
-                <h3>Contact Us Via:</h3>
+                <h3>{translations.contactUsVia}</h3>
                 <div className="contact-buttons">
                   {contactMethods.map((method, index) => (
                     <motion.button
@@ -87,8 +90,7 @@ const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
 
               <div className="payment-note">
                 <p>
-                  <strong>Note:</strong> Your booking will be confirmed after payment is received. 
-                  For any questions, please don't hesitate to contact us.
+                  <strong>{translations.noteTitle}</strong> {translations.noteText}
                 </p>
               </div>
             </div>
@@ -99,4 +101,4 @@ const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
   );
 };
 
-export default PaymentContact; 
+export default PaymentContact;

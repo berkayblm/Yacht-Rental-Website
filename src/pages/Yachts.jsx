@@ -1,24 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import './styles/Yachts.css';
+import { useLanguage } from '../context/LanguageContext';
+import { yachtTranslations } from '../translations/yachtData';
+import { yachtsPageTranslations } from '../translations/yachtPageFilterTranslations';
 
-const Yachts = ({ yachts }) => {
+const Yachts = () => {
   const navigate = useNavigate();
-  const [filteredYachts, setFilteredYachts] = useState(yachts);
+  const { currentLanguage } = useLanguage();
+  const translations = yachtsPageTranslations[currentLanguage] || yachtsPageTranslations['en']; // Fallback to English
+  // Memoize yachts to prevent recalculation on every render
+  const yachts = useMemo(() => {
+    return Object.keys(yachtTranslations[currentLanguage] || {}).map((yachtId) => ({
+      id: parseInt(yachtId),
+      ...yachtTranslations[currentLanguage][yachtId],
+    }));
+  }, [currentLanguage]); // Only recompute when currentLanguage changes
+
+  const [filteredYachts, setFilteredYachts] = useState(yachts); // Initial state set here
   const [filters, setFilters] = useState({
     priceRange: { min: '', max: '' },
     capacity: '',
     duration: '',
     location: '',
   });
-
   const [activeFilters, setActiveFilters] = useState([]);
 
   // Get unique values for filter options
-  const allLocations = [...new Set(yachts.map(yacht => yacht.location))];
-  
+  const allLocations = useMemo(() => [...new Set(yachts.map(yacht => yacht.location))], [yachts]);
 
   const handleYachtClick = (yachtId) => {
     navigate(`/yachts/${yachtId}`);
@@ -39,6 +50,7 @@ const Yachts = ({ yachts }) => {
       location: '',
     });
     setActiveFilters([]);
+    setFilteredYachts(yachts); // Reset to full list
   };
 
   const removeFilter = (filterType) => {
@@ -55,43 +67,42 @@ const Yachts = ({ yachts }) => {
     }
   };
 
-  // Update active filters
+  // Update active filters with translations
   useEffect(() => {
     const newActiveFilters = [];
     
     if (filters.priceRange.min || filters.priceRange.max) {
       newActiveFilters.push({
         type: 'priceRange',
-        label: `Price: ${filters.priceRange.min || '0'}€ - ${filters.priceRange.max || '∞'}€`
+        label: `${translations.activeFilters.price} ${filters.priceRange.min || '0'}€ - ${filters.priceRange.max || '∞'}€`
       });
     }
     if (filters.capacity) {
       newActiveFilters.push({
         type: 'capacity',
-        label: `Min Capacity: ${filters.capacity}`
+        label: `${translations.activeFilters.minCapacity} ${filters.capacity}`
       });
     }
     if (filters.duration) {
       newActiveFilters.push({
         type: 'duration',
-        label: `Duration: ${filters.duration}`
+        label: `${translations.activeFilters.duration} ${filters.duration === 'day' ? translations.filters.durationDay : translations.filters.durationNight}`
       });
     }
     if (filters.location) {
       newActiveFilters.push({
         type: 'location',
-        label: `Location: ${filters.location}`
+        label: `${translations.activeFilters.location} ${filters.location}`
       });
     }
 
     setActiveFilters(newActiveFilters);
-  }, [filters]);
+  }, [filters, translations]);
 
   // Apply filters
   useEffect(() => {
-    let result = yachts;
+    let result = [...yachts];
 
-    // Price Range Filter
     if (filters.priceRange.min || filters.priceRange.max) {
       result = result.filter(yacht => {
         const price = parseFloat(yacht.price.replace(/[^0-9.-]+/g, ''));
@@ -101,23 +112,18 @@ const Yachts = ({ yachts }) => {
       });
     }
 
-    // Capacity Filter
     if (filters.capacity) {
       result = result.filter(yacht => 
         parseInt(yacht.details.totalCapacity) >= parseInt(filters.capacity)
       );
     }
 
-    // Duration Filter
     if (filters.duration) {
       result = result.filter(yacht => 
         yacht.details.startTime.toLowerCase().includes(filters.duration.toLowerCase())
       );
     }
 
-    
-
-    // Location Filter
     if (filters.location) {
       result = result.filter(yacht => 
         yacht.location && yacht.location.toLowerCase() === filters.location.toLowerCase()
@@ -130,13 +136,11 @@ const Yachts = ({ yachts }) => {
   useEffect(() => {
     const scrollToTop = () => {
       try {
-        // Try multiple scroll methods
         window.scroll(0, 0);
         window.scrollTo(0, 0);
         document.documentElement.scrollTo(0, 0);
         document.body.scrollTo(0, 0);
         
-        // Force scroll with timeout as fallback
         setTimeout(() => {
           window.scrollTo({
             top: 0,
@@ -150,7 +154,7 @@ const Yachts = ({ yachts }) => {
     };
 
     scrollToTop();
-  }, []); // Empty dependency array for yachts page
+  }, []);
 
   return (
     <>
@@ -163,14 +167,14 @@ const Yachts = ({ yachts }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>Find Your Perfect Yacht</h2>
+            <h2>{translations.findYourPerfectYacht}</h2>
             <div className="filters-grid">
               <div className="filter-group">
-                <h3>Price Range (€)</h3>
+                <h3>{translations.filters.priceRange}</h3>
                 <div className="price-inputs">
                   <input
                     type="number"
-                    placeholder="Min"
+                    placeholder={translations.filters.priceMinPlaceholder}
                     value={filters.priceRange.min}
                     onChange={(e) => handleFilterChange('priceRange', { 
                       ...filters.priceRange, 
@@ -179,7 +183,7 @@ const Yachts = ({ yachts }) => {
                   />
                   <input
                     type="number"
-                    placeholder="Max"
+                    placeholder={translations.filters.priceMaxPlaceholder}
                     value={filters.priceRange.max}
                     onChange={(e) => handleFilterChange('priceRange', { 
                       ...filters.priceRange, 
@@ -190,34 +194,34 @@ const Yachts = ({ yachts }) => {
               </div>
 
               <div className="filter-group">
-                <h3>Minimum Capacity</h3>
+                <h3>{translations.filters.minimumCapacity}</h3>
                 <input
                   type="number"
-                  placeholder="Min. Guests"
+                  placeholder={translations.filters.capacityPlaceholder}
                   value={filters.capacity}
                   onChange={(e) => handleFilterChange('capacity', e.target.value)}
                 />
               </div>
 
               <div className="filter-group">
-                <h3>Duration</h3>
+                <h3>{translations.filters.duration}</h3>
                 <select
                   value={filters.duration}
                   onChange={(e) => handleFilterChange('duration', e.target.value)}
                 >
-                  <option value="">All Durations</option>
-                  <option value="day">Day Trip</option>
-                  <option value="night">Night Trip</option>
+                  <option value="">{translations.filters.durationAll}</option>
+                  <option value="day">{translations.filters.durationDay}</option>
+                  <option value="night">{translations.filters.durationNight}</option>
                 </select>
               </div>
 
               <div className="filter-group">
-                <h3>Location</h3>
+                <h3>{translations.filters.location}</h3>
                 <select
                   value={filters.location}
                   onChange={(e) => handleFilterChange('location', e.target.value)}
                 >
-                  <option value="">All Locations</option>
+                  <option value="">{translations.filters.locationAll}</option>
                   {allLocations.map((location, index) => (
                     <option key={index} value={location}>{location}</option>
                   ))}
@@ -245,7 +249,7 @@ const Yachts = ({ yachts }) => {
                   </AnimatePresence>
                 </div>
                 <button className="clear-filters" onClick={clearFilters}>
-                  Clear All Filters
+                  {translations.clearAllFilters}
                 </button>
               </>
             )}
@@ -258,7 +262,7 @@ const Yachts = ({ yachts }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2>Available Yachts ({filteredYachts.length})</h2>
+            <h2>{translations.availableYachts} ({filteredYachts.length})</h2>
             <div className="yacht-grid">
               {filteredYachts.map((yacht) => (
                 <motion.div
@@ -290,4 +294,4 @@ const Yachts = ({ yachts }) => {
   );
 };
 
-export default Yachts; 
+export default Yachts;

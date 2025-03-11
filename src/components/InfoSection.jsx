@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './styles/InfoSection.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const InfoSection = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].infoSection;
+
   return (
     <section className="info-section">
       <div className="container">
@@ -21,13 +26,13 @@ const InfoSection = () => {
           }}
         >
           <div className="banner-content">
-            <h1>Let's discover amazing<br />and luxurious yacht today!</h1>
+            <h1>{t.banner.title}</h1>
             <motion.button 
               className="booking-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              BOOKING NOW →
+              {t.banner.button}
             </motion.button>
           </div>
         </motion.div>
@@ -50,7 +55,7 @@ const InfoSection = () => {
             >
               <img 
                 src="/images/DJI_0720+ kopya.jpg" 
-                alt="Luxury yacht at sunset" 
+                alt={t.images.mainImageAlt} 
                 loading="lazy"
                 onLoad={(e) => e.target.classList.add('loaded')}
               />
@@ -65,7 +70,7 @@ const InfoSection = () => {
             >
               <img 
                 src="/la-perla-5.jpeg" 
-                alt="Captain steering the yacht" 
+                alt={t.images.overlayImageAlt} 
                 loading="lazy"
                 onLoad={(e) => e.target.classList.add('loaded')}
               />
@@ -75,19 +80,10 @@ const InfoSection = () => {
           
 
           <div className="content-container">
-            <span className="feature-label">DISCOVER</span>
-            <h2>Discover best yacht</h2>
-            <p>
-              Our Side Yacht Tour takes place on a family-run yacht. If you 
-              are not familiar with this style of vessel, it's a wooden sailing 
-              vessel commonly found in the southwest of Turkey and the 
-              eastern Mediterranean.
-            </p>
-            <p>
-              The vessel will be yours for the day and is equipped with 
-              modern toilets, TVs, comfortable cushions, loungers, and 
-              seatings on board.
-            </p>
+            <span className="feature-label">{t.discover.label}</span>
+            <h2>{t.discover.title}</h2>
+            <p>{t.discover.description1}</p>
+            <p>{t.discover.description2}</p>
           </div>
         </motion.div>
 
@@ -103,9 +99,8 @@ const InfoSection = () => {
             <div className="icon-container blue">
               <i className="fas fa-anchor"></i>
             </div>
-            <h3>Premium Fleet Selection</h3>
-            <p>Choose from our curated collection of luxury yachts, 
-              each maintained to the highest standards of excellence.</p>
+            <h3>{t.benefits.expertise.title}</h3>
+            <p>{t.benefits.expertise.description}</p>
           </motion.div>
 
           <motion.div 
@@ -118,9 +113,8 @@ const InfoSection = () => {
             <div className="icon-container yellow">
               <i className="fas fa-compass"></i>
             </div>
-            <h3>Expert Local Knowledge</h3>
-            <p>Our experienced crew knows every hidden gem along the 
-              Turkish coast, ensuring an authentic experience.</p>
+            <h3>{t.benefits.service.title}</h3>
+            <p>{t.benefits.service.description}</p>
           </motion.div>
 
           <motion.div 
@@ -133,9 +127,8 @@ const InfoSection = () => {
             <div className="icon-container purple">
               <i className="fas fa-concierge-bell"></i>
             </div>
-            <h3>Personalized Service</h3>
-            <p>Tailored itineraries and premium onboard services 
-              designed to exceed your expectations.</p>
+            <h3>{t.benefits.personalized.title}</h3>
+            <p>{t.benefits.personalized.description}</p>
           </motion.div>
         </div>
 
@@ -148,21 +141,20 @@ const InfoSection = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="promo-content">
-            <h2>Special Summer Offers</h2>
-            <p>Book your dream yacht experience now and enjoy up to 20% off on selected dates.
-               Early bird discounts and flexible booking options available.</p>
+            <h2>{t.promo.title}</h2>
+            <p>{t.promo.description}</p>
             <motion.button 
               className="view-offers-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              VIEW OFFERS
+              {t.promo.button}
             </motion.button>
           </div>
           <div className="promo-image">
             <img 
               src="/side-1.jpg" 
-              alt="Luxury yacht experience" 
+              alt={t.images.promoImageAlt} 
               loading="lazy"
               onLoad={(e) => e.target.classList.add('loaded')}
             />

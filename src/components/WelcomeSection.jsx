@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Slider from 'react-slick';
 import './styles/WelcomeSection.css';
-import GallerySection from './GallerySection';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
+
 const WelcomeSection = () => {
-  
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage].welcome;
 
   return (
     <div className="welcome-container">
@@ -15,7 +17,7 @@ const WelcomeSection = () => {
           transition={{ duration: 0.5 }}
           className="main-title"
         >
-          Discover Your Perfect Yacht Adventure
+          {t.title}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -50 }}
@@ -23,7 +25,7 @@ const WelcomeSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="subtitle"
         >
-          Experience luxury and freedom on the Turkish Riviera
+          {t.subtitle}
         </motion.p>
       </div>
 
@@ -33,7 +35,7 @@ const WelcomeSection = () => {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="highlight-text"
       >
-        Embark on an unforgettable journey along Turkey's stunning coastline, where crystal-clear waters meet ancient history and modern luxury.
+        {t.description}
       </motion.p>
 
       <motion.div
@@ -44,28 +46,27 @@ const WelcomeSection = () => {
       >
         <div className="feature-box">
           <i className="fas fa-anchor"></i>
-          <h3>Premium Yachts</h3>
-          <p>Choose from our fleet of meticulously maintained luxury vessels</p>
+          <h3>{t.features.premium.title}</h3>
+          <p>{t.features.premium.description}</p>
         </div>
         <div className="feature-box">
           <i className="fas fa-map-marked-alt"></i>
-          <h3>Custom Routes</h3>
-          <p>Personalized itineraries tailored to your preferences</p>
+          <h3>{t.features.routes.title}</h3>
+          <p>{t.features.routes.description}</p>
         </div>
         <div className="feature-box">
           <i className="fas fa-concierge-bell"></i>
-          <h3>Expert Crew</h3>
-          <p>Professional and experienced crew at your service</p>
+          <h3>{t.features.crew.title}</h3>
+          <p>{t.features.crew.description}</p>
         </div>
         <div className="feature-box">
           <i className="fas fa-glass-cheers"></i>
-          <h3>Luxury Experience</h3>
-          <p>First-class amenities and gourmet dining options</p>
+          <h3>{t.features.luxury.title}</h3>
+          <p>{t.features.luxury.description}</p>
         </div>
       </motion.div>
     </div>
   );
 };
-
 
 export default WelcomeSection; 

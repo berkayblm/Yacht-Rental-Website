@@ -1,26 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './styles/TimeOptions.css';
+import { useLanguage } from '../context/LanguageContext';
+import { timeOptionsTranslations } from '../translations/timeOptionsComponentTranslations';
 
-const TimeOptions = () => {
+
+const TimeOptions = ({ timeSlots: propTimeSlots }) => {
+  const { currentLanguage } = useLanguage();
+  const translations = timeOptionsTranslations[currentLanguage] || timeOptionsTranslations['en']; // Fallback to English
+
+  // Define all four time slots with translated labels
   const timeSlots = {
     morning: {
-      label: "Morning",
+      label: translations.timeSlots.morning,
       time: "08:00 - 13:00",
       icon: "🌅"
     },
     noon: {
-      label: "Noon",
-      time: "10:00 - 15:00",
+      label: translations.timeSlots.noon,
+      time: propTimeSlots || "10:00 - 15:00", // Use propTimeSlots if provided, otherwise default
       icon: "☀️"
     },
     sunset: {
-      label: "Sunset",
+      label: translations.timeSlots.sunset,
       time: "16:00 - 20:00",
       icon: "🌇"
     },
     evening: {
-      label: "Evening",
+      label: translations.timeSlots.evening,
       time: "20:00 - 00:00",
       icon: "🌙"
     }
@@ -33,7 +40,7 @@ const TimeOptions = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2>Standard Rental Periods</h2>
+      <h2>{translations.standardRentalPeriods}</h2>
       <div className="time-slots-container">
         {Object.entries(timeSlots).map(([key, slot]) => (
           <motion.div 
@@ -51,24 +58,24 @@ const TimeOptions = () => {
       
       <div className="rental-info">
         <div className="duration-range">
-          <h3>Rental Duration Options</h3>
+          <h3>{translations.rentalDurationOptions}</h3>
           <div className="duration-endpoints">
             <div className="endpoint">
-              <span>Shortest</span>
-              <strong>1 hour</strong>
+              <span>{translations.shortest}</span>
+              <strong>{translations.shortestDuration}</strong>
             </div>
             <div className="duration-line"></div>
             <div className="endpoint">
-              <span>Longest</span>
-              <strong>1 day</strong>
+              <span>{translations.longest}</span>
+              <strong>{translations.longestDuration}</strong>
             </div>
           </div>
         </div>
        
-        <p className="contact-note">Contact us for costs of different rental durations</p>
+        <p className="contact-note">{translations.contactNote}</p>
       </div>
     </motion.div>
   );
 };
 
-export default TimeOptions; 
+export default TimeOptions;

@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 import './styles/Navbar.css';
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { currentLanguage, setCurrentLanguage } = useLanguage();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' }
+  ];
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,7 +47,7 @@ const Navbar = () => {
                 to="/"
                 onClick={toggleMenu}
               >
-                Home
+                {translations[currentLanguage].navbar.home}
               </Link>
             </li>
             <li className="nav-item">
@@ -47,7 +56,7 @@ const Navbar = () => {
                 to="/yachts"
                 onClick={toggleMenu}
               >
-                Yachts
+                {translations[currentLanguage].navbar.yachts}
               </Link>
             </li>
             <li className="nav-item">
@@ -56,18 +65,44 @@ const Navbar = () => {
                 to="/about"
                 onClick={toggleMenu}
               >
-                About
+                {translations[currentLanguage].navbar.about}
               </Link>
             </li>
-            
             <li className="nav-item">
               <Link
                 className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
                 to="/contact"
                 onClick={toggleMenu}
               >
-                Contact
+                {translations[currentLanguage].navbar.contact}
               </Link>
+            </li>
+            <li className="nav-item">
+              <button
+                className="nav-link language-btn"
+                onClick={(e) => {
+                  const dropdown = e.currentTarget.nextElementSibling;
+                  dropdown.classList.toggle('show');
+                }}
+              >
+                {languages.find(lang => lang.code === currentLanguage)?.flag}
+              </button>
+              <ul className="language-dropdown">
+                {languages.map((lang) => (
+                  <li key={lang.code}>
+                    <button
+                      className={`language-option ${currentLanguage === lang.code ? 'active' : ''}`}
+                      onClick={() => {
+                        setCurrentLanguage(lang.code);
+                        document.querySelector('.language-dropdown').classList.remove('show');
+                        toggleMenu();
+                      }}
+                    >
+                      {lang.flag} {lang.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </li>
           </ul>
         </div>
