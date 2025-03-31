@@ -16,9 +16,9 @@ export const footerTranslations = {
       },
       contactUs: "Contact Us",
       contactInfo: {
-        address: "Marina Street No:123, Side, Antalya, Turkey",
-        phone: "+90 123 456 7890",
-        email: "info@example.com"
+        address: "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
+        phone: "+90 549 537 70 07",
+        email: "side.viprental@gmail.com"
       },
       copyright: "© {year} Side Vip Yacht Rental. All rights reserved."
     },
@@ -38,9 +38,9 @@ export const footerTranslations = {
       },
       contactUs: "Bize Ulaşın",
       contactInfo: {
-        address: "Marina Caddesi No:123, Side, Antalya, Türkiye",
-        phone: "+90 123 456 7890",
-        email: "info@example.com"
+        address: "Side Limanı, Side, Apollon Sk., 07600 Manavgat/Antalya",
+        phone: "+90 549 537 70 07",
+        email: "side.viprental@gmail.com"
       },
       copyright: "© {year} Side Vip Yat Kiralama. Tüm hakları saklıdır."
     },
@@ -60,9 +60,9 @@ export const footerTranslations = {
       },
       contactUs: "Kontaktieren Sie uns",
       contactInfo: {
-        address: "Marina Straße Nr. 123, Side, Antalya, Türkei",
-        phone: "+90 123 456 7890",
-        email: "info@example.com"
+        address: "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
+        phone: "+90 549 537 70 07",
+        email: "side.viprental@gmail.com"
       },
       copyright: "© {year} Side Vip Yachtverleih. Alle Rechte vorbehalten."
     },
@@ -82,9 +82,9 @@ export const footerTranslations = {
       },
       contactUs: "Свяжитесь с нами",
       contactInfo: {
-        address: "Улица Марина, №123, Сиде, Анталья, Турция",
-        phone: "+90 123 456 7890",
-        email: "info@example.com"
+        address: "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
+        phone: "+90 549 537 70 07",
+        email: "side.viprental@gmail.com"
       },
       copyright: "© {year} Side Vip Аренда яхт. Все права защищены."
     }

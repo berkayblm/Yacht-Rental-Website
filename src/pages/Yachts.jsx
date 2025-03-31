@@ -161,7 +161,7 @@ const Yachts = () => {
       <Navbar />
       <div className="yachts-page">
         <div className="container">
-          <motion.div 
+          {/* <motion.div 
             className="filters-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -253,7 +253,7 @@ const Yachts = () => {
                 </button>
               </>
             )}
-          </motion.div>
+          </motion.div> */}
 
           {/* Results Section */}
           <motion.div 

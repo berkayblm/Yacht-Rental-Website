@@ -897,6 +897,7 @@
 
 .booking-info {
   display: flex;
+  
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -910,7 +911,7 @@
 }
 
 .price-info .price {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #2d3748;
 }

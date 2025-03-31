@@ -491,7 +491,7 @@ const YachtDetails = ({ language = 'en' }) => {
                 </div>
 
                 {/* Technical Specifications */}
-                <div className="overview-section">
+                {/* <div className="overview-section">
                   <h3>{translations.technicalSpecifications}</h3>
                   <div className="specs-grid">
                     <div className="spec-item">
@@ -505,7 +505,7 @@ const YachtDetails = ({ language = 'en' }) => {
                       <p>{yachtData.builder}</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Equipment */}
                 <div className="overview-section">
@@ -534,14 +534,14 @@ const YachtDetails = ({ language = 'en' }) => {
                 </div>
 
                 {/* Cancellation Policy */}
-                <div className="overview-section">
+                {/* <div className="overview-section">
                   <h3>{translations.cancellationPolicy}</h3>
                   <div className="cancellation-details">
                     <p><strong>{translations.fullRefund}</strong> {yachtData.details.cancellation.fullRefund}</p>
                     <p><strong>{translations.partialRefund}</strong> {yachtData.details.cancellation.partialRefund}</p>
                     <p><strong>{translations.noRefund}</strong> {yachtData.details.cancellation.noRefund}</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </motion.section>
           </div>
@@ -559,7 +559,7 @@ const YachtDetails = ({ language = 'en' }) => {
               <div className="booking-info">
                 <div className="price-info">
                   <span className="price">{yachtData.price}</span>
-                  <span className="price-unit">{yachtData.priceUnit}</span>
+                  {/* <span className="price-unit">{yachtData.priceUnit}</span> */}
                 </div>
                 <motion.button
                   className="book-now-btn"

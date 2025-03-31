@@ -3,10 +3,17 @@ import { motion } from 'framer-motion';
 import './styles/InfoSection.css';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
-
+import PaymentContact from './PaymentContact'; // Import the PaymentContact component
+import { useState } from 'react';
+import { yachtTranslations } from '../translations/yachtData';
 const InfoSection = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage].infoSection;
+  const [isPaymentContactOpen, setPaymentContactOpen] = useState(false);
+
+  const yachtData = yachtTranslations[currentLanguage]?.[2] || yachtTranslations['en'][2]; // Fallback to English
+  const yachtName = yachtData.name;
+  const price = yachtData.price;
 
   return (
     <section className="info-section">
@@ -31,6 +38,8 @@ const InfoSection = () => {
               className="booking-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => setPaymentContactOpen(true)} // Open the PaymentContact popup
+            
             >
               {t.banner.button}
             </motion.button>
@@ -69,7 +78,7 @@ const InfoSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <img 
-                src="/la-perla-5.jpeg" 
+                src="/images/20240520_111108.jpg" 
                 alt={t.images.overlayImageAlt} 
                 loading="lazy"
                 onLoad={(e) => e.target.classList.add('loaded')}
@@ -161,6 +170,14 @@ const InfoSection = () => {
             <div className="image-placeholder"></div>
           </div>
         </motion.div>
+
+        {/* PaymentContact Popup */}
+        <PaymentContact
+          isOpen={isPaymentContactOpen}
+          onClose={() => setPaymentContactOpen(false)} // Close the popup
+          yachtName={yachtName}
+          price={price}
+        />
       </div>
     </section>
   );

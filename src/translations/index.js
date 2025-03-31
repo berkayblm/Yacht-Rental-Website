@@ -124,13 +124,13 @@ export const translations = {
           description: "Departure from Side Harbor"
         },
         {
-          time: "11:30",
+          time: "10:30",
           location: "Swimming Break",
           description: "First swimming and snorkeling stop"
         },
         {
           time: "12:30",
-          location: "Lunch Break",
+          location: "Lunch Break - Swimming",
           description: "Enjoy your lunch with Mediterranean cuisine"
         },
         {
@@ -186,9 +186,9 @@ export const translations = {
         description: "Located in the heart of Side, Turkey, conveniently near the historic harbor. We are perfectly positioned to serve your yacht charter needs along the Turkish Riviera.",
         contact: {
           title: "Contact Information",
-          address: "Marina Street 123, Side, Antalya, Turkey",
-          phone: "+90 123 456 7890",
-          email: "info@example.com"
+          address: "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
+          phone: "+90 549 537 70 07",
+          email: "side.viprental@gmail.com"
         }
       }
     },
@@ -201,8 +201,8 @@ export const translations = {
         phone: {
           title: "Phone",
           numbers: [
-            "+90 123 456 7890",
-            "+90 123 456 7891"
+            "+90 549 537 70 07",
+            "+90 549 537 70 07"
           ]
         },
         email: {
@@ -215,7 +215,7 @@ export const translations = {
         location: {
           title: "Location",
           address: [
-            "Marina Street No:123",
+            "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
             "Side, Antalya, Turkey"
           ]
         }
@@ -556,13 +556,13 @@ export const translations = {
           description: "Side Limanı'ndan hareket"
         },
         {
-          time: "11:30",
+          time: "10:30",
           location: "Yüzme Molası",
           description: "İlk yüzme ve şnorkel molası"
         },
         {
           time: "12:30",
-          location: "Öğle Yemeği",
+          location: "Öğle Yemeği ve Yüzme",
           description: "Akdeniz mutfağından öğle yemeği keyfi"
         },
         {
@@ -618,9 +618,9 @@ export const translations = {
         description: "Türkiye'nin Side ilçesinin kalbinde, tarihi limanın yakınında yer almaktayız. Türk Rivierası boyunca yat kiralama ihtiyaçlarınız için ideal konumdayız.",
         contact: {
           title: "İletişim Bilgileri",
-          address: "Marina Sokak 123, Side, Antalya, Türkiye",
-          phone: "+90 123 456 7890",
-          email: "info@example.com"
+          address: "Side Limanı, Side, Apollon Sk., 07600 Manavgat/Antalya",
+          phone: "+90 549 537 70 07",
+          email: "side.viprental@gmail.com"
         }
       }
     },
@@ -633,8 +633,8 @@ export const translations = {
         phone: {
           title: "Telefon",
           numbers: [
-            "+90 123 456 7890",
-            "+90 123 456 7891"
+            "+90 549 537 70 07",
+            "+90 549 537 70 07"
           ]
         },
         email: {
@@ -647,7 +647,7 @@ export const translations = {
         location: {
           title: "Konum",
           address: [
-            "Marina Sokak No:123",
+            "Side Limanı, Side, Apollon Sk., 07600 Manavgat/Antalya",
             "Side, Antalya, Türkiye"
           ]
         }
@@ -1036,13 +1036,13 @@ export const translations = {
           description: "Abfahrt vom Side Hafen"
         },
         {
-          time: "11:30",
+          time: "10:30",
           location: "Schwimmpause",
           description: "Erster Schwimm- und Schnorchelstop"
         },
         {
           time: "12:30",
-          location: "Mittagspause",
+          location: "Mittagspause und Schwimmen",
           description: "Genießen Sie mediterranes Mittagessen"
         },
         {
@@ -1098,9 +1098,9 @@ export const translations = {
         description: "Im Herzen von Side, Türkei, günstig in der Nähe des historischen Hafens gelegen. Wir sind perfekt positioniert, um Ihre Yachtcharter-Bedürfnisse entlang der türkischen Riviera zu erfüllen.",
         contact: {
           title: "Kontaktinformationen",
-          address: "Marina Straße 123, Side, Antalya, Türkei",
-          phone: "+90 123 456 7890",
-          email: "info@example.com"
+          address: "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
+          phone: "+90 549 537 70 07",
+          email: "side.viprental@gmail.com"
         }
       }
     },
@@ -1113,8 +1113,8 @@ export const translations = {
         phone: {
           title: "Telefon",
           numbers: [
-            "+90 123 456 7890",
-            "+90 123 456 7891"
+            "+90 549 537 70 07",
+            "+90 549 537 70 07"
           ]
         },
         email: {
@@ -1127,7 +1127,7 @@ export const translations = {
         location: {
           title: "Standort",
           address: [
-            "Marina Straße Nr:123",
+            "Side Harbour, Side, Apollon Sk., 07600 Manavgat/Antalya",
             "Side, Antalya, Türkei"
           ]
         }
@@ -1468,13 +1468,13 @@ export const translations = {
           description: "Отправление из порта Сиде"
         },
         {
-          time: "11:30",
+          time: "10:30",
           location: "Остановка для купания",
           description: "Первая остановка для плавания и снорклинга"
         },
         {
           time: "12:30",
-          location: "Обед",
+          location: "Обед и купание",
           description: "Наслаждайтесь обедом средиземноморской кухни"
         },
         {
@@ -1530,9 +1530,9 @@ export const translations = {
         description: "Расположены в сердце Сиде, Турция, удобно рядом с историческим портом. Мы идеально расположены для обслуживания ваших потребностей в аренде яхт вдоль Турецкой Ривьеры.",
         contact: {
           title: "Контактная Информация",
-          address: "Улица Марина 123, Сиде, Анталья, Турция",
-          phone: "+90 123 456 7890",
-          email: "info@example.com"
+          address: "Side Harbour, Сиде, Apollon Sk., 07600 Манавгат/Анталья",
+          phone: "+90 549 537 70 07",
+          email: "side.viprental@gmail.com"
         }
       }
     },
@@ -1545,8 +1545,8 @@ export const translations = {
         phone: {
           title: "Телефон",
           numbers: [
-            "+90 123 456 7890",
-            "+90 123 456 7891"
+            "+90 549 537 70 07",
+            "+90 549 537 70 07"
           ]
         },
         email: {
@@ -1559,7 +1559,7 @@ export const translations = {
         location: {
           title: "Расположение",
           address: [
-            "Улица Марина №:123",
+            "Side Harbour, Сиде, Apollon Sk., 07600 Манавгат/Анталья",
             "Сиде, Анталья, Турция"
           ]
         }

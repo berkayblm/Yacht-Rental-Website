@@ -13,20 +13,20 @@ const PaymentContact = ({ isOpen, onClose, yachtName, price }) => {
     {
       icon: <FaWhatsapp />,
       name: translations.contactMethods.whatsapp,
-      action: () => window.open('https://wa.me/905555555555?text=' + 
+      action: () => window.open('https://wa.me/905495377007?text=' + 
         encodeURIComponent(`Hello, I would like to book ${yachtName} for ${price}. Please provide payment details.`)),
       color: '#25D366'
     },
-    {
-      icon: <FaTelegram />,
-      name: translations.contactMethods.telegram,
-      action: () => window.open('https://t.me/yourusername'),
-      color: '#0088cc'
-    },
+     {
+       icon: <FaTelegram />,
+       name: translations.contactMethods.telegram,
+       //action: () => window.open('https://t.me/yourusername'),
+       color: '#0088cc'
+     },
     {
       icon: <FaEnvelope />,
       name: translations.contactMethods.email,
-      action: () => window.location.href = `mailto:info@yachtluxe.com?subject=Booking ${yachtName}&body=Hello, I would like to book ${yachtName} for ${price}. Please provide payment details.`,
+      action: () => window.location.href = `mailto:side.viprental@gmail.com?subject=Booking ${yachtName}&body=Hello, I would like to book ${yachtName} for ${price}. Please provide payment details.`,
       color: '#EA4335'
     }
   ];

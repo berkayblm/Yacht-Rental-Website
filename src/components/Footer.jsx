@@ -18,13 +18,11 @@ const Footer = () => {
           <h3>{translations.companyName}</h3>
           <p>{translations.companyDescription}</p>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/share/1CZ8TPYFDj/" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FaTwitter />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            
+            <a href="https://www.instagram.com/yachtrentalside/" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
           </div>
@@ -37,7 +35,6 @@ const Footer = () => {
             <Link to="/">{translations.quickLinksItems.home}</Link>
             <Link to="/about">{translations.quickLinksItems.aboutUs}</Link>
             <Link to="/yachts">{translations.quickLinksItems.ourYachts}</Link>
-            <Link to="/destinations">{translations.quickLinksItems.destinations}</Link>
           </nav>
         </div>
 

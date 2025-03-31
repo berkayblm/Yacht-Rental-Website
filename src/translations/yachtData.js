@@ -2,7 +2,7 @@ export const yachtTranslations = {
   en: {
     2: {
       name: "Side VIP",
-      price: "850 €",
+      price: "Starting from 100 €",
       priceUnit: "per day",
       location: "Side Harbor, Turkey",
       builder: "Custom Built",
@@ -49,7 +49,7 @@ export const yachtTranslations = {
         startTime: "10:00 - 15:00",
         totalCapacity: "12 Person",
         totalBreaks: "3 Times",
-        totalCabins: "2 Cabins",
+        totalCabins: "1 Cabins",
         catering: "Included",
         alcoholDrink: "Yes Possible",
         special: "BBQ Party",
@@ -66,7 +66,7 @@ export const yachtTranslations = {
           overnight: "4 persons"
         },
         cabins: {
-          total: "2 cabins",
+          total: "1 cabins",
           master: "1 master cabin",
           double: "1 double cabin",
           twin: "0 twin cabins"
@@ -107,18 +107,12 @@ export const yachtTranslations = {
           "Insurance"
         ],
         optionalServices: [
+          
           {
-            name: "Full catering",
-            price: "25€ per person"
+            name: "Hotel transfer",
+            price: "?€ per way"
           },
-          {
-            name: "Airport transfer",
-            price: "40€ per way"
-          },
-          {
-            name: "Premium bar package",
-            price: "150€ per day"
-          }
+          
         ],
         cancellation: {
           fullRefund: "7 days before",
@@ -141,11 +135,11 @@ export const yachtTranslations = {
         brand: "Custom built",
         capacity: "12 person",
         crew: "2 person",
-        cabin: "2",
-        showerWC: "2",
-        length: "12.5 meter",
-        width: "4.3 meter",
-        speed: "20 Knots",
+        cabin: "1",
+        showerWC: "1",
+        length: "12 meter",
+        width: "4 meter",
+        speed: "16 Knots",
         manufacturing: "2008",
         refitDate: "2023",
         location: "Side Marina",
@@ -158,9 +152,10 @@ export const yachtTranslations = {
           "Outside speakers",
           "GPS",
           "Fridge",
-          "Deep freeze",
+          "Standup paddleboard",
           "Indoor speakers",
-          "Towel"
+          "Towel",
+          "Life vest"
         ],
         activities: [
           "Swim ladder",
@@ -178,17 +173,14 @@ export const yachtTranslations = {
             title: "Food and beverage",
             description: "Complimentary menu and non-alcoholic beverages included."
           },
-          decoration: {
-            title: "Decoration",
-            description: "Custom decorations available for special occasions."
-          },
+          
           fuel: {
             title: "Fuel",
             description: "All fuel costs included in charter price."
           },
           waiterAndCrew: {
             title: "Waiter and crew",
-            description: "Professional crew service included."
+            description: "Professional crew service included.Please inform us in advance about any special conditions (e.g., gluten allergy, etc.). No additional charge."
           },
           fixedMenu: {
             title: "Fixed menu content",
@@ -199,8 +191,9 @@ export const yachtTranslations = {
               "Mediterranean Salad",
               "Seasonal Fruit",
               "Soft Drinks",
-              "Turkish Coffee",
-              "Local Teas"
+              "Grilled vegetables"
+              
+              
             ]
           }
         },
@@ -211,7 +204,7 @@ export const yachtTranslations = {
           },
           bringingAlcohol: {
             title: "Bringing alcohol",
-            description: "25€ service charge for bringing own alcohol."
+            description: "35€ service charge for bringing own alcohol."
           },
           purchasingAlcohol: {
             title: "Purchasing Alcohol",
@@ -221,21 +214,22 @@ export const yachtTranslations = {
             title: "Menu Modifications",
             description: "Custom menu options available at additional cost."
           },
-          tourRouteChange: {
-            title: "Route Changes",
-            description: "Flexible routing with additional time charges."
-          },
+         
           waterActivities: {
             title: "Water Activities",
-            description: "Additional water sports available for fee."
+            description: "Additional water sports available for fee. Jet ski, parasailing are available."
           },
           photographyServices: {
-            title: "Photography",
-            description: "Professional photo services available."
+            title: "Photography and Drone Shot",
+            description: "Professional photo and drone services available."
           },
           transfer: {
             title: "Transfer",
             description: "Custom transfer services based on group size."
+          },
+          decoration: {
+            title: "Decoration",
+            description: "Custom decorations available for special occasions."
           }
         }
       },
@@ -257,7 +251,7 @@ export const yachtTranslations = {
   tr: {
     2: {
       name: "Side VIP",
-      price: "850 €",
+      price: "100 €'dan başlayan fiyatlarla",
       priceUnit: "günlük",
       location: "Side Limanı, Türkiye",
       builder: "Özel Yapım",
@@ -313,7 +307,7 @@ export const yachtTranslations = {
         draft: "1.8 metre",
         enginePower: "2 x 350 HP",
         fuelType: "Dizel",
-        maxSpeed: "20 knot",
+        maxSpeed: "16 knot",
         cruisingSpeed: "16 knot",
         fuelConsumption: "50L/s",
         guestCapacity: {
@@ -321,7 +315,7 @@ export const yachtTranslations = {
           overnight: "4 kişi"
         },
         cabins: {
-          total: "2 kabin",
+          total: "1 kabin",
           master: "1 master kabin",
           double: "1 çift kişilik kabin",
           twin: "0 twin kabin"
@@ -362,18 +356,12 @@ export const yachtTranslations = {
           "Sigorta"
         ],
         optionalServices: [
+          
           {
-            name: "Tam catering",
-            price: "Kişi başı 25€"
+            name: "Otel transferi",
+            price: "Tek yön ?€"
           },
-          {
-            name: "Havalimanı transferi",
-            price: "Tek yön 40€"
-          },
-          {
-            name: "Premium bar paketi",
-            price: "Günlük 150€"
-          }
+          
         ],
         cancellation: {
           fullRefund: "7 gün öncesinde",
@@ -396,11 +384,11 @@ export const yachtTranslations = {
         brand: "Özel yapım",
         capacity: "12 kişi",
         crew: "2 kişi",
-        cabin: "2",
-        showerWC: "2",
-        length: "12.5 metre",
-        width: "4.3 metre",
-        speed: "20 Knot",
+        cabin: "1",
+        showerWC: "1",
+        length: "12 metre",
+        width: "4 metre",
+        speed: "16 Knot",
         manufacturing: "2008",
         refitDate: "2023",
         location: "Side Marina",
@@ -413,9 +401,10 @@ export const yachtTranslations = {
           "Dış mekan hoparlörleri",
           "GPS",
           "Buzdolabı",
-          "Derin dondurucu",
+          "Surf tahtası",
           "İç mekan hoparlörleri",
-          "Havlu"
+          "Havlu",
+          "Can yeleği"
         ],
         activities: [
           "Yüzme merdiveni",
@@ -433,17 +422,14 @@ export const yachtTranslations = {
             title: "Yiyecek ve içecek",
             description: "Ücretsiz menü ve alkolsüz içecekler dahildir."
           },
-          decoration: {
-            title: "Dekorasyon",
-            description: "Özel günler için özel dekorasyonlar mevcuttur."
-          },
+          
           fuel: {
             title: "Yakıt",
             description: "Tüm yakıt masrafları kiralama ücretine dahildir."
           },
           waiterAndCrew: {
             title: "Garson ve mürettebat",
-            description: "Profesyonel mürettebat hizmeti dahildir."
+            description: "Profesyonel mürettebat hizmeti dahildir. Lütfen özel durumlarınızı (örneğin, gluten alerjisi vb.) önceden bildirin. Ek ücret talep edilmez."
           },
           fixedMenu: {
             title: "Sabit menü içeriği",
@@ -454,8 +440,8 @@ export const yachtTranslations = {
               "Akdeniz Salatası",
               "Mevsim Meyveleri",
               "Alkolsüz İçecekler",
-              "Türk Kahvesi",
-              "Yerel Çaylar"
+              "Izgara sebzeler"
+             
             ]
           }
         },
@@ -466,7 +452,7 @@ export const yachtTranslations = {
           },
           bringingAlcohol: {
             title: "Alkol getirme",
-            description: "Kendi alkolünüzü getirmek için 25€ servis ücreti."
+            description: "Kendi alkolünüzü getirmek için 35€ servis ücreti."
           },
           purchasingAlcohol: {
             title: "Alkol satın alma",
@@ -476,22 +462,23 @@ export const yachtTranslations = {
             title: "Menü Değişiklikleri",
             description: "Ek ücretle özel menü seçenekleri mevcuttur."
           },
-          tourRouteChange: {
-            title: "Rota Değişiklikleri",
-            description: "Ek süre ücretiyle esnek rota planlaması."
-          },
+         
           waterActivities: {
             title: "Su Aktiviteleri",
-            description: "Ek ücretle su sporları aktiviteleri mevcuttur."
+            description: "Ek ücretle su sporları aktiviteleri mevcuttur. Jet ski, parasailing mevcuttur."
           },
           photographyServices: {
-            title: "Fotoğrafçılık",
-            description: "Profesyonel fotoğraf hizmetleri mevcuttur."
+            title: "Fotoğrafçılık ve Drone Çekimi",
+            description: "Profesyonel fotoğraf ve drone hizmetleri mevcuttur."
           },
           transfer: {
             title: "Transfer",
             description: "Grup büyüklüğüne göre özel transfer hizmetleri."
-          }
+          },
+          decoration: {
+            title: "Dekorasyon",
+            description: "Özel günler için özel dekorasyonlar mevcuttur."
+          },
         }
       },
       images: [
@@ -512,7 +499,7 @@ export const yachtTranslations = {
   de: {
     2: {
       name: "Side VIP",
-      price: "850 €",
+      price: "Ab 100 €",
       priceUnit: "pro Tag",
       location: "Side Hafen, Türkei",
       builder: "Individualbau",
@@ -559,16 +546,16 @@ export const yachtTranslations = {
         startTime: "10:00 - 15:00",
         totalCapacity: "12 Personen",
         totalBreaks: "3 Pausen",
-        totalCabins: "2 Kabinen",
+        totalCabins: "1 Kabinen",
         catering: "Inklusive",
         alcoholDrink: "Möglich",
         special: "BBQ Party",
-        length: "12,5 Meter",
-        beam: "4,3 Meter",
+        length: "12 Meter",
+        beam: "4 Meter",
         draft: "1,8 Meter",
         enginePower: "2 x 350 PS",
         fuelType: "Diesel",
-        maxSpeed: "20 Knoten",
+        maxSpeed: "16 Knoten",
         cruisingSpeed: "16 Knoten",
         fuelConsumption: "50L/h",
         guestCapacity: {
@@ -617,18 +604,12 @@ export const yachtTranslations = {
           "Versicherung"
         ],
         optionalServices: [
+          
           {
-            name: "Vollverpflegung",
-            price: "25€ pro Person"
+            name: "Hoteltransfer",
+            price: "?€ pro Strecke"
           },
-          {
-            name: "Flughafentransfer",
-            price: "40€ pro Strecke"
-          },
-          {
-            name: "Premium-Getränkepaket",
-            price: "150€ pro Tag"
-          }
+          
         ],
         cancellation: {
           fullRefund: "7 Tage vorher",
@@ -651,11 +632,11 @@ export const yachtTranslations = {
         brand: "Individualbau",
         capacity: "12 Personen",
         crew: "2 Personen",
-        cabin: "2",
-        showerWC: "2",
-        length: "12,5 Meter",
-        width: "4,3 Meter",
-        speed: "20 Knoten",
+        cabin: "1",
+        showerWC: "1",
+        length: "12 Meter",
+        width: "4 Meter",
+        speed: "16 Knoten",
         manufacturing: "2008",
         refitDate: "2023",
         location: "Side Marina",
@@ -668,9 +649,10 @@ export const yachtTranslations = {
           "Außenlautsprecher",
           "GPS",
           "Kühlschrank",
-          "Tiefkühler",
+          "Surfbrett",
           "Innenlautsprecher",
-          "Handtuch"
+          "Handtuch",
+          "Rettungsweste"
         ],
         activities: [
           "Badeleiter",
@@ -688,17 +670,14 @@ export const yachtTranslations = {
             title: "Speisen und Getränke",
             description: "Kostenloses Menü und alkoholfreie Getränke inklusive."
           },
-          decoration: {
-            title: "Dekoration",
-            description: "Individuelle Dekorationen für besondere Anlässe verfügbar."
-          },
+          
           fuel: {
             title: "Treibstoff",
             description: "Alle Treibstoffkosten im Charterpreis enthalten."
           },
           waiterAndCrew: {
             title: "Kellner und Crew",
-            description: "Professioneller Crew-Service inklusive."
+            description: "Professioneller Crew-Service inklusive. Bitte informieren Sie uns im Voraus über besondere Bedingungen (z. B. Glutenallergie usw.). Keine zusätzlichen Kosten."
           },
           fixedMenu: {
             title: "Festes Menü",
@@ -709,8 +688,8 @@ export const yachtTranslations = {
               "Mediterraner Salat",
               "Saisonale Früchte",
               "Alkoholfreie Getränke",
-              "Türkischer Kaffee",
-              "Lokale Tees"
+              "Gegrilltes Gemüse"
+              
             ]
           }
         },
@@ -721,7 +700,7 @@ export const yachtTranslations = {
           },
           bringingAlcohol: {
             title: "Alkohol mitbringen",
-            description: "25€ Servicegebühr für mitgebrachten Alkohol."
+            description: "35€ Servicegebühr für mitgebrachten Alkohol."
           },
           purchasingAlcohol: {
             title: "Alkohol kaufen",
@@ -731,22 +710,23 @@ export const yachtTranslations = {
             title: "Menüänderungen",
             description: "Individuelle Menüoptionen gegen Aufpreis verfügbar."
           },
-          tourRouteChange: {
-            title: "Routenänderungen",
-            description: "Flexible Routenplanung mit Zeitaufschlag."
-          },
+          
           waterActivities: {
             title: "Wasseraktivitäten",
-            description: "Zusätzliche Wassersportarten gegen Gebühr."
+            description: "Zusätzliche Wassersportarten gegen Gebühr. Jet-Ski, Parasailing sind verfügbar."
           },
           photographyServices: {
-            title: "Fotografie",
-            description: "Professionelle Fotoservices verfügbar."
+            title: "Fotografie und Drohnenaufnahmen",
+            description: "Professionelle Foto- und Drohnendienste verfügbar."
           },
           transfer: {
             title: "Transfer",
             description: "Individuelle Transferservices je nach Gruppengröße."
-          }
+          },
+          decoration: {
+            title: "Dekoration",
+            description: "Individuelle Dekorationen für besondere Anlässe verfügbar."
+          },
         }
       },
       images: [
@@ -767,7 +747,7 @@ export const yachtTranslations = {
   ru: {
     2: {
       name: "Side VIP",
-      price: "850 €",
+      price: "Начиная с 100 €",
       priceUnit: "в день",
       location: "Порт Сиде, Турция",
       builder: "Собственная сборка",
@@ -814,12 +794,12 @@ export const yachtTranslations = {
         startTime: "10:00 - 15:00",
         totalCapacity: "12 человек",
         totalBreaks: "3 остановки",
-        totalCabins: "2 каюты",
+        totalCabins: "1 каюты",
         catering: "Включено",
         alcoholDrink: "Возможно",
         special: "BBQ вечеринка",
-        length: "12,5 метра",
-        beam: "4,3 метра",
+        length: "12 метра",
+        beam: "4 метра",
         draft: "1,8 метра",
         enginePower: "2 x 350 л.с.",
         fuelType: "Дизель",
@@ -872,18 +852,12 @@ export const yachtTranslations = {
           "Страховка"
         ],
         optionalServices: [
+          
           {
-            name: "Полное питание",
-            price: "25€ с человека"
+            name: "трансфер из отеля",
+            price: "?€ за поездку"
           },
-          {
-            name: "Трансфер из аэропорта",
-            price: "40€ за поездку"
-          },
-          {
-            name: "Премиум-пакет напитков",
-            price: "150€ в день"
-          }
+          
         ],
         cancellation: {
           fullRefund: "за 7 дней",
@@ -906,11 +880,11 @@ export const yachtTranslations = {
         brand: "Собственная сборка",
         capacity: "12 человек",
         crew: "2 человека",
-        cabin: "2",
-        showerWC: "2",
-        length: "12,5 метра",
-        width: "4,3 метра",
-        speed: "20 узлов",
+        cabin: "1",
+        showerWC: "1",
+        length: "12 метра",
+        width: "4 метра",
+        speed: "16 узлов",
         manufacturing: "2008",
         refitDate: "2023",
         location: "Марина Сиде",
@@ -923,9 +897,10 @@ export const yachtTranslations = {
           "Наружные динамики",
           "GPS",
           "Холодильник",
-          "Морозильник",
+          "доска для серфинга",
           "Внутренние динамики",
-          "Полотенце"
+          "Полотенце",
+          "спасательный жилет"
         ],
         activities: [
           "Лестница для купания",
@@ -943,17 +918,14 @@ export const yachtTranslations = {
             title: "Еда и напитки",
             description: "Бесплатное меню и безалкогольные напитки включены."
           },
-          decoration: {
-            title: "Оформление",
-            description: "Специальное оформление доступно для особых случаев."
-          },
+          
           fuel: {
             title: "Топливо",
             description: "Все расходы на топливо включены в стоимость аренды."
           },
           waiterAndCrew: {
             title: "Официант и экипаж",
-            description: "Услуги профессионального экипажа включены."
+            description: "Услуги профессионального экипажа включены.Пожалуйста, сообщите нам заранее о любых особых условиях (например, аллергия на глютен и т. д.). Дополнительная плата не взимается."
           },
           fixedMenu: {
             title: "Фиксированное меню",
@@ -964,8 +936,8 @@ export const yachtTranslations = {
               "Средиземноморский салат",
               "Сезонные фрукты",
               "Безалкогольные напитки",
-              "Турецкий кофе",
-              "Местные чаи"
+              "Овощи гриль"
+              
             ]
           }
         },
@@ -976,7 +948,7 @@ export const yachtTranslations = {
           },
           bringingAlcohol: {
             title: "Принесение алкоголя",
-            description: "Сервисный сбор 25€ за свой алкоголь."
+            description: "Сервисный сбор 35€ за свой алкоголь."
           },
           purchasingAlcohol: {
             title: "Покупка алкоголя",
@@ -986,22 +958,23 @@ export const yachtTranslations = {
             title: "Изменение меню",
             description: "Индивидуальные варианты меню за дополнительную плату."
           },
-          tourRouteChange: {
-            title: "Изменение маршрута",
-            description: "Гибкое планирование маршрута с доплатой за время."
-          },
+          
           waterActivities: {
             title: "Водные активности",
-            description: "Дополнительные водные виды спорта за плату."
+            description: "Дополнительные водные виды спорта за плату. Доступны гидроцикл и парасейлинг."
           },
           photographyServices: {
-            title: "Фотография",
-            description: "Доступны профессиональные фотоуслуги."
+            title: "Фотография и съемка с дрона",
+            description: "Доступны профессиональные фото- и дрон-услуги."
           },
           transfer: {
             title: "Трансфер",
             description: "Индивидуальные трансферы в зависимости от размера группы."
-          }
+          },
+          decoration: {
+            title: "Оформление",
+            description: "Специальное оформление доступно для особых случаев."
+          },
         }
       },
       images: [
