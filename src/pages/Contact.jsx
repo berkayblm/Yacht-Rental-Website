@@ -63,7 +63,7 @@ const Contact = () => {
     `;
 
     // Create mailto link
-    const mailtoLink = `mailto:berkayant4@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:side.viprental@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
 
     // Open default email client
     window.location.href = mailtoLink;
